@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.PWMVictorSPX
 import edu.wpi.first.wpilibj.SpeedControllerGroup 
 import frc.robot.Constants
 
-class DivetrainSubsystem : SubsystemBase() {
+class DrivetrainSubsystem : SubsystemBase() {
   /**
    * Creates a new DivetrainSubsystem.
    */
