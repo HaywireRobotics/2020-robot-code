@@ -20,9 +20,9 @@ class SeekPID(val driveTrainSubsystem: DrivetrainSubsystem) : PIDCommandWrapper(
             // The controller that the command will use
             PIDController(0.0, 0.0, 0.0),
             // This should return the measurement,
-            { 0 },
+            { 0.0 },
             // This should return the setpoint (can also be a constant)
-            { 0 },
+            { 0.0 },
             // This uses the output
             { output: Double -> 
               // Use the output here
