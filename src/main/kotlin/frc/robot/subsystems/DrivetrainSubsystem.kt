@@ -13,15 +13,16 @@ import edu.wpi.first.wpilibj.PWMVictorSPX
 import edu.wpi.first.wpilibj.SpeedControllerGroup 
 import frc.robot.Constants
 
-class DivetrainSubsystem : SubsystemBase() {
+class DrivetrainSubsystem : SubsystemBase() {
   /**
-   * Creates a new DivetrainSubsystem.
+   * Creates a new DrivetrainSubsystem.
    */
   private val leftFornt: PWMVictorSPX = PWMVictorSPX(Constants.driveLeftFrontPort)
   private val leftBack: PWMVictorSPX = PWMVictorSPX(Constants.driveLeftBackPort)
   private val rightFornt: PWMVictorSPX = PWMVictorSPX(Constants.driveRightFrontPort)
   private val rightBack: PWMVictorSPX = PWMVictorSPX(Constants.driveRightBackPort)
-  private val myRobot = DifferentialDrive(SpeedControllerGroup(leftFornt, leftBack),SpeedControllerGroup(rightFornt, rightBack ) )
+  
+  private val myRobot = DifferentialDrive(SpeedControllerGroup(leftFornt, leftBack), SpeedControllerGroup(rightFornt, rightBack ) )
 
   init {
   }

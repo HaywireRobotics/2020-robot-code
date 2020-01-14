@@ -23,6 +23,8 @@ class Constants {
     val driveRightBackPort : Int = 2
 
     val driveLeftFrontPort : Int = 3 
-     val driveLeftBackPort : Int = 4  
+    val driveLeftBackPort : Int = 4  
+
+    val manipulatorJoystickPort: Int = 2
   }
 }
