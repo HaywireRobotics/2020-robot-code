@@ -40,7 +40,7 @@ class SeekPID(val drivetrainSubsystem: DrivetrainSubsystem) : CommandBase() {
   init {
     addRequirements(drivetrainSubsystem)
 
-    pidController = PIDController(0.0, 0.0, 0.0)
+    pidController = PIDController(0.15, 0.0, 0.0)
 
     table = nt.getTable("datatable")
     entryx = table.getEntry("X")
@@ -81,9 +81,7 @@ class SeekPID(val drivetrainSubsystem: DrivetrainSubsystem) : CommandBase() {
     return false
   }
 
-  fun useOutput(output: Double): Void {
-    drivetrainSubsystem.tankDrive(output, -output)
-  }
+  fun useOutput(output: Double) = drivetrainSubsystem.tankDrive(output, -output)
 
   fun generateMeasurement(): Double {
     return entryx.getDouble(cameraWidth.toDouble() / 2)
