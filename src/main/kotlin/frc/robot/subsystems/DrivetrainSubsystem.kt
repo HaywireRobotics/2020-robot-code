@@ -9,20 +9,22 @@ package frc.robot.subsystems
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase
 import edu.wpi.first.wpilibj.drive.DifferentialDrive
-import edu.wpi.first.wpilibj.PWMVictorSPX
-import edu.wpi.first.wpilibj.SpeedControllerGroup 
+import edu.wpi.first.wpilibj.SpeedControllerGroup
+
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX
+
 import frc.robot.Constants
 
 class DrivetrainSubsystem : SubsystemBase() {
   /**
    * Creates a new DrivetrainSubsystem.
    */
-  private val leftFornt: PWMVictorSPX = PWMVictorSPX(Constants.driveLeftFrontPort)
-  private val leftBack: PWMVictorSPX = PWMVictorSPX(Constants.driveLeftBackPort)
-  private val rightFornt: PWMVictorSPX = PWMVictorSPX(Constants.driveRightFrontPort)
-  private val rightBack: PWMVictorSPX = PWMVictorSPX(Constants.driveRightBackPort)
+  private val leftFront: WPI_VictorSPX = WPI_VictorSPX(Constants.driveLeftFrontPort)
+  private val leftBack: WPI_VictorSPX = WPI_VictorSPX(Constants.driveLeftBackPort)
+  private val rightFront: WPI_VictorSPX = WPI_VictorSPX(Constants.driveRightFrontPort)
+  private val rightBack: WPI_VictorSPX = WPI_VictorSPX(Constants.driveRightBackPort)
   
-  private val myRobot = DifferentialDrive(SpeedControllerGroup(leftFornt, leftBack), SpeedControllerGroup(rightFornt, rightBack ) )
+  private val myRobot = DifferentialDrive(SpeedControllerGroup(leftFront, leftBack), SpeedControllerGroup(rightFront, rightBack))
 
   init {
   }
@@ -33,5 +35,5 @@ class DrivetrainSubsystem : SubsystemBase() {
   override fun periodic() {
   }
 
-fun tankDrive(leftPower: Double, rightPower: Double) = myRobot.tankDrive(leftPower,rightPower, false) 
+fun tankDrive(leftPower: Double, rightPower: Double) = myRobot.tankDrive(leftPower, rightPower, false)
 }

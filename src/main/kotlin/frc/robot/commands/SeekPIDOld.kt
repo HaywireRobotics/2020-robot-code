@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018-2019 FIRST. All Rights Reserved.                        */
+/* Copyright (c) 2019 FIRST. All Rights Reserved.                             */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
@@ -8,22 +8,32 @@
 package frc.robot.commands
 
 import frc.robot.subsystems.DrivetrainSubsystem
+import frc.robot.commands.PIDCommandWrapper
 
-import edu.wpi.first.wpilibj2.command.CommandBase
 import edu.wpi.first.networktables.EntryListenerFlags
 import edu.wpi.first.networktables.NetworkTable
 import edu.wpi.first.networktables.NetworkTableEntry
 import edu.wpi.first.networktables.NetworkTableInstance
+import frc.robot.Robot
+
 import edu.wpi.first.wpilibj.controller.PIDController
+// import edu.wpi.first.wpilibj2.command.PIDCommand
 
-class SeekPID(val drivetrainSubsystem: DrivetrainSubsystem) : CommandBase() {
-  /**
-   * Creates a new SeekPID.
-   *
-   * @param drivetrainSubsystem The subsystem used by this command.
-   */
-
-  val pidController: PIDController
+// NOTE:  Consider using this command inline, rather than writing a subclass.  For more
+// information, see:
+// https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
+class SeekPIDOld(val driveTrainSubsystem: DrivetrainSubsystem) : PIDCommandWrapper(
+            // The controller that the command will use
+            PIDController(0.0, 0.0, 0.0),
+            // This should return the measurement,
+            { 0.0 },
+            // This should return the setpoint (can also be a constant)
+            { 0.0 },
+            // This uses the output
+            { output: Double -> 
+              // Use the output here
+              driveTrainSubsystem.tankDrive(output, -output)
+            }) {
 
   val nt: NetworkTableInstance = NetworkTableInstance.getDefault()
   val table: NetworkTable
@@ -36,11 +46,10 @@ class SeekPID(val drivetrainSubsystem: DrivetrainSubsystem) : CommandBase() {
   var cameraHeight: Int
 
   val deadZoneWidth: Int = 20 // The width of the deadZone
-
   init {
-    addRequirements(drivetrainSubsystem)
-
-    pidController = PIDController(0.0, 0.0, 0.0)
+    // Use addRequirements() here to declare subsystem dependencies.
+    // Configure additional PID options by calling getController() here.
+    addRequirements(driveTrainSubsystem)
 
     table = nt.getTable("datatable")
     entryx = table.getEntry("X")
@@ -53,12 +62,8 @@ class SeekPID(val drivetrainSubsystem: DrivetrainSubsystem) : CommandBase() {
 
     cameraWidth = 360
     cameraHeight = 240
-  }
 
-  // Called when the command is initially scheduled.
-  override fun initialize() {
-    pidController.reset()
-
+    // From initialize
     val cameraModeString = cameraMode.getString("")
     val cameraDimensions = Regex("(\\d+)x(\\d+)").findAll(cameraModeString).elementAt(0).groupValues
 
@@ -66,30 +71,11 @@ class SeekPID(val drivetrainSubsystem: DrivetrainSubsystem) : CommandBase() {
     cameraHeight = cameraDimensions[2].toInt()  // The height is at index 2
   }
 
-  // Called every time the scheduler runs while the command is scheduled.
-  override fun execute() {
-    useOutput(pidController.calculate(generateMeasurement(), generateSetpoint()))
-  }
-
-  // Called once the command ends or is interrupted.
-  override fun end(interrupted: Boolean) {
-    useOutput(0.0)
-  }
-
   // Returns true when the command should end.
   override fun isFinished(): Boolean {
     return false
   }
 
-  fun useOutput(output: Double): Void {
-    drivetrainSubsystem.tankDrive(output, -output)
-  }
-
-  fun generateMeasurement(): Double {
-    return entryx.getDouble(cameraWidth.toDouble() / 2)
-  }
-
-  fun generateSetpoint(): Double {
-    return cameraWidth.toDouble() / 2
-  }
+  // Returns the setpoint
+  fun generateSetpoint(): Double = cameraWidth.toDouble() / 2
 }
