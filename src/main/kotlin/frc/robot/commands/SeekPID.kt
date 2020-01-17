@@ -40,7 +40,7 @@ class SeekPID(val drivetrainSubsystem: DrivetrainSubsystem) : CommandBase() {
   init {
     addRequirements(drivetrainSubsystem)
 
-    pidController = PIDController(0.15, 0.0, 0.0)
+    pidController = PIDController(-0.2, 100.0, 10000.0)
 
     table = nt.getTable("datatable")
     entryx = table.getEntry("X")
