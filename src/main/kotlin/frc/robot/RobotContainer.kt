@@ -8,13 +8,17 @@
 package frc.robot
 
 import frc.robot.commands.ExampleCommand
+import frc.robot.commands.SeekPID
 import frc.robot.subsystems.ExampleSubsystem
 import frc.robot.subsystems.DrivetrainSubsystem
+
 import edu.wpi.first.wpilibj2.command.Command
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 import edu.wpi.first.wpilibj.GenericHID
 import edu.wpi.first.wpilibj.XboxController
+import edu.wpi.first.wpilibj.Joystick
+import edu.wpi.first.wpilibj2.command.button.JoystickButton
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -31,6 +35,8 @@ class RobotContainer {
 
   var m_autoCommandChooser: SendableChooser<Command> = SendableChooser()
 
+  // Joysticks
+  private val manipulatorJoystick: Joystick = Joystick(Constants.manipulatorJoystickPort)
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -49,6 +55,9 @@ class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   fun configureButtonBindings() {
+    val manipJoyBut3: JoystickButton = JoystickButton(manipulatorJoystick, 3)
+
+    manipJoyBut3.whileHeld(SeekPID(drivetrainSubsystem))
   }
 
   fun getAutonomousCommand(): Command {
