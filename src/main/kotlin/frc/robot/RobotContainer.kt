@@ -9,6 +9,7 @@ package frc.robot
 
 import frc.robot.commands.ExampleCommand
 import frc.robot.commands.SeekPID
+import frc.robot.commands.TankDrive
 import frc.robot.subsystems.ExampleSubsystem
 import frc.robot.subsystems.DrivetrainSubsystem
 
@@ -37,6 +38,8 @@ class RobotContainer {
 
   // Joysticks
   private val manipulatorJoystick: Joystick = Joystick(Constants.manipulatorJoystickPort)
+  private val driverLeftJoystick: Joystick = Joystick(Constants.driverLeftJoystickPort)
+  private val driverRightJoystick: Joystick = Joystick(Constants.driverRightJoystickPort)
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -46,6 +49,8 @@ class RobotContainer {
     configureButtonBindings()
     m_autoCommandChooser.setDefaultOption("Default Auto", m_autoCommand)
     SmartDashboard.putData("Auto mode", m_autoCommandChooser)
+    
+    drivetrainSubsystem.setDefaultCommand(TankDrive(drivetrainSubsystem, driverLeftJoystick, driverRightJoystick))
   }
 
   /**
