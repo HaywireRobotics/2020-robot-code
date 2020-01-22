@@ -44,4 +44,11 @@ class Constants {
       val leftBackPort : Int = 0
     }
   }
+
+  class TurboLift {
+    companion object {
+      val backMotorPort: Int = 6
+      val frontMotorPort: Int = 7
+    }
+  }
 }

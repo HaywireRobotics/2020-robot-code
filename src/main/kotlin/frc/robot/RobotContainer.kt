@@ -10,9 +10,7 @@ package frc.robot
 import frc.robot.commands.ExampleCommand
 import frc.robot.commands.SeekPID
 import frc.robot.commands.TankDrive
-import frc.robot.subsystems.ExampleSubsystem
-import frc.robot.subsystems.HyperdriveSubsystem
-import frc.robot.subsystems.DockingBaySubsystem
+import frc.robot.subsystems.*
 
 import edu.wpi.first.wpilibj2.command.Command
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser
@@ -33,6 +31,7 @@ class RobotContainer {
   private val hyperdriveSubsystem: HyperdriveSubsystem = HyperdriveSubsystem()
   private val m_exampleSubsystem: ExampleSubsystem = ExampleSubsystem()
   private val dockingBaySubsystem: DockingBaySubsystem = DockingBaySubsystem()
+  private val turboLiftSubsystem: TurboLiftSubsystem = TurboLiftSubsystem()
 
   val m_autoCommand: ExampleCommand = ExampleCommand(m_exampleSubsystem)
 
