@@ -7,19 +7,20 @@
 
 package frc.robot.commands
 
-import frc.robot.subsystems.DrivetrainSubsystem
+import frc.robot.subsystems.HyperdriveSubsystem
+
 import edu.wpi.first.wpilibj2.command.CommandBase
 import edu.wpi.first.wpilibj.Joystick
 import edu.wpi.first.wpilibj.GenericHID.Hand
 
-class TankDrive(val m_subsystem: DrivetrainSubsystem, val leftJoystick: Joystick, val rightJoystick: Joystick) : CommandBase() {
+class TankDrive(val hyperdriveSubsystem: HyperdriveSubsystem, val leftJoystick: Joystick, val rightJoystick: Joystick) : CommandBase() {
   /**
    * Creates a new TankDrive.
    *
-   * @param m_subsystem The subsystem used by this command.
+   * @param hyperdriveSubsystem The subsystem used by this command.
    */
   init {
-    addRequirements(m_subsystem)
+    addRequirements(hyperdriveSubsystem)
   }
 
   // Called when the command is initially scheduled.
@@ -28,12 +29,12 @@ class TankDrive(val m_subsystem: DrivetrainSubsystem, val leftJoystick: Joystick
 
   // Called every time the scheduler runs while the command is scheduled.
   override fun execute() {
-    m_subsystem.tankDrive(leftJoystick.getY(), rightJoystick.getY())
+    hyperdriveSubsystem.tankDrive(leftJoystick.getY(), rightJoystick.getY())
   }
 
   // Called once the command ends or is interrupted.
   override fun end(interrupted: Boolean) {
-    m_subsystem.tankDrive(0.0,0.0)
+    hyperdriveSubsystem.tankDrive(0.0,0.0)
   }
 
   // Returns true when the command should end.

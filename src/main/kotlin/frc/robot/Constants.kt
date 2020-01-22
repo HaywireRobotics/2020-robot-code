@@ -18,15 +18,30 @@ package frc.robot
 class Constants {
   companion object {
     // Put Constants inside the companion object to make them globally accessible.
-    // ex. val motorPort: Int = 0
-    val driveRightFrontPort : Int = 3
-    val driveRightBackPort : Int = 2
+  }
 
-    val driveLeftFrontPort : Int = 4
-    val driveLeftBackPort : Int = 0
+  class Joysticks {
+    companion object {
+      val driverRightPort: Int = 0
+      val driverLeftPort: Int = 1
+      val manipulatorRightPort: Int = 2
+      val manipulatorLeftPort: Int = 3
+    }
+  }
 
-    val manipulatorJoystickPort: Int = 2
-    val driverLeftJoystickPort: Int = 1
-    val driverRightJoystickPort: Int = 0
+  class DockingBay {
+    companion object {
+      val motorPort: Int = 5
+    }
+  }
+
+  class Hyperdrive {
+    companion object {
+      val rightFrontPort : Int = 3
+      val rightBackPort : Int = 2
+
+      val leftFrontPort : Int = 4
+      val leftBackPort : Int = 0
+    }
   }
 }

@@ -7,7 +7,7 @@
 
 package frc.robot.commands
 
-import frc.robot.subsystems.DrivetrainSubsystem
+import frc.robot.subsystems.HyperdriveSubsystem
 
 import edu.wpi.first.wpilibj2.command.CommandBase
 import edu.wpi.first.networktables.EntryListenerFlags
@@ -16,11 +16,11 @@ import edu.wpi.first.networktables.NetworkTableEntry
 import edu.wpi.first.networktables.NetworkTableInstance
 import edu.wpi.first.wpilibj.controller.PIDController
 
-class SeekPID(val drivetrainSubsystem: DrivetrainSubsystem) : CommandBase() {
+class SeekPID(val hyperdriveSubsystem: HyperdriveSubsystem) : CommandBase() {
   /**
    * Creates a new SeekPID.
    *
-   * @param drivetrainSubsystem The subsystem used by this command.
+   * @param hyperdriveSubsystem The subsystem used by this command.
    */
 
   val pidController: PIDController
@@ -38,7 +38,7 @@ class SeekPID(val drivetrainSubsystem: DrivetrainSubsystem) : CommandBase() {
   val deadZoneWidth: Int = 20 // The width of the deadZone
 
   init {
-    addRequirements(drivetrainSubsystem)
+    addRequirements(hyperdriveSubsystem)
 
     pidController = PIDController(-0.2, 100.0, 10000.0)
 
@@ -81,7 +81,7 @@ class SeekPID(val drivetrainSubsystem: DrivetrainSubsystem) : CommandBase() {
     return false
   }
 
-  fun useOutput(output: Double) = drivetrainSubsystem.tankDrive(output, -output)
+  fun useOutput(output: Double) = hyperdriveSubsystem.tankDrive(output, -output)
 
   fun generateMeasurement(): Double {
     return entryx.getDouble(cameraWidth.toDouble() / 2)

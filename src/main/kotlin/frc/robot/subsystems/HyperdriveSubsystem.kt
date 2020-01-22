@@ -15,14 +15,14 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX
 
 import frc.robot.Constants
 
-class DrivetrainSubsystem : SubsystemBase() {
+class HyperdriveSubsystem : SubsystemBase() {
   /**
-   * Creates a new DrivetrainSubsystem.
+   * Creates a new HyperdriveSubsystem.
    */
-  private val leftFront: WPI_VictorSPX = WPI_VictorSPX(Constants.driveLeftFrontPort)
-  private val leftBack: WPI_VictorSPX = WPI_VictorSPX(Constants.driveLeftBackPort)
-  private val rightFront: WPI_VictorSPX = WPI_VictorSPX(Constants.driveRightFrontPort)
-  private val rightBack: WPI_VictorSPX = WPI_VictorSPX(Constants.driveRightBackPort)
+  private val leftFront: WPI_VictorSPX = WPI_VictorSPX(Constants.Hyperdrive.leftFrontPort)
+  private val leftBack: WPI_VictorSPX = WPI_VictorSPX(Constants.Hyperdrive.leftBackPort)
+  private val rightFront: WPI_VictorSPX = WPI_VictorSPX(Constants.Hyperdrive.rightFrontPort)
+  private val rightBack: WPI_VictorSPX = WPI_VictorSPX(Constants.Hyperdrive.rightBackPort)
   
   private val myRobot = DifferentialDrive(SpeedControllerGroup(leftFront, leftBack), SpeedControllerGroup(rightFront, rightBack))
 

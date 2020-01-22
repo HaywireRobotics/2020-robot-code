@@ -11,7 +11,8 @@ import frc.robot.commands.ExampleCommand
 import frc.robot.commands.SeekPID
 import frc.robot.commands.TankDrive
 import frc.robot.subsystems.ExampleSubsystem
-import frc.robot.subsystems.DrivetrainSubsystem
+import frc.robot.subsystems.HyperdriveSubsystem
+import frc.robot.subsystems.DockingBaySubsystem
 
 import edu.wpi.first.wpilibj2.command.Command
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser
@@ -29,17 +30,18 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton
  */
 class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private val drivetrainSubsystem: DrivetrainSubsystem = DrivetrainSubsystem()
+  private val hyperdriveSubsystem: HyperdriveSubsystem = HyperdriveSubsystem()
   private val m_exampleSubsystem: ExampleSubsystem = ExampleSubsystem()
+  private val dockingBaySubsystem: DockingBaySubsystem = DockingBaySubsystem()
 
   val m_autoCommand: ExampleCommand = ExampleCommand(m_exampleSubsystem)
 
   var m_autoCommandChooser: SendableChooser<Command> = SendableChooser()
 
   // Joysticks
-  private val manipulatorJoystick: Joystick = Joystick(Constants.manipulatorJoystickPort)
-  private val driverLeftJoystick: Joystick = Joystick(Constants.driverLeftJoystickPort)
-  private val driverRightJoystick: Joystick = Joystick(Constants.driverRightJoystickPort)
+  private val manipulatorRightJoystick: Joystick = Joystick(Constants.Joysticks.manipulatorRightPort)
+  private val driverLeftJoystick: Joystick = Joystick(Constants.Joysticks.driverLeftPort)
+  private val driverRightJoystick: Joystick = Joystick(Constants.Joysticks.driverRightPort)
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -50,7 +52,7 @@ class RobotContainer {
     m_autoCommandChooser.setDefaultOption("Default Auto", m_autoCommand)
     SmartDashboard.putData("Auto mode", m_autoCommandChooser)
     
-    drivetrainSubsystem.setDefaultCommand(TankDrive(drivetrainSubsystem, driverLeftJoystick, driverRightJoystick))
+    hyperdriveSubsystem.setDefaultCommand(TankDrive(hyperdriveSubsystem, driverLeftJoystick, driverRightJoystick))
   }
 
   /**
@@ -60,9 +62,9 @@ class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   fun configureButtonBindings() {
-    val manipJoyBut3: JoystickButton = JoystickButton(manipulatorJoystick, 3)
+    val manipJoyBut3: JoystickButton = JoystickButton(manipulatorRightJoystick, 3)
 
-    manipJoyBut3.whileHeld(SeekPID(drivetrainSubsystem))
+    manipJoyBut3.whileHeld(SeekPID(hyperdriveSubsystem))
   }
 
   fun getAutonomousCommand(): Command {
