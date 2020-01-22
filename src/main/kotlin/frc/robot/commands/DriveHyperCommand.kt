@@ -13,9 +13,9 @@ import edu.wpi.first.wpilibj2.command.CommandBase
 import edu.wpi.first.wpilibj.Joystick
 import edu.wpi.first.wpilibj.GenericHID.Hand
 
-class TankDrive(val hyperdriveSubsystem: HyperdriveSubsystem, val leftJoystick: Joystick, val rightJoystick: Joystick) : CommandBase() {
+class DriveHyperCommand(val hyperdriveSubsystem: HyperdriveSubsystem, val leftJoystick: Joystick, val rightJoystick: Joystick) : CommandBase() {
   /**
-   * Creates a new TankDrive.
+   * Creates a new DriveHyperCommand.
    *
    * @param hyperdriveSubsystem The subsystem used by this command.
    */

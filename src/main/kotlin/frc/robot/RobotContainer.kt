@@ -9,7 +9,7 @@ package frc.robot
 
 import frc.robot.commands.ExampleCommand
 import frc.robot.commands.SeekPID
-import frc.robot.commands.TankDrive
+import frc.robot.commands.DriveHyperCommand
 import frc.robot.subsystems.*
 
 import edu.wpi.first.wpilibj2.command.Command
@@ -51,7 +51,7 @@ class RobotContainer {
     m_autoCommandChooser.setDefaultOption("Default Auto", m_autoCommand)
     SmartDashboard.putData("Auto mode", m_autoCommandChooser)
     
-    hyperdriveSubsystem.setDefaultCommand(TankDrive(hyperdriveSubsystem, driverLeftJoystick, driverRightJoystick))
+    hyperdriveSubsystem.setDefaultCommand(DriveHyperCommand(hyperdriveSubsystem, driverLeftJoystick, driverRightJoystick))
   }
 
   /**
