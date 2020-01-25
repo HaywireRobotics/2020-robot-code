@@ -8,8 +8,10 @@
 package frc.robot.subsystems
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase
-
 import edu.wpi.first.wpilibj.Spark
+import edu.wpi.first.wpilibj.Encoder
+import edu.wpi.first.wpilibj.CounterBase.EncodingType
+import edu.wpi.first.wpilibj.PIDSourceType
 
 import frc.robot.Constants
 
@@ -19,13 +21,27 @@ class IonCannony : SubsystemBase() {
    */
   val top: Spark = Spark(Constants.IonCannony.topPort)
   val bottom: Spark = Spark(Constants.IonCannony.bottomPort)
-  
+
+  // Encoders
+  private val topEncoder: Encoder = Encoder(Constants.IonCannony.topEncoderAPort, Constants.IonCannony.topEncoderBPort, true, EncodingType.k4X)
+  private val bottomEncoder: Encoder = Encoder(Constants.IonCannony.bottomEncoderAPort, Constants.IonCannony.bottomEncoderBPort, true, EncodingType.k4X)
+
+  var topEncoderRate: Double = 0.0
+  var bottomEncoderRate: Double = 0.0
+
   init {
+    topEncoder.setDistancePerPulse(1.0)
+    topEncoder.setPIDSourceType(PIDSourceType.kRate)
+
+    bottomEncoder.setDistancePerPulse(1.0)
+    bottomEncoder.setPIDSourceType(PIDSourceType.kRate)
   }
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
   override fun periodic() {
+    topEncoderRate = topEncoder.getRate()
+    bottomEncoderRate = bottomEncoder.getRate()
   }
 }

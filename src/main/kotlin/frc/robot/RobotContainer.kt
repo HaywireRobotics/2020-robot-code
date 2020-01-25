@@ -13,6 +13,7 @@ import frc.robot.commands.DriveHyperCommand
 import frc.robot.commands.IonCannonyDefaultCommand
 import frc.robot.commands.TurboLiftyDefault
 import frc.robot.commands.RunDockingBay
+import frc.robot.commands.PIDShoot
 import frc.robot.subsystems.*
 
 import edu.wpi.first.wpilibj2.command.Command
@@ -72,7 +73,7 @@ class RobotContainer {
     val manipJoyBut3: JoystickButton = JoystickButton(manipulatorRightJoystick, 3)
 
     manipJoyBut1.whileHeld(RunDockingBay(dockingBaySubsystem))
-    manipJoyBut3.whileHeld(SeekPID(hyperdriveSubsystem))
+    manipJoyBut3.whileHeld(PIDShoot(200000.0, 200000.0, ionCannonySubsystem))
   }
 
   fun getAutonomousCommand(): Command {
