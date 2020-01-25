@@ -31,7 +31,7 @@ class Constants {
 
   class DockingBay {
     companion object {
-      val motorPort: Int = 5
+      val motorPort: Int = 0
     }
   }
 
@@ -40,22 +40,22 @@ class Constants {
       val rightFrontPort : Int = 3
       val rightBackPort : Int = 2
 
-      val leftFrontPort : Int = 4
+      val leftFrontPort : Int = 1
       val leftBackPort : Int = 0
     }
   }
 
   class TurboLift {
     companion object {
-      val backMotorPort: Int = 0
-      val frontMotorPort: Int = 1
+      val backMotorPort: Int = 4
+      val frontMotorPort: Int = 5
     }
   }
 
   class IonCannony {
     companion object {
-      val topPort: Int = 8
-      val bottomPort: Int = 9
+      val topPort: Int = 1
+      val bottomPort: Int = 2
     }
   }
 }

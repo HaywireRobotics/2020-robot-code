@@ -10,12 +10,13 @@ package frc.robot.subsystems
 import frc.robot.Constants
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase
-import edu.wpi.first.wpilibj.PWMVictorSPX
+
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX
 
 class TurboLiftSubsystem : SubsystemBase() {
   
-  val backMotor: PWMVictorSPX = PWMVictorSPX(Constants.TurboLift.backMotorPort)
-  val frontMotor: PWMVictorSPX = PWMVictorSPX(Constants.TurboLift.frontMotorPort)
+  val backMotor: WPI_VictorSPX = WPI_VictorSPX(Constants.TurboLift.backMotorPort)
+  val frontMotor: WPI_VictorSPX = WPI_VictorSPX(Constants.TurboLift.frontMotorPort)
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
