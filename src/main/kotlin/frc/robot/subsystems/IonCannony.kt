@@ -9,7 +9,7 @@ package frc.robot.subsystems
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase
 
-import edu.wpi.first.wpilibj.PWMVictorSPX
+import edu.wpi.first.wpilibj.Spark
 
 import frc.robot.Constants
 
@@ -17,8 +17,8 @@ class IonCannony : SubsystemBase() {
   /**
    * Creates a new IonCannony.
    */
-  val top: PWMVictorSPX = PWMVictorSPX(Constants.IonCannony.topPort)
-  val bottom: PWMVictorSPX = PWMVictorSPX(Constants.IonCannony.bottomPort)
+  val top: Spark = Spark(Constants.IonCannony.topPort)
+  val bottom: Spark = Spark(Constants.IonCannony.bottomPort)
   
   init {
   }
