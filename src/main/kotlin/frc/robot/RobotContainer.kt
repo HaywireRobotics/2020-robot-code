@@ -12,6 +12,7 @@ import frc.robot.commands.SeekPID
 import frc.robot.commands.DriveHyperCommand
 import frc.robot.commands.IonCannonyDefaultCommand
 import frc.robot.commands.TurboLiftyDefault
+import frc.robot.commands.RunDockingBay
 import frc.robot.subsystems.*
 
 import edu.wpi.first.wpilibj2.command.Command
@@ -67,8 +68,10 @@ class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   fun configureButtonBindings() {
+    val manipJoyBut1: JoystickButton = JoystickButton(manipulatorRightJoystick, 1)
     val manipJoyBut3: JoystickButton = JoystickButton(manipulatorRightJoystick, 3)
 
+    manipJoyBut1.whileHeld(RunDockingBay(dockingBaySubsystem))
     manipJoyBut3.whileHeld(SeekPID(hyperdriveSubsystem))
   }
 
