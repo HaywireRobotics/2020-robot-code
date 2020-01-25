@@ -10,6 +10,8 @@ package frc.robot
 import frc.robot.commands.ExampleCommand
 import frc.robot.commands.SeekPID
 import frc.robot.commands.DriveHyperCommand
+import frc.robot.commands.IonCannonyDefaultCommand
+import frc.robot.commands.TurboLiftyDefault
 import frc.robot.subsystems.*
 
 import edu.wpi.first.wpilibj2.command.Command
@@ -32,6 +34,7 @@ class RobotContainer {
   private val m_exampleSubsystem: ExampleSubsystem = ExampleSubsystem()
   private val dockingBaySubsystem: DockingBaySubsystem = DockingBaySubsystem()
   private val turboLiftSubsystem: TurboLiftSubsystem = TurboLiftSubsystem()
+  private val ionCannonySubsystem: IonCannony = IonCannony()
 
   val m_autoCommand: ExampleCommand = ExampleCommand(m_exampleSubsystem)
 
@@ -39,6 +42,7 @@ class RobotContainer {
 
   // Joysticks
   private val manipulatorRightJoystick: Joystick = Joystick(Constants.Joysticks.manipulatorRightPort)
+  private val manipulatorLeftJoystick: Joystick = Joystick(Constants.Joysticks.manipulatorLeftPort)
   private val driverLeftJoystick: Joystick = Joystick(Constants.Joysticks.driverLeftPort)
   private val driverRightJoystick: Joystick = Joystick(Constants.Joysticks.driverRightPort)
 
@@ -51,7 +55,9 @@ class RobotContainer {
     m_autoCommandChooser.setDefaultOption("Default Auto", m_autoCommand)
     SmartDashboard.putData("Auto mode", m_autoCommandChooser)
     
-    hyperdriveSubsystem.setDefaultCommand(DriveHyperCommand(hyperdriveSubsystem, driverLeftJoystick, driverRightJoystick))
+    // hyperdriveSubsystem.setDefaultCommand(DriveHyperCommand(hyperdriveSubsystem, driverLeftJoystick, driverRightJoystick))
+    ionCannonySubsystem.setDefaultCommand(IonCannonyDefaultCommand(ionCannonySubsystem, driverRightJoystick, driverLeftJoystick))
+    turboLiftSubsystem.setDefaultCommand(TurboLiftyDefault(turboLiftSubsystem, manipulatorRightJoystick, manipulatorLeftJoystick))
   }
 
   /**

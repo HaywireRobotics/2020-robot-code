@@ -7,15 +7,21 @@
 
 package frc.robot.subsystems
 
-import frc.robot.Constants
-
 import edu.wpi.first.wpilibj2.command.SubsystemBase
+
 import edu.wpi.first.wpilibj.PWMVictorSPX
 
-class TurboLiftSubsystem : SubsystemBase() {
+import frc.robot.Constants
+
+class IonCannony : SubsystemBase() {
+  /**
+   * Creates a new IonCannony.
+   */
+  val top: PWMVictorSPX = PWMVictorSPX(Constants.IonCannony.topPort)
+  val bottom: PWMVictorSPX = PWMVictorSPX(Constants.IonCannony.bottomPort)
   
-  val backMotor: PWMVictorSPX = PWMVictorSPX(Constants.TurboLift.backMotorPort)
-  val frontMotor: PWMVictorSPX = PWMVictorSPX(Constants.TurboLift.frontMotorPort)
+  init {
+  }
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.

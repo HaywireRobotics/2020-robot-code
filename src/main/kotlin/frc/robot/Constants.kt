@@ -47,8 +47,15 @@ class Constants {
 
   class TurboLift {
     companion object {
-      val backMotorPort: Int = 6
-      val frontMotorPort: Int = 7
+      val backMotorPort: Int = 0
+      val frontMotorPort: Int = 1
+    }
+  }
+
+  class IonCannony {
+    companion object {
+      val topPort: Int = 8
+      val bottomPort: Int = 9
     }
   }
 }
