@@ -10,6 +10,10 @@ package frc.robot
 import edu.wpi.first.wpilibj.TimedRobot
 import edu.wpi.first.wpilibj2.command.Command
 import edu.wpi.first.wpilibj2.command.CommandScheduler
+import edu.wpi.first.wpilibj.I2C
+import edu.wpi.first.wpilibj.util.Color
+
+import com.revrobotics.ColorSensorV3
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -32,6 +36,9 @@ class Robot : TimedRobot() {
     m_robotContainer = RobotContainer()
     // Automatically grab auto command to ensure m_autonomousCommand is defined before teleopInit is run
     m_autonomousCommand = m_robotContainer.getAutonomousCommand()
+    //Add a color sensor on the I2C port
+    val i2cPort = I2C.Port.kOnboard
+    val m_colorSensor = ColorSensorV3(i2cPort)
   }
 
   /**
