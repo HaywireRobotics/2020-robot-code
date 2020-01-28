@@ -25,7 +25,7 @@ class Robot : TimedRobot() {
   lateinit var m_autonomousCommand: Command
 
   lateinit var m_robotContainer: RobotContainer
-
+  lateinit var m_colorSensor: ColorSensorV3
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -38,7 +38,7 @@ class Robot : TimedRobot() {
     m_autonomousCommand = m_robotContainer.getAutonomousCommand()
     //Add a color sensor on the I2C port
     val i2cPort = I2C.Port.kOnboard
-    val m_colorSensor = ColorSensorV3(i2cPort)
+    m_colorSensor = ColorSensorV3(i2cPort)
   }
 
   /**
