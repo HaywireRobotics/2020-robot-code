@@ -67,7 +67,7 @@ class PIDShoot(val bottomTargetRate: Double, val topTargetRate: Double, val m_su
     //m_subsystem.set(-maxOf(output, 0.005)-0.1)
     m_subsystem.top.set(-output - 0.5)
     // println(output)
-    topJSONPlotter.recordPoint(output)
+    topJSONPlotter.recordPoint(m_subsystem.topEncoderRate)
   }
 
   fun topGenerateMeasurement(): Double = m_subsystem.topEncoderRate
@@ -78,7 +78,7 @@ class PIDShoot(val bottomTargetRate: Double, val topTargetRate: Double, val m_su
     //m_subsystem.set(-maxOf(output, 0.005)-0.1)
     m_subsystem.bottom.set(-output - 0.5)
     // println(output)
-    bottomJSONPlotter.recordPoint(output)
+    bottomJSONPlotter.recordPoint(m_subsystem.bottomEncoderRate)
   }
 
   fun bottomGenerateMeasurement(): Double = m_subsystem.bottomEncoderRate
