@@ -7,6 +7,7 @@
 
 package frc.robot.commands
 
+import frc.robot.JSONPlotter
 import frc.robot.subsystems.IonCannony
 
 import edu.wpi.first.wpilibj2.command.CommandBase
@@ -21,6 +22,8 @@ class PIDShoot(val bottomTargetRate: Double, val topTargetRate: Double, val m_su
 
   val topPIDController: PIDController
   val bottomPIDController: PIDController
+  val topJSONPlotter: JSONPlotter = JSONPlotter()
+  val bottomJSONPlotter: JSONPlotter = JSONPlotter()
 
   init {
     addRequirements(m_subsystem)
@@ -33,6 +36,8 @@ class PIDShoot(val bottomTargetRate: Double, val topTargetRate: Double, val m_su
   override fun initialize() {
     topPIDController.reset()
     bottomPIDController.reset()
+    topJSONPlotter.resetCapture()
+    bottomJSONPlotter.resetCapture()
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -45,6 +50,12 @@ class PIDShoot(val bottomTargetRate: Double, val topTargetRate: Double, val m_su
   override fun end(interrupted: Boolean) {
     m_subsystem.top.set(0.0)
     m_subsystem.bottom.set(0.0)
+
+    println("TOP JSON")
+    topJSONPlotter.outputDataAsJSON()
+    
+    println("BOTTOM JSON")
+    bottomJSONPlotter.outputDataAsJSON()
   }
 
   // Returns true when the command should end.
@@ -56,6 +67,7 @@ class PIDShoot(val bottomTargetRate: Double, val topTargetRate: Double, val m_su
     //m_subsystem.set(-maxOf(output, 0.005)-0.1)
     m_subsystem.top.set(-output - 0.5)
     // println(output)
+    topJSONPlotter.recordPoint(output)
   }
 
   fun topGenerateMeasurement(): Double = m_subsystem.topEncoderRate
@@ -66,6 +78,7 @@ class PIDShoot(val bottomTargetRate: Double, val topTargetRate: Double, val m_su
     //m_subsystem.set(-maxOf(output, 0.005)-0.1)
     m_subsystem.bottom.set(-output - 0.5)
     // println(output)
+    bottomJSONPlotter.recordPoint(output)
   }
 
   fun bottomGenerateMeasurement(): Double = m_subsystem.bottomEncoderRate
