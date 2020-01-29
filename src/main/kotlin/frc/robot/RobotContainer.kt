@@ -14,6 +14,7 @@ import frc.robot.commands.IonCannonyDefaultCommand
 import frc.robot.commands.TurboLiftyDefault
 import frc.robot.commands.RunDockingBay
 import frc.robot.commands.PIDShoot
+import frc.robot.commands.PrintColorSensorCommand
 import frc.robot.subsystems.*
 
 import edu.wpi.first.wpilibj2.command.Command
@@ -37,6 +38,8 @@ class RobotContainer {
   private val dockingBaySubsystem: DockingBaySubsystem = DockingBaySubsystem()
   private val turboLiftSubsystem: TurboLiftSubsystem = TurboLiftSubsystem()
   private val ionCannonySubsystem: IonCannony = IonCannony()
+  private val colorSensorSubsystem: ColorSensorSubsystem = ColorSensorSubsystem()
+  
 
   val m_autoCommand: ExampleCommand = ExampleCommand(m_exampleSubsystem)
 
@@ -47,6 +50,8 @@ class RobotContainer {
   private val manipulatorLeftJoystick: Joystick = Joystick(Constants.Joysticks.manipulatorLeftPort)
   private val driverLeftJoystick: Joystick = Joystick(Constants.Joysticks.driverLeftPort)
   private val driverRightJoystick: Joystick = Joystick(Constants.Joysticks.driverRightPort)
+
+  
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -60,6 +65,9 @@ class RobotContainer {
     // hyperdriveSubsystem.setDefaultCommand(DriveHyperCommand(hyperdriveSubsystem, driverLeftJoystick, driverRightJoystick))
     ionCannonySubsystem.setDefaultCommand(IonCannonyDefaultCommand(ionCannonySubsystem, driverRightJoystick, driverLeftJoystick))
     turboLiftSubsystem.setDefaultCommand(TurboLiftyDefault(turboLiftSubsystem, manipulatorRightJoystick, manipulatorLeftJoystick))
+
+    //Add a color sensor on the I2C port
+    
   }
 
   /**
@@ -71,9 +79,11 @@ class RobotContainer {
   fun configureButtonBindings() {
     val manipJoyBut1: JoystickButton = JoystickButton(manipulatorRightJoystick, 1)
     val manipJoyBut3: JoystickButton = JoystickButton(manipulatorRightJoystick, 3)
+    val manipJoyBut5: JoystickButton = JoystickButton(manipulatorRightJoystick, 5)
 
     manipJoyBut1.whileHeld(RunDockingBay(dockingBaySubsystem))
     manipJoyBut3.whileHeld(PIDShoot(200000.0, 200000.0, ionCannonySubsystem))
+    manipJoyBut5.whileHeld(PrintColorSensorCommand(colorSensorSubsystem))
   }
 
   fun getAutonomousCommand(): Command {
