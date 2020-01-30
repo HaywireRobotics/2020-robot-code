@@ -65,8 +65,9 @@ class PIDShoot(val bottomTargetRate: Double, val topTargetRate: Double, val m_su
 
   fun topUseOutput(output: Double) {
     //m_subsystem.set(-maxOf(output, 0.005)-0.1)
-    m_subsystem.top.set(-output - 0.5)
-    // println(output)
+    // m_subsystem.top.set(-output - 0.5)
+    m_subsystem.top.set(-output)
+    println("TOP: " + output.toString())
     topJSONPlotter.recordPoint(m_subsystem.topEncoderRate)
   }
 
@@ -76,8 +77,9 @@ class PIDShoot(val bottomTargetRate: Double, val topTargetRate: Double, val m_su
 
   fun bottomUseOutput(output: Double) {
     //m_subsystem.set(-maxOf(output, 0.005)-0.1)
-    m_subsystem.bottom.set(-output - 0.5)
-    // println(output)
+    // m_subsystem.bottom.set(-output - 0.5)
+    m_subsystem.bottom.set(-output)
+    println("BOTTOM: " + output.toString())
     bottomJSONPlotter.recordPoint(m_subsystem.bottomEncoderRate)
   }
 
