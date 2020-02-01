@@ -26,7 +26,10 @@ class TurboLiftSubsystem : SubsystemBase() {
   }
 
   fun runSystem(elevatorSpeed: Double) {
-    val agitatorSpeed = 0.4
+    var agitatorSpeed = 0.4
+    if (elevatorSpeed == 0.0){
+      agitatorSpeed = 0.0
+    }
     backMotor.set(elevatorSpeed)
     frontMotor.set(elevatorSpeed)
     agitator.set(agitatorSpeed)

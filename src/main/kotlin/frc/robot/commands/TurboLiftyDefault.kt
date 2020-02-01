@@ -34,11 +34,12 @@ class TurboLiftyDefault(val m_subsystem: TurboLiftSubsystem, val backJoystick: J
       // m_subsystem.frontMotor.set(frontJoystick.getY())
       // m_subsystem.backMotor.set(backJoystick.getY())
     // }
+    m_subsystem.runSystem(backJoystick.getY())
   }
 
   // Called once the command ends or is interrupted.
   override fun end(interrupted: Boolean) {
-        // m_subsystem.agiTater.set(0.0)
+    m_subsystem.runSystem(0.0)
 
   }
 
