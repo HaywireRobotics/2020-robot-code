@@ -22,11 +22,13 @@ class RunDockingBay(val m_subsystem: DockingBaySubsystem) : CommandBase() {
 
   // Called when the command is initially scheduled.
   override fun initialize() {
+    //agiSpeed = -1.0 * agiSpeed
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   override fun execute() {
     m_subsystem.motor.set(0.6)
+    
   }
 
   // Called once the command ends or is interrupted.

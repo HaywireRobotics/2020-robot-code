@@ -11,10 +11,11 @@ import frc.robot.Constants
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase
 import edu.wpi.first.wpilibj.Spark
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX
 
 class DockingBaySubsystem : SubsystemBase() {
   
-  val motor: Spark = Spark(Constants.DockingBay.motorPort)
+  val motor: Spark = Spark(Constants.DockingBay.intakePort)
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.

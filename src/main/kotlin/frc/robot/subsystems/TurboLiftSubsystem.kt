@@ -17,6 +17,7 @@ class TurboLiftSubsystem : SubsystemBase() {
   
   val backMotor: WPI_VictorSPX = WPI_VictorSPX(Constants.TurboLift.backMotorPort)
   val frontMotor: WPI_VictorSPX = WPI_VictorSPX(Constants.TurboLift.frontMotorPort)
+    val agiTater: WPI_VictorSPX = WPI_VictorSPX(Constants.DockingBay.agitatorPort)
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
