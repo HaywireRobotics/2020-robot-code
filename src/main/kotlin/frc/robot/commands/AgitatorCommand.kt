@@ -7,18 +7,15 @@
 
 package frc.robot.commands
 
-import frc.robot.subsystems.TurboLiftSubsystem
+import frc.robot.subsystems.AgitatorSubsystem
 import edu.wpi.first.wpilibj2.command.CommandBase
-import edu.wpi.first.wpilibj.Joystick
 
-class TurboLiftyDefault(val m_subsystem: TurboLiftSubsystem, val backJoystick: Joystick, val frontJoystick: Joystick) : CommandBase() {
+class AgitatorCommand(val m_subsystem: AgitatorSubsystem) : CommandBase() {
   /**
-   * Creates a new TurboLiftySubsystemDefault.
+   * Creates a new AgitatorCommand.
    *
    * @param m_subsystem The subsystem used by this command.
    */
-     var agiSpeed = 0.4
-
   init {
     addRequirements(m_subsystem)
   }
@@ -29,17 +26,12 @@ class TurboLiftyDefault(val m_subsystem: TurboLiftSubsystem, val backJoystick: J
 
   // Called every time the scheduler runs while the command is scheduled.
   override fun execute() {
-    // if (Math.abs(backJoystick.getY()) > 0.1 || Math.abs(frontJoystick.getY()) > 0.1) {
-      // m_subsystem.agiTater.set(agiSpeed)
-    // }
-    m_subsystem.backMotor.set(backJoystick.getY())
-    m_subsystem.frontMotor.set(frontJoystick.getY())
+    m_subsystem.agiTater.set(0.4)
   }
 
   // Called once the command ends or is interrupted.
   override fun end(interrupted: Boolean) {
-        // m_subsystem.agiTater.set(0.0)
-
+    m_subsystem.agiTater.set(0.0)
   }
 
   // Returns true when the command should end.

@@ -18,7 +18,7 @@ class ColorSensorSubsystem : SubsystemBase() {
    * Creates a new ColorSensorSubsystem.
    */
    //color sensor stuff
-  lateinit var m_colorSensor: ColorSensorV3
+  var m_colorSensor: ColorSensorV3
   
   init {
     val i2cPort = I2C.Port.kOnboard

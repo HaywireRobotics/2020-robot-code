@@ -7,16 +7,18 @@
 
 package frc.robot.subsystems
 
-import frc.robot.Constants
-
 import edu.wpi.first.wpilibj2.command.SubsystemBase
-
+import frc.robot.Constants
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX
 
-class TurboLiftSubsystem : SubsystemBase() {
-  
-  val backMotor: WPI_VictorSPX = WPI_VictorSPX(Constants.TurboLift.backMotorPort)
-  val frontMotor: WPI_VictorSPX = WPI_VictorSPX(Constants.TurboLift.frontMotorPort)
+class AgitatorSubsystem : SubsystemBase() {
+  /**
+   * Creates a new AgitatorSubsystem.
+   */
+
+  val agiTater: WPI_VictorSPX = WPI_VictorSPX(Constants.DockingBay.agitatorPort)
+  init {
+  }
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.

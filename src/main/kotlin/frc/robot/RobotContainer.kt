@@ -15,6 +15,7 @@ import frc.robot.commands.TurboLiftyDefault
 import frc.robot.commands.RunDockingBay
 import frc.robot.commands.PIDShoot
 import frc.robot.commands.PrintColorSensorCommand
+import frc.robot.commands.AgitatorCommand
 import frc.robot.subsystems.*
 
 import edu.wpi.first.wpilibj2.command.Command
@@ -39,7 +40,7 @@ class RobotContainer {
   private val turboLiftSubsystem: TurboLiftSubsystem = TurboLiftSubsystem()
   private val ionCannonySubsystem: IonCannony = IonCannony()
   private val colorSensorSubsystem: ColorSensorSubsystem = ColorSensorSubsystem()
-  
+  private val agitatorSubsystem: AgitatorSubsystem = AgitatorSubsystem()
 
   val m_autoCommand: ExampleCommand = ExampleCommand(m_exampleSubsystem)
 
@@ -78,6 +79,7 @@ class RobotContainer {
    */
   fun configureButtonBindings() {
     val manipRightJoyBut1: JoystickButton = JoystickButton(manipulatorRightJoystick, 1)
+    val manipRightJoyBut2: JoystickButton = JoystickButton(manipulatorRightJoystick, 2)
     val manipRightJoyBut3: JoystickButton = JoystickButton(manipulatorRightJoystick, 3)
     val manipRightJoyBut5: JoystickButton = JoystickButton(manipulatorRightJoystick, 5)
 
@@ -93,6 +95,7 @@ class RobotContainer {
     val manipLeftJoyBut10: JoystickButton = JoystickButton(manipulatorLeftJoystick, 10)
 
     manipRightJoyBut1.whileHeld(RunDockingBay(dockingBaySubsystem))
+    manipRightJoyBut2.whileHeld(AgitatorCommand(agitatorSubsystem))
     manipRightJoyBut3.whileHeld(PIDShoot(200000.0, 200000.0, ionCannonySubsystem))
     manipRightJoyBut5.whileHeld(PrintColorSensorCommand(colorSensorSubsystem))
 
