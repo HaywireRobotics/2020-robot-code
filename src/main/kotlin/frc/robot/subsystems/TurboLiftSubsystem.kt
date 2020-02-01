@@ -17,10 +17,25 @@ class TurboLiftSubsystem : SubsystemBase() {
   
   val backMotor: WPI_VictorSPX = WPI_VictorSPX(Constants.TurboLift.backMotorPort)
   val frontMotor: WPI_VictorSPX = WPI_VictorSPX(Constants.TurboLift.frontMotorPort)
+  val agitator: WPI_VictorSPX = WPI_VictorSPX(Constants.DockingBay.agitatorPort)
 
   /**
    * Will be called periodically whenever the CommandScheduler runs.
    */
   override fun periodic() {
+  }
+
+  fun runSystem(elevatorSpeed: Double) {
+    var agitatorSpeed = 0.4
+    
+    if (Math.abs(elevatorSpeed) > 0.1) {
+      frontMotor.set(elevatorSpeed)
+      backMotor.set(elevatorSpeed)
+      agitator.set(agitatorSpeed)
+    } else {
+      frontMotor.set(0.0)
+      backMotor.set(0.0)
+      agitator.set(0.0)
+    }
   }
 }

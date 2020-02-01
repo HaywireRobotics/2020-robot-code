@@ -17,7 +17,8 @@ class TurboLiftyDefault(val m_subsystem: TurboLiftSubsystem, val backJoystick: J
    *
    * @param m_subsystem The subsystem used by this command.
    */
-     var agiSpeed = 0.4
+
+  var joystickPower: Double = 0.0
 
   init {
     addRequirements(m_subsystem)
@@ -31,14 +32,17 @@ class TurboLiftyDefault(val m_subsystem: TurboLiftSubsystem, val backJoystick: J
   override fun execute() {
     // if (Math.abs(backJoystick.getY()) > 0.1 || Math.abs(frontJoystick.getY()) > 0.1) {
       // m_subsystem.agiTater.set(agiSpeed)
+      // m_subsystem.frontMotor.set(frontJoystick.getY())
+      // m_subsystem.backMotor.set(backJoystick.getY())
     // }
-    m_subsystem.backMotor.set(backJoystick.getY())
-    m_subsystem.frontMotor.set(frontJoystick.getY())
+    joystickPower = backJoystick.getY()
+    println(joystickPower)
+    m_subsystem.runSystem(joystickPower)
   }
 
   // Called once the command ends or is interrupted.
   override fun end(interrupted: Boolean) {
-        // m_subsystem.agiTater.set(0.0)
+    m_subsystem.runSystem(0.0)
 
   }
 
