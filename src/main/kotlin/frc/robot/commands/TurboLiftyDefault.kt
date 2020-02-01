@@ -31,9 +31,9 @@ class TurboLiftyDefault(val m_subsystem: TurboLiftSubsystem, val backJoystick: J
   override fun execute() {
     // if (Math.abs(backJoystick.getY()) > 0.1 || Math.abs(frontJoystick.getY()) > 0.1) {
       // m_subsystem.agiTater.set(agiSpeed)
+      // m_subsystem.frontMotor.set(frontJoystick.getY())
+      // m_subsystem.backMotor.set(backJoystick.getY())
     // }
-    m_subsystem.backMotor.set(backJoystick.getY())
-    m_subsystem.frontMotor.set(frontJoystick.getY())
   }
 
   // Called once the command ends or is interrupted.
