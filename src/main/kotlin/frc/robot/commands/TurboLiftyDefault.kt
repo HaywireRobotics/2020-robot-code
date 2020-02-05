@@ -36,7 +36,7 @@ class TurboLiftyDefault(val m_subsystem: TurboLiftSubsystem, val backJoystick: J
       // m_subsystem.backMotor.set(backJoystick.getY())
     // }
     joystickPower = backJoystick.getY()
-    println(joystickPower)
+    // println(joystickPower)
     m_subsystem.runSystem(joystickPower)
   }
 
