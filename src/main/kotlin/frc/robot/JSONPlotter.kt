@@ -63,6 +63,10 @@ class JSONPlotterNT {
   fun publishJSONsToNT(jsons: List<String>) {
     jsonStringEntry.setString(jsons.joinToString(separator="|"))
   }
+
+  fun publishJSONToNT() {
+    jsonStringEntry.setString(adapter.toJson(JSONModel(label, setpoint, pointsList)))
+  }
 }
 
 @JsonClass(generateAdapter = true)
