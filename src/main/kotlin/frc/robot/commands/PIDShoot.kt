@@ -8,6 +8,7 @@
 package frc.robot.commands
 
 import frc.robot.JSONPlotter
+import frc.robot.JSONPlotterNT
 import frc.robot.subsystems.IonCannony
 
 import edu.wpi.first.wpilibj2.command.CommandBase
@@ -22,8 +23,9 @@ class PIDShoot(val bottomTargetRate: Double, val topTargetRate: Double, val m_su
 
   val topPIDController: PIDController
   val bottomPIDController: PIDController
-  val topJSONPlotter: JSONPlotter = JSONPlotter()
-  val bottomJSONPlotter: JSONPlotter = JSONPlotter()
+  val topJSONPlotter: JSONPlotter = JSONPlotter("Ion Top")
+  val bottomJSONPlotter: JSONPlotter = JSONPlotter("Ion Bottom")
+  val jsonPlotterNT: JSONPlotterNT = JSONPlotterNT()
 
   init {
     addRequirements(m_subsystem)
@@ -38,6 +40,8 @@ class PIDShoot(val bottomTargetRate: Double, val topTargetRate: Double, val m_su
     bottomPIDController.reset()
     topJSONPlotter.resetCapture()
     bottomJSONPlotter.resetCapture()
+    topJSONPlotter.recordSetpoint(topTargetRate)
+    bottomJSONPlotter.recordSetpoint(bottomTargetRate)
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -50,6 +54,8 @@ class PIDShoot(val bottomTargetRate: Double, val topTargetRate: Double, val m_su
   override fun end(interrupted: Boolean) {
     m_subsystem.top.set(0.0)
     m_subsystem.bottom.set(0.0)
+
+    jsonPlotterNT.publishJSONsToNT(listOf(topJSONPlotter.getJSON(), bottomJSONPlotter.getJSON()))
 
     println("TOP JSON")
     topJSONPlotter.outputDataAsJSON()
