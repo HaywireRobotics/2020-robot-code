@@ -26,7 +26,7 @@ class TurboLiftSubsystem : SubsystemBase() {
   }
 
   fun runSystem(elevatorSpeed: Double) {
-    var agitatorSpeed = 0.4
+    var agitatorSpeed = 0.3
     
     if (Math.abs(elevatorSpeed) > 0.1) {
       frontMotor.set(elevatorSpeed)
