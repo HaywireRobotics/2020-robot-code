@@ -63,10 +63,6 @@ class JSONPlotterNT {
   fun publishJSONsToNT(jsons: List<String>) {
     jsonStringEntry.setString(jsons.joinToString(separator="|"))
   }
-
-  fun publishJSONsToNT(jsons: List<String>) {
-    jsonStringEntry.setString(jsons.joinToString(separator="|"))
-  }
 }
 
 @JsonClass(generateAdapter = true)

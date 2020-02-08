@@ -38,8 +38,10 @@ class PIDShoot(val bottomTargetRate: Double, val topTargetRate: Double, val m_su
   override fun initialize() {
     topPIDController.reset()
     bottomPIDController.reset()
+
     topJSONPlotter.resetCapture()
     bottomJSONPlotter.resetCapture()
+    
     topJSONPlotter.recordSetpoint(topTargetRate)
     bottomJSONPlotter.recordSetpoint(bottomTargetRate)
   }
