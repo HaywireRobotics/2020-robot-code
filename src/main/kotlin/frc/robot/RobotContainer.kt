@@ -91,21 +91,23 @@ class RobotContainer {
     val manipLeftJoyBut8: JoystickButton = JoystickButton(manipulatorLeftJoystick, 8)
     val manipLeftJoyBut9: JoystickButton = JoystickButton(manipulatorLeftJoystick, 9)
     val manipLeftJoyBut10: JoystickButton = JoystickButton(manipulatorLeftJoystick, 10)
+    val manipLeftJoyBut11: JoystickButton = JoystickButton(manipulatorLeftJoystick, 11)
 
     manipRightJoyBut1.whileHeld(RunDockingBay(dockingBaySubsystem))
     manipRightJoyBut3.whileHeld(PIDShoot(200000.0, 200000.0, ionCannonySubsystem))
     manipRightJoyBut5.whileHeld(PrintColorSensorCommand(colorSensorSubsystem))
   
-    manipLeftJoyBut1.whileHeld(PIDShoot(32000.0, 32000.0, ionCannonySubsystem))
-    manipLeftJoyBut2.whileHeld(PIDShoot(64000.0, 64000.0, ionCannonySubsystem))
-    manipLeftJoyBut3.whileHeld(PIDShoot(96000.0, 96000.0, ionCannonySubsystem))
-    manipLeftJoyBut4.whileHeld(PIDShoot(128000.0, 128000.0, ionCannonySubsystem))
-    manipLeftJoyBut5.whileHeld(PIDShoot(160000.0, 160000.0, ionCannonySubsystem))
-    manipLeftJoyBut6.whileHeld(PIDShoot(192000.0, 192000.0, ionCannonySubsystem))
-    manipLeftJoyBut7.whileHeld(PIDShoot(224000.0, 224000.0, ionCannonySubsystem))
-    manipLeftJoyBut8.whileHeld(PIDShoot(256000.0, 256000.0, ionCannonySubsystem))
-    manipLeftJoyBut9.whileHeld(PIDShoot(288000.0, 288000.0, ionCannonySubsystem))
-    manipLeftJoyBut10.whileHeld(PIDShoot(320000.0, 320000.0, ionCannonySubsystem))
+    manipLeftJoyBut1.whileHeld(PIDShoot(-32000.0, 32000.0, ionCannonySubsystem))
+    manipLeftJoyBut2.whileHeld(PIDShoot(-64000.0, 64000.0, ionCannonySubsystem))
+    manipLeftJoyBut3.whileHeld(PIDShoot(-96000.0, 96000.0, ionCannonySubsystem))
+    manipLeftJoyBut4.whileHeld(PIDShoot(-128000.0, 128000.0, ionCannonySubsystem))
+    manipLeftJoyBut5.whileHeld(PIDShoot(-160000.0, 160000.0, ionCannonySubsystem))
+    manipLeftJoyBut6.whileHeld(PIDShoot(-192000.0, 192000.0, ionCannonySubsystem))
+    manipLeftJoyBut7.whileHeld(PIDShoot(-224000.0, 224000.0, ionCannonySubsystem))
+    manipLeftJoyBut8.whileHeld(PIDShoot(-256000.0, 256000.0, ionCannonySubsystem))
+    manipLeftJoyBut9.whileHeld(PIDShoot(-288000.0, 288000.0, ionCannonySubsystem))
+    manipLeftJoyBut10.whileHeld(PIDShoot(-320000.0, 320000.0, ionCannonySubsystem))
+    manipLeftJoyBut11.whileHeld(PIDShoot(-80000.0, 100000.0, ionCannonySubsystem))
   }
 
   fun getAutonomousCommand(): Command {
