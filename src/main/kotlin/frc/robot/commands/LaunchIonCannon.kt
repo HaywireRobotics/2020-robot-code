@@ -8,6 +8,7 @@
 package frc.robot.commands
 
 import frc.robot.JSONPlotter
+import frc.robot.JSONPlotterNT
 import frc.robot.subsystems.IonCannony
 import frc.robot.subsystems.TurboLiftSubsystem
 
@@ -23,8 +24,9 @@ class LaunchIonCannon(val ionCannon: IonCannony, val turboLift: TurboLiftSubsyst
 
   val topPIDController: PIDController
   val bottomPIDController: PIDController
-  val topJSONPlotter: JSONPlotter = JSONPlotter()
-  val bottomJSONPlotter: JSONPlotter = JSONPlotter()
+  val topJSONPlotter: JSONPlotter = JSONPlotter("Ion Top")
+  val bottomJSONPlotter: JSONPlotter = JSONPlotter("Ion Bottom")
+  val jsonPlotterNT: JSONPlotterNT = JSONPlotterNT()
 
   init {
     addRequirements(ionCannon, turboLift)
@@ -39,6 +41,8 @@ class LaunchIonCannon(val ionCannon: IonCannony, val turboLift: TurboLiftSubsyst
     bottomPIDController.reset()
     topJSONPlotter.resetCapture()
     bottomJSONPlotter.resetCapture()
+    topJSONPlotter.recordSetpoint(topTargetRate)
+    bottomJSONPlotter.recordSetpoint(bottomTargetRate)
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -53,6 +57,8 @@ class LaunchIonCannon(val ionCannon: IonCannony, val turboLift: TurboLiftSubsyst
     ionCannon.top.set(0.0)
     ionCannon.bottom.set(0.0)
     turboLift.runSystem(0.0)
+
+    jsonPlotterNT.publishJSONsToNT(listOf(topJSONPlotter.getJSON(), bottomJSONPlotter.getJSON()))
 
     println("TOP JSON")
     topJSONPlotter.outputDataAsJSON()
