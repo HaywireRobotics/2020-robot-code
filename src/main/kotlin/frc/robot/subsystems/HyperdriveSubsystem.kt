@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive
 import edu.wpi.first.wpilibj.SpeedControllerGroup
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX
+import com.revrobotics.CANSparkMax
+import com.revrobotics.CANSparkMaxLowLevel.MotorType
 
 import frc.robot.Constants
 
@@ -19,10 +21,10 @@ class HyperdriveSubsystem : SubsystemBase() {
   /**
    * Creates a new HyperdriveSubsystem.
    */
-  private val leftFront: WPI_VictorSPX = WPI_VictorSPX(Constants.Hyperdrive.leftFrontPort)
-  private val leftBack: WPI_VictorSPX = WPI_VictorSPX(Constants.Hyperdrive.leftBackPort)
-  private val rightFront: WPI_VictorSPX = WPI_VictorSPX(Constants.Hyperdrive.rightFrontPort)
-  private val rightBack: WPI_VictorSPX = WPI_VictorSPX(Constants.Hyperdrive.rightBackPort)
+  private val leftFront: CANSparkMax = CANSparkMax(Constants.Hyperdrive.leftFrontPort, MotorType.kBrushless)
+  private val leftBack: CANSparkMax = CANSparkMax(Constants.Hyperdrive.leftBackPort, MotorType.kBrushless)
+  private val rightFront: CANSparkMax = CANSparkMax(Constants.Hyperdrive.rightFrontPort, MotorType.kBrushless)
+  private val rightBack: CANSparkMax = CANSparkMax(Constants.Hyperdrive.rightBackPort, MotorType.kBrushless)
   
   private val myRobot = DifferentialDrive(SpeedControllerGroup(leftFront, leftBack), SpeedControllerGroup(rightFront, rightBack))
 
