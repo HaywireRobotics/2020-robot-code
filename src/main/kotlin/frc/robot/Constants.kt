@@ -41,8 +41,8 @@ class Constants {
       val rightFrontPort : Int = 3
       val rightBackPort : Int = 2
 
-      val leftFrontPort : Int = 1
-      val leftBackPort : Int = 0
+      val leftFrontPort : Int = 6
+      val leftBackPort : Int = 1
     }
   }
 
