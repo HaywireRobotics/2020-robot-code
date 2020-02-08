@@ -7,22 +7,31 @@
 
 package frc.robot
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase
-
 import com.squareup.moshi.JsonClass
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.JsonAdapter
 
-class JSONPlotter {
+import edu.wpi.first.networktables.NetworkTable
+import edu.wpi.first.networktables.NetworkTableEntry
+import edu.wpi.first.networktables.NetworkTableInstance
+
+import edu.wpi.first.wpilibj2.command.SubsystemBase
+
+class JSONPlotter(private var label: String) {
   
   private val pointsList: MutableList<Double> = mutableListOf()
-  
-  val moshi: Moshi = Moshi.Builder().build()
-  val adapter: JsonAdapter<JSONModel> = moshi.adapter(JSONModel::class.java)
+  private var setpoint: Double = 0.0
+
+  private val moshi: Moshi = Moshi.Builder().build()
+  private val adapter: JsonAdapter<JSONModel> = moshi.adapter(JSONModel::class.java)
 
   fun resetCapture() {
     // Empty list
     pointsList.clear()
+  }
+
+  fun recordSetpoint(point: Number) {
+    setpoint = point.toDouble()
   }
 
   fun recordPoint(point: Number) {
@@ -30,13 +39,35 @@ class JSONPlotter {
     pointsList.add(point.toDouble())
   }
 
+  fun changeLabel(newLabel: String) {
+    label = newLabel
+  }
+
   fun outputDataAsJSON() {
     // Output json formatted data to console
-    println(adapter.toJson(JSONModel(pointsList)))
+    println(adapter.toJson(JSONModel(label, setpoint, pointsList)))
+  }
+
+  fun getJSON() = adapter.toJson(JSONModel(label, setpoint, pointsList))
+}
+
+class JSONPlotterNT {
+  private val ntInst: NetworkTableInstance = NetworkTableInstance.getDefault()
+  private val table: NetworkTable = ntInst.getTable("/")
+  private val jsonStringEntry: NetworkTableEntry = table.getEntry("json_string")
+
+  init {
+    jsonStringEntry.setString("{\"label\": \"default\", \"setpoint\": 0.0, \"data\": []}")
+  }
+
+  fun publishJSONsToNT(jsons: List<String>) {
+    jsonStringEntry.setString(jsons.joinToString(separator="|"))
   }
 }
 
 @JsonClass(generateAdapter = true)
 data class JSONModel (
-    val data: MutableList<Double>
+  val label: String,
+  val setpoint: Double,
+  val data: MutableList<Double>
 )
