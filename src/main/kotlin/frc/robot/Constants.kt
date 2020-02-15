@@ -31,7 +31,7 @@ class Constants {
 
   class DockingBay {
     companion object {
-      val intakePort : Int = 0
+      val intakePort : Int = 1
       val agitatorPort : Int = 0
     }
   }

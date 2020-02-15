@@ -27,13 +27,14 @@ class RunDockingBay(val m_subsystem: DockingBaySubsystem) : CommandBase() {
 
   // Called every time the scheduler runs while the command is scheduled.
   override fun execute() {
-    m_subsystem.motor.set(0.6)
+    m_subsystem.motor.set(1.0)
     
   }
 
   // Called once the command ends or is interrupted.
   override fun end(interrupted: Boolean) {
     m_subsystem.motor.set(0.0)
+    println("End intake: " + interrupted.toString())
   }
 
   // Returns true when the command should end.
