@@ -8,10 +8,11 @@
 package frc.robot.subsystems
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase
-import edu.wpi.first.wpilibj.Spark
 import edu.wpi.first.wpilibj.Encoder
 import edu.wpi.first.wpilibj.CounterBase.EncodingType
 import edu.wpi.first.wpilibj.PIDSourceType
+
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX
 
 import frc.robot.Constants
 
@@ -19,8 +20,8 @@ class IonCannony : SubsystemBase() {
   /**
    * Creates a new IonCannony.
    */
-  val top: Spark = Spark(Constants.IonCannony.topPort)
-  val bottom: Spark = Spark(Constants.IonCannony.bottomPort)
+  val top: WPI_VictorSPX = WPI_VictorSPX(Constants.IonCannony.topPort)
+  val bottom: WPI_VictorSPX = WPI_VictorSPX(Constants.IonCannony.bottomPort)
 
   // Encoders
   private val topEncoder: Encoder = Encoder(Constants.IonCannony.topEncoderAPort, Constants.IonCannony.topEncoderBPort, true, EncodingType.k4X)

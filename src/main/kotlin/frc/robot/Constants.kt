@@ -56,8 +56,8 @@ class Constants {
   class IonCannony {
     companion object {
       // Motors
-      val topPort: Int = 1
-      val bottomPort: Int = 2
+      val topPort: Int = 11
+      val bottomPort: Int = 12
 
       // Encoders
       val topEncoderAPort: Int = 0
