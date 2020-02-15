@@ -11,7 +11,7 @@ import frc.robot.subsystems.TurboLiftSubsystem
 import edu.wpi.first.wpilibj2.command.CommandBase
 import edu.wpi.first.wpilibj.Joystick
 
-class TurboLiftyDefault(val m_subsystem: TurboLiftSubsystem, val backJoystick: Joystick, val frontJoystick: Joystick) : CommandBase() {
+class TurboLiftyDefault(val m_subsystem: TurboLiftSubsystem, val joystick: Joystick) : CommandBase() {
   /**
    * Creates a new TurboLiftySubsystemDefault.
    *
@@ -30,12 +30,12 @@ class TurboLiftyDefault(val m_subsystem: TurboLiftSubsystem, val backJoystick: J
 
   // Called every time the scheduler runs while the command is scheduled.
   override fun execute() {
-    // if (Math.abs(backJoystick.getY()) > 0.1 || Math.abs(frontJoystick.getY()) > 0.1) {
+    // if (Math.abs(joystick.getY()) > 0.1 || Math.abs(frontJoystick.getY()) > 0.1) {
       // m_subsystem.agiTater.set(agiSpeed)
       // m_subsystem.frontMotor.set(frontJoystick.getY())
-      // m_subsystem.backMotor.set(backJoystick.getY())
+      // m_subsystem.backMotor.set(joystick.getY())
     // }
-    joystickPower = backJoystick.getY()
+    joystickPower = joystick.getY()
     // println(joystickPower)
     m_subsystem.runSystem(joystickPower)
   }

@@ -63,7 +63,7 @@ class RobotContainer {
     
     hyperdriveSubsystem.setDefaultCommand(DriveHyperCommand(hyperdriveSubsystem, driverLeftJoystick, driverRightJoystick))
     // ionCannonySubsystem.setDefaultCommand(IonCannonyDefaultCommand(ionCannonySubsystem, driverRightJoystick, driverLeftJoystick))
-    turboLiftSubsystem.setDefaultCommand(TurboLiftyDefault(turboLiftSubsystem, manipulatorRightJoystick, manipulatorLeftJoystick))
+    turboLiftSubsystem.setDefaultCommand(TurboLiftyDefault(turboLiftSubsystem, manipulatorRightJoystick))
 
     //Add a color sensor on the I2C port
     
@@ -94,7 +94,7 @@ class RobotContainer {
     val manipLeftJoyBut11: JoystickButton = JoystickButton(manipulatorLeftJoystick, 11)
 
     manipRightJoyBut1.whileHeld(RunDockingBay(dockingBaySubsystem))
-    manipRightJoyBut3.whileHeld(PIDShoot(200000.0, 200000.0, ionCannonySubsystem))
+    // manipRightJoyBut3.whileHeld()
     manipRightJoyBut5.whileHeld(PrintColorSensorCommand(colorSensorSubsystem))
   
     manipLeftJoyBut1.whileHeld(PIDShoot(-32000.0, 32000.0, ionCannonySubsystem))
