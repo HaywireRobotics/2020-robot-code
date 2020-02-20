@@ -17,6 +17,9 @@ import frc.robot.commands.PIDShoot
 import frc.robot.commands.PrintColorSensorCommand
 import frc.robot.commands.runColorMotor
 import frc.robot.commands.TurretManualDrive
+import frc.robot.commands.HookUp
+import frc.robot.commands.HookDown
+import frc.robot.commands.Winch
 import frc.robot.subsystems.*
 
 import edu.wpi.first.wpilibj2.command.Command
@@ -43,6 +46,7 @@ class RobotContainer {
   private val ionCannonySubsystem: IonCannony = IonCannony()
   private val colorSensorSubsystem: ColorSensorSubsystem = ColorSensorSubsystem()
   private val controlPanelSubsystem: ControlPanelSubsystem = ControlPanelSubsystem()
+  private val climbySubsystem: ClimbySubsystem = ClimbySubsystem()
   
   private val turretSubsystem: TurretSubsystem = TurretSubsystem()
 
@@ -88,6 +92,9 @@ class RobotContainer {
     val manipRightJoyBut3: JoystickButton = JoystickButton(manipulatorRightJoystick, 3)
     val manipRightJoyBut5: JoystickButton = JoystickButton(manipulatorRightJoystick, 5)
     val manipRightJoyBut7: JoystickButton = JoystickButton(manipulatorRightJoystick, 7)
+    val manipRightJoyBut9: JoystickButton = JoystickButton(manipulatorRightJoystick, 9)
+    val manipRightJoyBut10: JoystickButton = JoystickButton(manipulatorRightJoystick, 10)
+    val manipRightJoyBut11: JoystickButton = JoystickButton(manipulatorRightJoystick, 11)
 
     val manipLeftJoyBut1: JoystickButton = JoystickButton(manipulatorLeftJoystick, 1)
     val manipLeftJoyBut2: JoystickButton = JoystickButton(manipulatorLeftJoystick, 2)
@@ -107,6 +114,9 @@ class RobotContainer {
     // manipRightJoyBut3.whileHeld()
     manipRightJoyBut5.whileHeld(PrintColorSensorCommand(colorSensorSubsystem))
     manipRightJoyBut7.whileHeld(runColorMotor(controlPanelSubsystem))
+    manipRightJoyBut9.whileHeld(Winch(climbySubsystem))
+    manipRightJoyBut10.whileHeld(HookDown(climbySubsystem))
+    manipRightJoyBut11.whileHeld(HookUp(climbySubsystem))
 
   
     manipLeftJoyBut1.whileHeld(PIDShoot(-32000.0, 32000.0, ionCannonySubsystem))
