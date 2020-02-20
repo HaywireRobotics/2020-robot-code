@@ -54,7 +54,7 @@ class Constants {
   }
   class ControlPanel {
     companion object {
-      val colorMotor: Int = 17
+      val colorMotor: Int = 11
     }
   }
   class IonCannony {
@@ -69,6 +69,12 @@ class Constants {
       
       val bottomEncoderAPort: Int = 2
       val bottomEncoderBPort: Int = 3
+    }
+  }
+  class Climby {
+    companion object {
+      val hookPort: Int = 12
+      val winchPort: Int = 3
     }
   }
 
