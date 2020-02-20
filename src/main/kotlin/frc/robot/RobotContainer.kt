@@ -15,6 +15,7 @@ import frc.robot.commands.TurboLiftyDefault
 import frc.robot.commands.RunDockingBay
 import frc.robot.commands.PIDShoot
 import frc.robot.commands.PrintColorSensorCommand
+import frc.robot.commands.TurretManualDrive
 import frc.robot.subsystems.*
 
 import edu.wpi.first.wpilibj2.command.Command
@@ -39,6 +40,7 @@ class RobotContainer {
   private val turboLiftSubsystem: TurboLiftSubsystem = TurboLiftSubsystem()
   private val ionCannonySubsystem: IonCannony = IonCannony()
   private val colorSensorSubsystem: ColorSensorSubsystem = ColorSensorSubsystem()
+  private val turretSubsystem: TurretSubsystem = TurretSubsystem()
 
   val m_autoCommand: ExampleCommand = ExampleCommand(m_exampleSubsystem)
 
@@ -64,6 +66,7 @@ class RobotContainer {
     hyperdriveSubsystem.setDefaultCommand(DriveHyperCommand(hyperdriveSubsystem, driverLeftJoystick, driverRightJoystick))
     // ionCannonySubsystem.setDefaultCommand(IonCannonyDefaultCommand(ionCannonySubsystem, driverRightJoystick, driverLeftJoystick))
     turboLiftSubsystem.setDefaultCommand(TurboLiftyDefault(turboLiftSubsystem, manipulatorRightJoystick))
+    turretSubsystem.setDefaultCommand(TurretManualDrive(turretSubsystem, manipulatorLeftJoystick))
 
     //Add a color sensor on the I2C port
     
