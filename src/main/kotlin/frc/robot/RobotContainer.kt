@@ -33,7 +33,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton
  */
 class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  // private val hyperdriveSubsystem: HyperdriveSubsystem = HyperdriveSubsystem()
+  private val hyperdriveSubsystem: HyperdriveSubsystem = HyperdriveSubsystem()
   private val m_exampleSubsystem: ExampleSubsystem = ExampleSubsystem()
   private val dockingBaySubsystem: DockingBaySubsystem = DockingBaySubsystem()
   private val turboLiftSubsystem: TurboLiftSubsystem = TurboLiftSubsystem()
@@ -61,7 +61,7 @@ class RobotContainer {
     m_autoCommandChooser.setDefaultOption("Default Auto", m_autoCommand)
     SmartDashboard.putData("Auto mode", m_autoCommandChooser)
     
-    // hyperdriveSubsystem.setDefaultCommand(DriveHyperCommand(hyperdriveSubsystem, driverLeftJoystick, driverRightJoystick))
+    hyperdriveSubsystem.setDefaultCommand(DriveHyperCommand(hyperdriveSubsystem, driverLeftJoystick, driverRightJoystick))
     // ionCannonySubsystem.setDefaultCommand(IonCannonyDefaultCommand(ionCannonySubsystem, driverRightJoystick, driverLeftJoystick))
     turboLiftSubsystem.setDefaultCommand(TurboLiftyDefault(turboLiftSubsystem, manipulatorRightJoystick))
 

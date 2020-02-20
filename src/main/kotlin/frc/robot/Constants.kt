@@ -31,25 +31,25 @@ class Constants {
 
   class DockingBay {
     companion object {
-      val intakePort : Int = 1
-      val agitatorPort : Int = 0
+      val intakePort : Int = 50
+      val agitatorPort : Int = 1
     }
   }
 
   class Hyperdrive {
     companion object {
       val rightFrontPort : Int = 3
-      val rightBackPort : Int = 2
+      val rightBackPort : Int = 6
 
-      val leftFrontPort : Int = 6
-      val leftBackPort : Int = 1
+      val leftFrontPort : Int = 1
+      val leftBackPort : Int = 2
     }
   }
 
   class TurboLift {
     companion object {
-      val backMotorPort: Int = 4
-      val frontMotorPort: Int = 5
+      val backMotorPort: Int = 2
+      val frontMotorPort: Int = 40
     }
   }
 
@@ -58,6 +58,8 @@ class Constants {
       // Motors
       val topPort: Int = 11
       val bottomPort: Int = 12
+
+      val turretPort: Int = 4
 
       // Encoders
       val topEncoderAPort: Int = 0

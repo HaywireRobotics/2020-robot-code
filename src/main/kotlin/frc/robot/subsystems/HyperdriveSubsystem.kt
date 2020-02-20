@@ -37,5 +37,5 @@ class HyperdriveSubsystem : SubsystemBase() {
   override fun periodic() {
   }
 
-fun tankDrive(leftPower: Double, rightPower: Double) = myRobot.tankDrive(leftPower, rightPower, false)
+fun tankDrive(leftPower: Double, rightPower: Double) = myRobot.tankDrive(-leftPower, -rightPower, false)
 }
