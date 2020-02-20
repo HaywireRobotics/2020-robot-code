@@ -15,6 +15,7 @@ import frc.robot.commands.TurboLiftyDefault
 import frc.robot.commands.RunDockingBay
 import frc.robot.commands.PIDShoot
 import frc.robot.commands.PrintColorSensorCommand
+import frc.robot.commands.runColorMotor
 import frc.robot.subsystems.*
 
 import edu.wpi.first.wpilibj2.command.Command
@@ -24,6 +25,7 @@ import edu.wpi.first.wpilibj.GenericHID
 import edu.wpi.first.wpilibj.XboxController
 import edu.wpi.first.wpilibj.Joystick
 import edu.wpi.first.wpilibj2.command.button.JoystickButton
+
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -39,6 +41,8 @@ class RobotContainer {
   private val turboLiftSubsystem: TurboLiftSubsystem = TurboLiftSubsystem()
   private val ionCannonySubsystem: IonCannony = IonCannony()
   private val colorSensorSubsystem: ColorSensorSubsystem = ColorSensorSubsystem()
+  private val controlPanelSubsystem: ControlPanelSubsystem = ControlPanelSubsystem()
+  
 
   val m_autoCommand: ExampleCommand = ExampleCommand(m_exampleSubsystem)
 
@@ -80,6 +84,7 @@ class RobotContainer {
     val manipRightJoyBut2: JoystickButton = JoystickButton(manipulatorRightJoystick, 2)
     val manipRightJoyBut3: JoystickButton = JoystickButton(manipulatorRightJoystick, 3)
     val manipRightJoyBut5: JoystickButton = JoystickButton(manipulatorRightJoystick, 5)
+    val manipRightJoyBut7: JoystickButton = JoystickButton(manipulatorRightJoystick, 7)
 
     val manipLeftJoyBut1: JoystickButton = JoystickButton(manipulatorLeftJoystick, 1)
     val manipLeftJoyBut2: JoystickButton = JoystickButton(manipulatorLeftJoystick, 2)
@@ -98,6 +103,8 @@ class RobotContainer {
     driverLeftJoyBut1.whileHeld(RunDockingBay(dockingBaySubsystem))
     // manipRightJoyBut3.whileHeld()
     manipRightJoyBut5.whileHeld(PrintColorSensorCommand(colorSensorSubsystem))
+    manipRightJoyBut7.whileHeld(runColorMotor(controlPanelSubsystem))
+
   
     manipLeftJoyBut1.whileHeld(PIDShoot(-32000.0, 32000.0, ionCannonySubsystem))
     manipLeftJoyBut2.whileHeld(PIDShoot(-64000.0, 64000.0, ionCannonySubsystem))

@@ -52,7 +52,11 @@ class Constants {
       val frontMotorPort: Int = 40
     }
   }
-
+  class ControlPanel {
+    companion object {
+      val colorMotor: Int = 17
+    }
+  }
   class IonCannony {
     companion object {
       // Motors
