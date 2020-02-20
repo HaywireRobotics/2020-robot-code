@@ -63,14 +63,19 @@ class Constants {
       val topPort: Int = 11
       val bottomPort: Int = 12
 
-      val turretPort: Int = 4
-
       // Encoders
       val topEncoderAPort: Int = 0
       val topEncoderBPort: Int = 1
       
       val bottomEncoderAPort: Int = 2
       val bottomEncoderBPort: Int = 3
+    }
+  }
+
+  class Turret {
+    companion object {
+      // Motors
+      val motorPort: Int = 4
     }
   }
 }
