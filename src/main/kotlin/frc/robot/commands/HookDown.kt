@@ -31,6 +31,7 @@ class HookDown(val m_subsystem: ClimbySubsystem) : CommandBase() {
 
   // Called once the command ends or is interrupted.
   override fun end(interrupted: Boolean) {
+    m_subsystem.driveHookMotor(0.0)
   }
 
   // Returns true when the command should end.

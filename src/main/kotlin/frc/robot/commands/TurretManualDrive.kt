@@ -28,7 +28,7 @@ class TurretManualDrive(val m_subsystem: TurretSubsystem, val joystick: Joystick
 
   // Called every time the scheduler runs while the command is scheduled.
   override fun execute() {
-    m_subsystem.motor.set(joystick.getX() / 4)
+    m_subsystem.motor.set(joystick.getX() / 3)
   }
 
   // Called once the command ends or is interrupted.
