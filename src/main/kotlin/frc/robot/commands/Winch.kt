@@ -26,7 +26,7 @@ class Winch(val m_subsystem: ClimbySubsystem) : CommandBase() {
 
   // Called every time the scheduler runs while the command is scheduled.
   override fun execute() {
-    m_subsystem.driveWinchMotor(0.1)
+    m_subsystem.driveWinchMotor(-1.0)
   }
 
   // Called once the command ends or is interrupted.

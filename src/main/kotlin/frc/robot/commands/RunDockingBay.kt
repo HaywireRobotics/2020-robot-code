@@ -27,7 +27,7 @@ class RunDockingBay(val m_subsystem: DockingBaySubsystem) : CommandBase() {
 
   // Called every time the scheduler runs while the command is scheduled.
   override fun execute() {
-    m_subsystem.motor.set(-0.65)
+    m_subsystem.motor.set(-0.85)
     
   }
 

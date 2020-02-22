@@ -7,12 +7,12 @@
 
 package frc.robot.commands
 
-import frc.robot.subsystems.ClimbySubsystem
+import frc.robot.subsystems.TurretSubsystem
 import edu.wpi.first.wpilibj2.command.CommandBase
 
-class HookDown(val m_subsystem: ClimbySubsystem) : CommandBase() {
+class TurretToAngle(val m_subsystem: TurretSubsystem) : CommandBase() {
   /**
-   * Creates a new HookDown.
+   * Creates a new TurretToAngle.
    *
    * @param m_subsystem The subsystem used by this command.
    */
@@ -26,12 +26,10 @@ class HookDown(val m_subsystem: ClimbySubsystem) : CommandBase() {
 
   // Called every time the scheduler runs while the command is scheduled.
   override fun execute() {
-    m_subsystem.driveHookMotor(-0.5)
   }
 
   // Called once the command ends or is interrupted.
   override fun end(interrupted: Boolean) {
-    m_subsystem.driveHookMotor(0.0)
   }
 
   // Returns true when the command should end.
