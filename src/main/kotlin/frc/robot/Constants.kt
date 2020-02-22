@@ -60,15 +60,15 @@ class Constants {
   class IonCannony {
     companion object {
       // Motors
-      val topPort: Int = 11
-      val bottomPort: Int = 12
+      val topPort: Int = 0
+      val bottomPort: Int = 5
 
       // Encoders
-      val topEncoderAPort: Int = 0
-      val topEncoderBPort: Int = 1
+      val topEncoderAPort: Int = 7
+      val topEncoderBPort: Int = 6
       
-      val bottomEncoderAPort: Int = 2
-      val bottomEncoderBPort: Int = 3
+      val bottomEncoderAPort: Int = 9
+      val bottomEncoderBPort: Int = 8
     }
   }
   class Climby {
