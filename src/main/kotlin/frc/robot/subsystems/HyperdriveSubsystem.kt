@@ -28,6 +28,8 @@ class HyperdriveSubsystem : SubsystemBase() {
   
   private val myRobot = DifferentialDrive(SpeedControllerGroup(leftFront, leftBack), SpeedControllerGroup(rightFront, rightBack))
 
+  var robotDirectionInverted: Boolean = false
+
   init {
   }
 
