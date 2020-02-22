@@ -26,7 +26,7 @@ class RunColorMotor(val m_subsystem: ControlPanelSubsystem) : CommandBase() {
 
   // Called every time the scheduler runs while the command is scheduled.
   override fun execute() {
-    m_subsystem.driveColorMotor(0.1)
+    m_subsystem.driveColorMotor(0.35)
   }
 
   // Called once the command ends or is interrupted.
