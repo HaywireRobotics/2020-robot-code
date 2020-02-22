@@ -26,7 +26,6 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton
  * (including subsystems, commands, and button mappings) should be declared here.
  */
 class RobotContainer {
-  // The robot's subsystems and commands are defined here...
   private val hyperdriveSubsystem: HyperdriveSubsystem = HyperdriveSubsystem()
   private val m_exampleSubsystem: ExampleSubsystem = ExampleSubsystem()
   private val dockingBaySubsystem: DockingBaySubsystem = DockingBaySubsystem()
@@ -47,8 +46,6 @@ class RobotContainer {
   private val manipulatorLeftJoystick: Joystick = Joystick(Constants.Joysticks.manipulatorLeftPort)
   private val driverLeftJoystick: Joystick = Joystick(Constants.Joysticks.driverLeftPort)
   private val driverRightJoystick: Joystick = Joystick(Constants.Joysticks.driverRightPort)
-
-  
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -75,18 +72,20 @@ class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   fun configureButtonBindings() {
-    val manipRightJoyBut1: JoystickButton = JoystickButton(manipulatorRightJoystick, 1)
-    val manipRightJoyBut2: JoystickButton = JoystickButton(manipulatorRightJoystick, 2)
+    // Right Driver Button Bindings
+    JoystickButton(driverRightJoystick, 1).whenPressed(SwitchDriveDirection(hyperdriveSubsystem))
 
+    // Left Driver Button Bindings
     JoystickButton(driverLeftJoystick, 1).whileHeld(RunDockingBay(dockingBaySubsystem))
-    // JoystickButton(manipulatorRightJoystick, 3).whileHeld()
+    
+    // Right Manipulator Button Bindings
     JoystickButton(manipulatorRightJoystick, 5).whileHeld(PrintColorSensorCommand(colorSensorSubsystem))
     JoystickButton(manipulatorRightJoystick, 7).whileHeld(RunColorMotor(controlPanelSubsystem))
     JoystickButton(manipulatorRightJoystick, 9).whileHeld(Winch(climbySubsystem))
     JoystickButton(manipulatorRightJoystick, 10).whileHeld(HookDown(climbySubsystem))
     JoystickButton(manipulatorRightJoystick, 11).whileHeld(HookUp(climbySubsystem))
 
-  
+    // Left Manipulator Button Bindings
     JoystickButton(manipulatorLeftJoystick, 1).whileHeld(PIDShoot(-32000.0, 32000.0, ionCannonySubsystem))
     JoystickButton(manipulatorLeftJoystick, 2).whileHeld(PIDShoot(-64000.0, 64000.0, ionCannonySubsystem))
     JoystickButton(manipulatorLeftJoystick, 3).whileHeld(PIDShoot(-96000.0, 96000.0, ionCannonySubsystem))
