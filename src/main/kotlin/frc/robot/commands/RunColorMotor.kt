@@ -10,7 +10,7 @@ package frc.robot.commands
 import frc.robot.subsystems.ControlPanelSubsystem
 import edu.wpi.first.wpilibj2.command.CommandBase
 
-class runColorMotor(val m_subsystem: ControlPanelSubsystem) : CommandBase() {
+class RunColorMotor(val m_subsystem: ControlPanelSubsystem) : CommandBase() {
   /**
    * Creates a new runColorMotor.
    *
@@ -31,6 +31,7 @@ class runColorMotor(val m_subsystem: ControlPanelSubsystem) : CommandBase() {
 
   // Called once the command ends or is interrupted.
   override fun end(interrupted: Boolean) {
+    m_subsystem.driveColorMotor(0.0)
   }
 
   // Returns true when the command should end.

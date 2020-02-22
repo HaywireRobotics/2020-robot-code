@@ -7,19 +7,7 @@
 
 package frc.robot
 
-import frc.robot.commands.ExampleCommand
-import frc.robot.commands.SeekPID
-import frc.robot.commands.DriveHyperCommand
-import frc.robot.commands.IonCannonyDefaultCommand
-import frc.robot.commands.TurboLiftyDefault
-import frc.robot.commands.RunDockingBay
-import frc.robot.commands.PIDShoot
-import frc.robot.commands.PrintColorSensorCommand
-import frc.robot.commands.runColorMotor
-import frc.robot.commands.TurretManualDrive
-import frc.robot.commands.HookUp
-import frc.robot.commands.HookDown
-import frc.robot.commands.Winch
+import frc.robot.commands.*
 import frc.robot.subsystems.*
 
 import edu.wpi.first.wpilibj2.command.Command
@@ -113,7 +101,7 @@ class RobotContainer {
     driverLeftJoyBut1.whileHeld(RunDockingBay(dockingBaySubsystem))
     // manipRightJoyBut3.whileHeld()
     manipRightJoyBut5.whileHeld(PrintColorSensorCommand(colorSensorSubsystem))
-    manipRightJoyBut7.whileHeld(runColorMotor(controlPanelSubsystem))
+    manipRightJoyBut7.whileHeld(RunColorMotor(controlPanelSubsystem))
     manipRightJoyBut9.whileHeld(Winch(climbySubsystem))
     manipRightJoyBut10.whileHeld(HookDown(climbySubsystem))
     manipRightJoyBut11.whileHeld(HookUp(climbySubsystem))
