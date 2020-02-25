@@ -29,12 +29,23 @@ class DriveHyperCommand(val hyperdriveSubsystem: HyperdriveSubsystem, val leftJo
 
   // Called every time the scheduler runs while the command is scheduled.
   override fun execute() {
-    hyperdriveSubsystem.tankDrive(leftJoystick.getY(), rightJoystick.getY())
+    var leftPower: Double = 0.0
+    var rightPower: Double = 0.0
+
+    val leftJoystickVal: Double = leftJoystick.getY().toDouble()
+    val rightJoystickVal: Double = rightJoystick.getY().toDouble()
+    
+    if (Math.abs(leftJoystickVal) > 0.05)
+      leftPower = leftJoystickVal
+    if (Math.abs(rightJoystickVal) > 0.05)
+      rightPower = rightJoystickVal
+    
+    hyperdriveSubsystem.tankDrive(leftPower, rightPower)
   }
 
   // Called once the command ends or is interrupted.
   override fun end(interrupted: Boolean) {
-    hyperdriveSubsystem.tankDrive(0.0,0.0)
+    hyperdriveSubsystem.tankDrive(0.0, 0.0)
   }
 
   // Returns true when the command should end.
