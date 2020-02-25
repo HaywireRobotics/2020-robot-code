@@ -37,7 +37,7 @@ class RobotContainer {
   
   private val turretSubsystem: TurretSubsystem = TurretSubsystem()
 
-  val m_autoCommand: ExampleCommand = ExampleCommand(m_exampleSubsystem)
+  val m_autoCommand: DriveForTime = DriveForTime(hyperdriveSubsystem, 0.5, 0.5)
 
   var m_autoCommandChooser: SendableChooser<Command> = SendableChooser()
 
