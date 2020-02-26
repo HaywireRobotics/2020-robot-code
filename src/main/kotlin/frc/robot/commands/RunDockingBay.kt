@@ -8,9 +8,10 @@
 package frc.robot.commands
 
 import frc.robot.subsystems.DockingBaySubsystem
+import edu.wpi.first.wpilibj.PowerDistributionPanel
 import edu.wpi.first.wpilibj2.command.CommandBase
 
-class RunDockingBay(val m_subsystem: DockingBaySubsystem) : CommandBase() {
+class RunDockingBay(val m_subsystem: DockingBaySubsystem, val pdp: PowerDistributionPanel) : CommandBase() {
   /**
    * Creates a new RunDockingBay.
    *
@@ -27,14 +28,13 @@ class RunDockingBay(val m_subsystem: DockingBaySubsystem) : CommandBase() {
 
   // Called every time the scheduler runs while the command is scheduled.
   override fun execute() {
-    m_subsystem.motor.set(-0.85)
-    
+    m_subsystem.motor.set(-0.6)
+    println(pdp.getCurrent(5))
   }
 
   // Called once the command ends or is interrupted.
   override fun end(interrupted: Boolean) {
     m_subsystem.motor.set(0.0)
-    println("End intake: " + interrupted.toString())
   }
 
   // Returns true when the command should end.

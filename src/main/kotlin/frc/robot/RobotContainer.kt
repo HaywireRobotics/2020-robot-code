@@ -16,8 +16,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 import edu.wpi.first.wpilibj.GenericHID
 import edu.wpi.first.wpilibj.XboxController
 import edu.wpi.first.wpilibj.Joystick
+import edu.wpi.first.wpilibj.PowerDistributionPanel
 import edu.wpi.first.wpilibj2.command.button.JoystickButton
-
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -76,14 +76,14 @@ class RobotContainer {
     JoystickButton(driverRightJoystick, 1).whenPressed(SwitchDriveDirection(hyperdriveSubsystem))
 
     // Left Driver Button Bindings
-    JoystickButton(driverLeftJoystick, 1).whileHeld(RunDockingBay(dockingBaySubsystem))
+    JoystickButton(driverLeftJoystick, 1).whileHeld(RunDockingBay(dockingBaySubsystem, PowerDistributionPanel()))
     
     // Right Manipulator Button Bindings
     JoystickButton(manipulatorRightJoystick, 5).whileHeld(PrintColorSensorCommand(colorSensorSubsystem))
     JoystickButton(manipulatorRightJoystick, 7).whileHeld(RunColorMotor(controlPanelSubsystem))
     JoystickButton(manipulatorRightJoystick, 9).whileHeld(Winch(climbySubsystem))
-    JoystickButton(manipulatorRightJoystick, 10).whileHeld(HookDown(climbySubsystem))
-    JoystickButton(manipulatorRightJoystick, 11).whileHeld(HookUp(climbySubsystem))
+    JoystickButton(manipulatorRightJoystick, 10).whileHeld(HookUp(climbySubsystem))
+    JoystickButton(manipulatorRightJoystick, 11).whileHeld(HookDown(climbySubsystem))
 
     // Left Manipulator Button Bindings
     JoystickButton(manipulatorLeftJoystick, 1).whileHeld(PIDShoot(-32000.0, 32000.0, ionCannonySubsystem))

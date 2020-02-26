@@ -35,9 +35,9 @@ class DriveHyperCommand(val hyperdriveSubsystem: HyperdriveSubsystem, val leftJo
     val leftJoystickVal: Double = leftJoystick.getY().toDouble()
     val rightJoystickVal: Double = rightJoystick.getY().toDouble()
     
-    if (Math.abs(leftJoystickVal) > 0.05)
+    if (Math.abs(leftJoystickVal) > 0.1)
       leftPower = leftJoystickVal
-    if (Math.abs(rightJoystickVal) > 0.05)
+    if (Math.abs(rightJoystickVal) > 0.1)
       rightPower = rightJoystickVal
     
     hyperdriveSubsystem.tankDrive(leftPower, rightPower)
