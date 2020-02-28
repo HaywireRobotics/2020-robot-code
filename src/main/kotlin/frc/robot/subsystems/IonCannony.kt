@@ -60,7 +60,7 @@ class IonCannony : SubsystemBase() {
     bottomEncoderRate = bottomEncoder.getRate()
   }
 
-  fun reset() {
+  fun resetPID() {
     topPIDController.reset()
     bottomPIDController.reset()
 
