@@ -7,30 +7,22 @@
 
 package frc.robot.commands
 
-import frc.robot.JSONPlotter
-import frc.robot.JSONPlotterNT
 import frc.robot.subsystems.IonCannony
+import frc.robot.subsystems.TurboLiftSubsystem
 
 import edu.wpi.first.wpilibj2.command.CommandBase
-import edu.wpi.first.wpilibj.controller.PIDController
 
 import edu.wpi.first.networktables.NetworkTable
 import edu.wpi.first.networktables.NetworkTableEntry
 import edu.wpi.first.networktables.NetworkTableInstance
 import edu.wpi.first.networktables.EntryListenerFlags
 
-class TestShooterNT(val m_subsystem: IonCannony) : CommandBase() {
+class TestShooterNT(val ionCannon: IonCannony, val turboLift: TurboLiftSubsystem) : CommandBase() {
   /**
    * Creates a new TestShooterNT.
    *
-   * @param m_subsystem The subsystem used by this command.
+   * @param ionCannon The subsystem used by this command.
    */
-
-  val topPIDController: PIDController
-  val bottomPIDController: PIDController
-  val topJSONPlotter: JSONPlotter = JSONPlotter("Ion Top")
-  val bottomJSONPlotter: JSONPlotter = JSONPlotter("Ion Bottom")
-  val jsonPlotterNT: JSONPlotterNT = JSONPlotterNT()
 
   val nt: NetworkTableInstance = NetworkTableInstance.getDefault()
   val table: NetworkTable
@@ -41,10 +33,7 @@ class TestShooterNT(val m_subsystem: IonCannony) : CommandBase() {
   var bottomTargetRate: Double = 0.0
 
   init {
-    addRequirements(m_subsystem)
-
-    topPIDController = PIDController(0.0000125 * 0.45, 0.0000125 * 0.94, 0.000000175)
-    bottomPIDController = PIDController(0.0000125 * 0.45, 0.0000125 * 0.94, 0.000000175)
+    addRequirements(ionCannon)
 
     table = nt.getTable("datatable")
     topShooterSpeedEntry = table.getEntry("topShooterSpeed")
@@ -55,23 +44,24 @@ class TestShooterNT(val m_subsystem: IonCannony) : CommandBase() {
 
   // Called when the command is initially scheduled.
   override fun initialize() {
-    topTargetRate = topShooterSpeedEntry.getDouble(0.0)
-    bottomTargetRate = bottomShooterSpeedEntry.getDouble(0.0)
+    topTargetRate = topShooterSpeedEntry.getDouble(topTargetRate)
+    bottomTargetRate = bottomShooterSpeedEntry.getDouble(bottomTargetRate)
 
     println("TOP Setpoint: " + topTargetRate)
     println("BOTTOM Setpoint: " + bottomTargetRate)
-    m_subsystem.setSetpoints(bottomTargetRate, topTargetRate)
-    m_subsystem.resetPID()
+
+    ionCannon.setSetpoints(bottomTargetRate, topTargetRate)
+    ionCannon.resetPID()
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   override fun execute() {
-    m_subsystem.runPID()
+    ionCannon.runPID()
   }
 
   // Called once the command ends or is interrupted.
   override fun end(interrupted: Boolean) {
-    m_subsystem.endPID()
+    ionCannon.endPID()
   }
 
   // Returns true when the command should end.
