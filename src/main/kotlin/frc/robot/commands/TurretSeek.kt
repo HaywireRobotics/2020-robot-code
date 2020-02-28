@@ -66,5 +66,5 @@ class TurretSeek(val m_subsystem: TurretSubsystem) : CommandBase() {
 
   fun generateSetpoint(): Double {
     return 0.0
-}
+  }
 }

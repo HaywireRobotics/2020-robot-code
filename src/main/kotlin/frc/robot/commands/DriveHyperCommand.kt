@@ -40,7 +40,10 @@ class DriveHyperCommand(val hyperdriveSubsystem: HyperdriveSubsystem, val leftJo
     if (Math.abs(rightJoystickVal) > 0.1)
       rightPower = rightJoystickVal
     
-    hyperdriveSubsystem.tankDrive(leftPower, rightPower)
+    if (hyperdriveSubsystem.robotDirectionInverted)
+      hyperdriveSubsystem.tankDrive(-rightPower, -leftPower)
+    else
+      hyperdriveSubsystem.tankDrive(leftPower, rightPower)
   }
 
   // Called once the command ends or is interrupted.
