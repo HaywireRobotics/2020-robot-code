@@ -11,7 +11,7 @@ import frc.robot.subsystems.DockingBaySubsystem
 import edu.wpi.first.wpilibj.PowerDistributionPanel
 import edu.wpi.first.wpilibj2.command.CommandBase
 
-class RunDockingBay(val m_subsystem: DockingBaySubsystem, val pdp: PowerDistributionPanel) : CommandBase() {
+class RunDockingBay(val m_subsystem: DockingBaySubsystem, val pdp: PowerDistributionPanel, val speed: Double) : CommandBase() {
   /**
    * Creates a new RunDockingBay.
    *
@@ -28,7 +28,7 @@ class RunDockingBay(val m_subsystem: DockingBaySubsystem, val pdp: PowerDistribu
 
   // Called every time the scheduler runs while the command is scheduled.
   override fun execute() {
-    m_subsystem.motor.set(-0.7)
+    m_subsystem.motor.set(speed)
     // println(pdp.getCurrent(5))
   }
 

@@ -76,7 +76,8 @@ class RobotContainer {
     JoystickButton(driverRightJoystick, 1).whenPressed(SwitchDriveDirection(hyperdriveSubsystem))
 
     // Left Driver Button Bindings
-    JoystickButton(driverLeftJoystick, 1).whileHeld(RunDockingBay(dockingBaySubsystem, PowerDistributionPanel()))
+    JoystickButton(driverLeftJoystick, 1).whileHeld(RunDockingBay(dockingBaySubsystem, PowerDistributionPanel(), -0.7))
+    JoystickButton(driverLeftJoystick, 3).whileHeld(RunDockingBay(dockingBaySubsystem, PowerDistributionPanel(), 0.5))
     
     // Right Manipulator Button Bindings
     JoystickButton(manipulatorRightJoystick, 1).whileHeld(TestShooterNT(ionCannonySubsystem, turboLiftSubsystem))
