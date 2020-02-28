@@ -7,12 +7,9 @@
 
 package frc.robot.commands
 
-import frc.robot.JSONPlotter
-import frc.robot.JSONPlotterNT
 import frc.robot.subsystems.IonCannony
 
 import edu.wpi.first.wpilibj2.command.CommandBase
-import edu.wpi.first.wpilibj.controller.PIDController
 
 class PIDShoot(val bottomTargetRate: Double, val topTargetRate: Double, val m_subsystem: IonCannony) : CommandBase() {
   /**
@@ -21,77 +18,28 @@ class PIDShoot(val bottomTargetRate: Double, val topTargetRate: Double, val m_su
    * @param m_subsystem The subsystem used by this command.
    */
 
-  val topPIDController: PIDController
-  val bottomPIDController: PIDController
-  val topJSONPlotter: JSONPlotter = JSONPlotter("Ion Top")
-  val bottomJSONPlotter: JSONPlotter = JSONPlotter("Ion Bottom")
-  val jsonPlotterNT: JSONPlotterNT = JSONPlotterNT()
-
   init {
     addRequirements(m_subsystem)
-
-    topPIDController = PIDController(0.0000125 * 0.45, 0.0000125 * 0.94, 0.000000175)
-    bottomPIDController = PIDController(0.0000125 * 0.45, 0.0000125 * 0.94, 0.000000175)
+    m_subsystem.setSetpoints(bottomTargetRate, topTargetRate)
   }
 
   // Called when the command is initially scheduled.
   override fun initialize() {
-    topPIDController.reset()
-    bottomPIDController.reset()
-
-    topJSONPlotter.resetCapture()
-    bottomJSONPlotter.resetCapture()
-    
-    topJSONPlotter.recordSetpoint(topTargetRate)
-    bottomJSONPlotter.recordSetpoint(bottomTargetRate)
+    m_subsystem.reset()
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   override fun execute() {
-    topUseOutput(topPIDController.calculate(topGenerateMeasurement(), topGenerateSetpoint()))
-    bottomUseOutput(bottomPIDController.calculate(bottomGenerateMeasurement(), bottomGenerateSetpoint()))
+    m_subsystem.runPID()
   }
 
   // Called once the command ends or is interrupted.
   override fun end(interrupted: Boolean) {
-    m_subsystem.top.set(0.0)
-    m_subsystem.bottom.set(0.0)
-
-    jsonPlotterNT.publishJSONsToNT(listOf(topJSONPlotter.getJSON(), bottomJSONPlotter.getJSON()))
-
-    println("TOP JSON")
-    topJSONPlotter.outputDataAsJSON()
-    
-    println("BOTTOM JSON")
-    bottomJSONPlotter.outputDataAsJSON()
+    m_subsystem.endPID()
   }
 
   // Returns true when the command should end.
   override fun isFinished(): Boolean {
     return false
   }
-
-  fun topUseOutput(output: Double) {
-    //m_subsystem.set(-maxOf(output, 0.005)-0.1)
-    // m_subsystem.top.set(-output - 0.5)
-    m_subsystem.top.set(-output)
-    println("TOP: " + output.toString())
-    topJSONPlotter.recordPoint(m_subsystem.topEncoderRate)
-  }
-
-  fun topGenerateMeasurement(): Double = m_subsystem.topEncoderRate
-
-  fun topGenerateSetpoint(): Double = topTargetRate
-
-  fun bottomUseOutput(output: Double) {
-    //m_subsystem.set(-maxOf(output, 0.005)-0.1)
-    // m_subsystem.bottom.set(-output - 0.5)
-    m_subsystem.bottom.set(-output)
-    println("BOTTOM: " + output.toString())
-    bottomJSONPlotter.recordPoint(m_subsystem.bottomEncoderRate)
-  }
-
-  fun bottomGenerateMeasurement(): Double = m_subsystem.bottomEncoderRate
-
-  fun bottomGenerateSetpoint(): Double = bottomTargetRate
 }
