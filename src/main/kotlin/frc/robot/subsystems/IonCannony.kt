@@ -28,15 +28,17 @@ class IonCannony : SubsystemBase() {
   val bottom: WPI_VictorSPX = WPI_VictorSPX(Constants.IonCannony.bottomPort)
 
   // Encoders
-  private val topEncoder: Encoder = Encoder(Constants.IonCannony.topEncoderAPort, Constants.IonCannony.topEncoderBPort, true, EncodingType.k4X)
-  private val bottomEncoder: Encoder = Encoder(Constants.IonCannony.bottomEncoderAPort, Constants.IonCannony.bottomEncoderBPort, true, EncodingType.k4X)
+  private val topEncoder: Encoder = Encoder(Constants.IonCannony.topEncoderAPort, Constants.IonCannony.topEncoderBPort, false, EncodingType.k4X)
+  private val bottomEncoder: Encoder = Encoder(Constants.IonCannony.bottomEncoderAPort, Constants.IonCannony.bottomEncoderBPort, false, EncodingType.k4X)
 
   var topEncoderRate: Double = 0.0
   var bottomEncoderRate: Double = 0.0
 
   // PID Things
   val topPIDController: PIDController = PIDController(0.0000125 * 0.45, 0.0000125 * 0.94, 0.000000175)
+  // val topPIDController: PIDController = PIDController(0.0197, 0.0, 0.0)
   val bottomPIDController: PIDController = PIDController(0.0000125 * 0.45, 0.0000125 * 0.94, 0.000000175)
+  // val bottomPIDController: PIDController = PIDController(0.0188, 0.0, 0.0)
   val topJSONPlotter: JSONPlotter = JSONPlotter("Ion Top")
   val bottomJSONPlotter: JSONPlotter = JSONPlotter("Ion Bottom")
   val jsonPlotterNT: JSONPlotterNT = JSONPlotterNT()
@@ -58,6 +60,8 @@ class IonCannony : SubsystemBase() {
   override fun periodic() {
     topEncoderRate = topEncoder.getRate()
     bottomEncoderRate = bottomEncoder.getRate()
+    // println("TOP E: " + topEncoderRate)
+    // println("BOTTOM E: " + bottomEncoderRate)
   }
 
   fun resetPID() {

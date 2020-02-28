@@ -57,7 +57,7 @@ class RobotContainer {
     SmartDashboard.putData("Auto mode", m_autoCommandChooser)
     
     hyperdriveSubsystem.setDefaultCommand(DriveHyperCommand(hyperdriveSubsystem, driverLeftJoystick, driverRightJoystick))
-    // ionCannonySubsystem.setDefaultCommand(IonCannonyDefaultCommand(ionCannonySubsystem, driverRightJoystick, driverLeftJoystick))
+    ionCannonySubsystem.setDefaultCommand(IonCannonyDefaultCommand(ionCannonySubsystem, manipulatorLeftJoystick, manipulatorLeftJoystick))
     turboLiftSubsystem.setDefaultCommand(TurboLiftyDefault(turboLiftSubsystem, manipulatorRightJoystick))
     turretSubsystem.setDefaultCommand(TurretManualDrive(turretSubsystem, manipulatorLeftJoystick))
 

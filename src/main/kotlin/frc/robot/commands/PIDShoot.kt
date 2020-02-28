@@ -20,12 +20,12 @@ class PIDShoot(val bottomTargetRate: Double, val topTargetRate: Double, val m_su
 
   init {
     addRequirements(m_subsystem)
-    m_subsystem.setSetpoints(bottomTargetRate, topTargetRate)
   }
 
   // Called when the command is initially scheduled.
   override fun initialize() {
     m_subsystem.resetPID()
+    m_subsystem.setSetpoints(bottomTargetRate, topTargetRate)
   }
 
   // Called every time the scheduler runs while the command is scheduled.
