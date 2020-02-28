@@ -7,6 +7,10 @@
 
 package frc.robot.subsystems
 
+import frc.robot.JSONPlotter
+import frc.robot.JSONPlotterNT
+import edu.wpi.first.wpilibj.controller.PIDController
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase
 import edu.wpi.first.wpilibj.Encoder
 import edu.wpi.first.wpilibj.CounterBase.EncodingType
@@ -30,6 +34,16 @@ class IonCannony : SubsystemBase() {
   var topEncoderRate: Double = 0.0
   var bottomEncoderRate: Double = 0.0
 
+  // PID Things
+  val topPIDController: PIDController = PIDController(0.0000125 * 0.45, 0.0000125 * 0.94, 0.000000175)
+  val bottomPIDController: PIDController = PIDController(0.0000125 * 0.45, 0.0000125 * 0.94, 0.000000175)
+  val topJSONPlotter: JSONPlotter = JSONPlotter("Ion Top")
+  val bottomJSONPlotter: JSONPlotter = JSONPlotter("Ion Bottom")
+  val jsonPlotterNT: JSONPlotterNT = JSONPlotterNT()
+
+  var bottomSetpoint: Double = 0.0
+  var topSetpoint: Double = 0.0
+
   init {
     topEncoder.setDistancePerPulse(1.0)
     topEncoder.setPIDSourceType(PIDSourceType.kRate)
@@ -44,5 +58,51 @@ class IonCannony : SubsystemBase() {
   override fun periodic() {
     topEncoderRate = topEncoder.getRate()
     bottomEncoderRate = bottomEncoder.getRate()
+  }
+
+  fun resetPID() {
+    topPIDController.reset()
+    bottomPIDController.reset()
+
+    topJSONPlotter.resetCapture()
+    bottomJSONPlotter.resetCapture()
+    
+    topJSONPlotter.recordSetpoint(topSetpoint)
+    bottomJSONPlotter.recordSetpoint(bottomSetpoint)
+  }
+
+  fun endPID() {
+    top.set(0.0)
+    bottom.set(0.0)
+
+    jsonPlotterNT.publishJSONsToNT(listOf(topJSONPlotter.getJSON(), bottomJSONPlotter.getJSON()))
+
+    println("TOP JSON")
+    topJSONPlotter.outputDataAsJSON()
+    
+    println("BOTTOM JSON")
+    bottomJSONPlotter.outputDataAsJSON()
+  }
+
+  fun setSetpoints(l_bottomSetpoint: Number, l_topSetpoint: Number) {
+    bottomSetpoint = l_bottomSetpoint.toDouble()
+    topSetpoint = l_topSetpoint.toDouble()
+  }
+
+  fun runPID() {
+    topUseOutput(topPIDController.calculate(topEncoder.getRate(), topSetpoint))
+    bottomUseOutput(bottomPIDController.calculate(bottomEncoder.getRate(), bottomSetpoint))
+  }
+
+  fun topUseOutput(output: Double) {
+    top.set(-output)
+    // println("TOP: " + output.toString())
+    topJSONPlotter.recordPoint(topEncoderRate)
+  }
+
+  fun bottomUseOutput(output: Double) {
+    bottom.set(-output)
+    // println("BOTTOM: " + output.toString())
+    bottomJSONPlotter.recordPoint(bottomEncoderRate)
   }
 }
