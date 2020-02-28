@@ -36,15 +36,19 @@ class IonCannony : SubsystemBase() {
 
   // PID Things
   val topPIDController: PIDController = PIDController(0.0000125 * 0.45, 0.0000125 * 0.94, 0.000000175)
-  // val topPIDController: PIDController = PIDController(0.0197, 0.0, 0.0)
   val bottomPIDController: PIDController = PIDController(0.0000125 * 0.45, 0.0000125 * 0.94, 0.000000175)
-  // val bottomPIDController: PIDController = PIDController(0.0188, 0.0, 0.0)
   val topJSONPlotter: JSONPlotter = JSONPlotter("Ion Top")
   val bottomJSONPlotter: JSONPlotter = JSONPlotter("Ion Bottom")
   val jsonPlotterNT: JSONPlotterNT = JSONPlotterNT()
 
   var bottomSetpoint: Double = 0.0
   var topSetpoint: Double = 0.0
+
+  // Launch when ready
+  val pointsUntilReady: Int = 10
+  val marginOfError: Double = 5000.0
+  var topLastData: MutableList<Double> = mutableListOf()
+  var bottomLastData: MutableList<Double> = mutableListOf()
 
   init {
     topEncoder.setDistancePerPulse(1.0)
@@ -60,10 +64,13 @@ class IonCannony : SubsystemBase() {
   override fun periodic() {
     topEncoderRate = topEncoder.getRate()
     bottomEncoderRate = bottomEncoder.getRate()
-    // println("TOP E: " + topEncoderRate)
-    // println("BOTTOM E: " + bottomEncoderRate)
+
+    // Aggregating data
+    topLastData = addDatapoint(topLastData, topEncoderRate)
+    bottomLastData = addDatapoint(bottomLastData, bottomEncoderRate)
   }
 
+  //* PID Functions
   fun resetPID() {
     topPIDController.reset()
     bottomPIDController.reset()
@@ -109,4 +116,27 @@ class IonCannony : SubsystemBase() {
     // println("BOTTOM: " + output.toString())
     bottomJSONPlotter.recordPoint(bottomEncoderRate)
   }
+  //* End PID Functions
+
+  //* Shoot when ready functions
+  fun isReady(): Boolean {
+    val topAverageValue = topLastData.average()
+    val bottomAverageValue = bottomLastData.average()
+
+    var topOK: Boolean = ((topAverageValue >= topSetpoint - marginOfError) && (topAverageValue <= topSetpoint + marginOfError))
+    var bottomOK: Boolean = ((bottomAverageValue >= bottomSetpoint - marginOfError) && (bottomAverageValue <= bottomSetpoint + marginOfError))
+
+    return (topOK && bottomOK)
+  }
+
+  private fun addDatapoint(list: MutableList<Double>, datapoint: Number): MutableList<Double> {
+    list.add(datapoint.toDouble())
+    
+    if (list.size <= pointsUntilReady)
+      return list
+
+    list.removeAt(0)
+    return list
+  }
+  //* End shoot when ready functions
 }

@@ -57,6 +57,8 @@ class TestShooterNT(val ionCannon: IonCannony, val turboLift: TurboLiftSubsystem
   // Called every time the scheduler runs while the command is scheduled.
   override fun execute() {
     ionCannon.runPID()
+    if (ionCannon.isReady())
+      turboLift.runSystem(0.4)
   }
 
   // Called once the command ends or is interrupted.

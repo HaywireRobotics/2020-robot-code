@@ -26,7 +26,7 @@ class HookDown(val m_subsystem: ClimbySubsystem) : CommandBase() {
 
   // Called every time the scheduler runs while the command is scheduled.
   override fun execute() {
-    m_subsystem.driveHookMotor(-0.5)
+    m_subsystem.driveHookMotor(0.5)
   }
 
   // Called once the command ends or is interrupted.

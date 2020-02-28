@@ -32,7 +32,8 @@ class LaunchIonCannon(val topTargetRate: Number, val bottomTargetRate: Number, v
   // Called every time the scheduler runs while the command is scheduled.
   override fun execute() {
     ionCannon.runPID()
-    turboLift.runSystem(0.4)
+    if (ionCannon.isReady())
+      turboLift.runSystem(-0.4)
   }
 
   // Called once the command ends or is interrupted.

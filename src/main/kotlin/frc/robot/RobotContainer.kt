@@ -83,8 +83,8 @@ class RobotContainer {
     JoystickButton(manipulatorRightJoystick, 5).whileHeld(PrintColorSensorCommand(colorSensorSubsystem))
     JoystickButton(manipulatorRightJoystick, 7).whileHeld(RunColorMotor(controlPanelSubsystem))
     JoystickButton(manipulatorRightJoystick, 9).whileHeld(Winch(climbySubsystem))
-    JoystickButton(manipulatorRightJoystick, 10).whileHeld(HookUp(climbySubsystem))
-    JoystickButton(manipulatorRightJoystick, 11).whileHeld(HookDown(climbySubsystem))
+    JoystickButton(manipulatorRightJoystick, 10).whileHeld(HookDown(climbySubsystem))
+    JoystickButton(manipulatorRightJoystick, 11).whileHeld(HookUp(climbySubsystem))
     
     JoystickButton(manipulatorLeftJoystick, 10).whileHeld(TurretSeek(turretSubsystem))
 
