@@ -79,24 +79,27 @@ class RobotContainer {
     JoystickButton(driverLeftJoystick, 1).whileHeld(RunDockingBay(dockingBaySubsystem, PowerDistributionPanel()))
     
     // Right Manipulator Button Bindings
+    JoystickButton(manipulatorRightJoystick, 1).whileHeld(TestShooterNT(ionCannonySubsystem))
     JoystickButton(manipulatorRightJoystick, 5).whileHeld(PrintColorSensorCommand(colorSensorSubsystem))
     JoystickButton(manipulatorRightJoystick, 7).whileHeld(RunColorMotor(controlPanelSubsystem))
     JoystickButton(manipulatorRightJoystick, 9).whileHeld(Winch(climbySubsystem))
     JoystickButton(manipulatorRightJoystick, 10).whileHeld(HookUp(climbySubsystem))
     JoystickButton(manipulatorRightJoystick, 11).whileHeld(HookDown(climbySubsystem))
+    
+    JoystickButton(manipulatorLeftJoystick, 10).whileHeld(TurretSeek(turretSubsystem))
 
     // Left Manipulator Button Bindings
-    JoystickButton(manipulatorLeftJoystick, 1).whileHeld(PIDShoot(-32000.0, 32000.0, ionCannonySubsystem))
-    JoystickButton(manipulatorLeftJoystick, 2).whileHeld(PIDShoot(-64000.0, 64000.0, ionCannonySubsystem))
-    JoystickButton(manipulatorLeftJoystick, 3).whileHeld(PIDShoot(-96000.0, 96000.0, ionCannonySubsystem))
-    JoystickButton(manipulatorLeftJoystick, 4).whileHeld(PIDShoot(-128000.0, 128000.0, ionCannonySubsystem))
-    JoystickButton(manipulatorLeftJoystick, 5).whileHeld(PIDShoot(-160000.0, 160000.0, ionCannonySubsystem))
-    JoystickButton(manipulatorLeftJoystick, 6).whileHeld(PIDShoot(-192000.0, 192000.0, ionCannonySubsystem))
-    JoystickButton(manipulatorLeftJoystick, 7).whileHeld(PIDShoot(-224000.0, 224000.0, ionCannonySubsystem))
-    JoystickButton(manipulatorLeftJoystick, 8).whileHeld(PIDShoot(-256000.0, 256000.0, ionCannonySubsystem))
-    JoystickButton(manipulatorLeftJoystick, 9).whileHeld(PIDShoot(-288000.0, 288000.0, ionCannonySubsystem))
-    JoystickButton(manipulatorLeftJoystick, 10).whileHeld(PIDShoot(-320000.0, 320000.0, ionCannonySubsystem))
-    JoystickButton(manipulatorLeftJoystick, 11).whileHeld(PIDShoot(-80000.0, 100000.0, ionCannonySubsystem))
+    JoystickButton(manipulatorLeftJoystick, 1).whileHeld(PIDShoot(32000.0, 32000.0, ionCannonySubsystem))
+    JoystickButton(manipulatorLeftJoystick, 2).whileHeld(PIDShoot(64000.0, 64000.0, ionCannonySubsystem))
+    JoystickButton(manipulatorLeftJoystick, 3).whileHeld(PIDShoot(96000.0, 96000.0, ionCannonySubsystem))
+    JoystickButton(manipulatorLeftJoystick, 4).whileHeld(PIDShoot(128000.0, 128000.0, ionCannonySubsystem))
+    JoystickButton(manipulatorLeftJoystick, 5).whileHeld(PIDShoot(160000.0, 160000.0, ionCannonySubsystem))
+    JoystickButton(manipulatorLeftJoystick, 6).whileHeld(PIDShoot(192000.0, 192000.0, ionCannonySubsystem))
+    JoystickButton(manipulatorLeftJoystick, 7).whileHeld(PIDShoot(224000.0, 224000.0, ionCannonySubsystem))
+    JoystickButton(manipulatorLeftJoystick, 8).whileHeld(PIDShoot(256000.0, 256000.0, ionCannonySubsystem))
+    JoystickButton(manipulatorLeftJoystick, 9).whileHeld(PIDShoot(288000.0, 288000.0, ionCannonySubsystem))
+    //JoystickButton(manipulatorLeftJoystick, 10).whileHeld(PIDShoot(320000.0, 320000.0, ionCannonySubsystem))
+    JoystickButton(manipulatorLeftJoystick, 11).whileHeld(PIDShoot(80000.0, 100000.0, ionCannonySubsystem))
   }
 
   fun getAutonomousCommand(): Command {
