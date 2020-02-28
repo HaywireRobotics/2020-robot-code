@@ -29,7 +29,7 @@ class RunDockingBay(val m_subsystem: DockingBaySubsystem, val pdp: PowerDistribu
   // Called every time the scheduler runs while the command is scheduled.
   override fun execute() {
     m_subsystem.motor.set(-0.7)
-    println(pdp.getCurrent(5))
+    // println(pdp.getCurrent(5))
   }
 
   // Called once the command ends or is interrupted.

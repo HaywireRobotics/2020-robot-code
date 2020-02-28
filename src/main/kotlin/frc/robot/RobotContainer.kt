@@ -26,16 +26,16 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton
  * (including subsystems, commands, and button mappings) should be declared here.
  */
 class RobotContainer {
-  private val hyperdriveSubsystem: HyperdriveSubsystem = HyperdriveSubsystem()
-  private val m_exampleSubsystem: ExampleSubsystem = ExampleSubsystem()
-  private val dockingBaySubsystem: DockingBaySubsystem = DockingBaySubsystem()
-  private val turboLiftSubsystem: TurboLiftSubsystem = TurboLiftSubsystem()
-  private val ionCannonySubsystem: IonCannony = IonCannony()
-  private val colorSensorSubsystem: ColorSensorSubsystem = ColorSensorSubsystem()
-  private val controlPanelSubsystem: ControlPanelSubsystem = ControlPanelSubsystem()
-  private val climbySubsystem: ClimbySubsystem = ClimbySubsystem()
+  val hyperdriveSubsystem: HyperdriveSubsystem = HyperdriveSubsystem()
+  val m_exampleSubsystem: ExampleSubsystem = ExampleSubsystem()
+  val dockingBaySubsystem: DockingBaySubsystem = DockingBaySubsystem()
+  val turboLiftSubsystem: TurboLiftSubsystem = TurboLiftSubsystem()
+  val ionCannonySubsystem: IonCannony = IonCannony()
+  val colorSensorSubsystem: ColorSensorSubsystem = ColorSensorSubsystem()
+  val controlPanelSubsystem: ControlPanelSubsystem = ControlPanelSubsystem()
+  val climbySubsystem: ClimbySubsystem = ClimbySubsystem()
   
-  private val turretSubsystem: TurretSubsystem = TurretSubsystem()
+  val turretSubsystem: TurretSubsystem = TurretSubsystem()
 
   val m_autoCommand: DriveForTime = DriveForTime(hyperdriveSubsystem, 0.5, 0.5)
 

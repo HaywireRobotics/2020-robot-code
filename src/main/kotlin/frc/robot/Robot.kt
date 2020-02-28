@@ -81,6 +81,7 @@ class Robot : TimedRobot() {
     // continue until interrupted by another command, remove
     // this line or comment it out.
     m_autonomousCommand?.let{ m_autonomousCommand.cancel() }
+    m_robotContainer.hyperdriveSubsystem.robotDirectionInverted = false
   }
 
   /**
