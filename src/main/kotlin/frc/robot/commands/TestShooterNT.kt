@@ -55,68 +55,27 @@ class TestShooterNT(val m_subsystem: IonCannony) : CommandBase() {
 
   // Called when the command is initially scheduled.
   override fun initialize() {
-    topPIDController.reset()
-    bottomPIDController.reset()
-
-    topJSONPlotter.resetCapture()
-    bottomJSONPlotter.resetCapture()
-    
-    topJSONPlotter.recordSetpoint(topTargetRate)
-    bottomJSONPlotter.recordSetpoint(bottomTargetRate)
-
     topTargetRate = topShooterSpeedEntry.getDouble(0.0)
     bottomTargetRate = bottomShooterSpeedEntry.getDouble(0.0)
 
     println("TOP Setpoint: " + topTargetRate)
     println("BOTTOM Setpoint: " + bottomTargetRate)
+    m_subsystem.setSetpoints(bottomTargetRate, topTargetRate)
+    m_subsystem.resetPID()
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   override fun execute() {
-    topUseOutput(topPIDController.calculate(topGenerateMeasurement(), topGenerateSetpoint()))
-    bottomUseOutput(bottomPIDController.calculate(bottomGenerateMeasurement(), bottomGenerateSetpoint()))
+    m_subsystem.runPID()
   }
 
   // Called once the command ends or is interrupted.
   override fun end(interrupted: Boolean) {
-    m_subsystem.top.set(0.0)
-    m_subsystem.bottom.set(0.0)
-
-    jsonPlotterNT.publishJSONsToNT(listOf(topJSONPlotter.getJSON(), bottomJSONPlotter.getJSON()))
-
-    println("TOP JSON")
-    topJSONPlotter.outputDataAsJSON()
-    
-    println("BOTTOM JSON")
-    bottomJSONPlotter.outputDataAsJSON()
+    m_subsystem.endPID()
   }
 
   // Returns true when the command should end.
   override fun isFinished(): Boolean {
     return false
   }
-
-  fun topUseOutput(output: Double) {
-    //m_subsystem.set(-maxOf(output, 0.005)-0.1)
-    // m_subsystem.top.set(-output - 0.5)
-    m_subsystem.top.set(-output)
-    println("TOP: " + output.toString())
-    topJSONPlotter.recordPoint(m_subsystem.topEncoderRate)
-  }
-
-  fun topGenerateMeasurement(): Double = m_subsystem.topEncoderRate
-
-  fun topGenerateSetpoint(): Double = topTargetRate
-
-  fun bottomUseOutput(output: Double) {
-    //m_subsystem.set(-maxOf(output, 0.005)-0.1)
-    // m_subsystem.bottom.set(-output - 0.5)
-    m_subsystem.bottom.set(-output)
-    println("BOTTOM: " + output.toString())
-    bottomJSONPlotter.recordPoint(m_subsystem.bottomEncoderRate)
-  }
-
-  fun bottomGenerateMeasurement(): Double = m_subsystem.bottomEncoderRate
-
-  fun bottomGenerateSetpoint(): Double = bottomTargetRate
 }
