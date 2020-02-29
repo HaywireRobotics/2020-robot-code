@@ -61,7 +61,7 @@ class Constants {
     companion object {
       // Motors
       val topPort: Int = 0
-      val bottomPort: Int = 5
+      val bottomPort: Int = 3
 
       // Encoders
       val topEncoderAPort: Int = 7
@@ -74,7 +74,7 @@ class Constants {
   class Climby {
     companion object {
       val hookPort: Int = 12
-      val winchPort: Int = 3
+      val winchPort: Int = 5
     }
   }
 
