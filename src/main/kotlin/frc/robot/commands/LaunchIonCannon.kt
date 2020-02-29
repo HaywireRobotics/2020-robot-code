@@ -20,7 +20,7 @@ class LaunchIonCannon(val topTargetRate: Number, val bottomTargetRate: Number, v
    */
 
   init {
-    addRequirements(ionCannon, turboLift)
+    addRequirements(ionCannon)//, turboLift)
   }
 
   // Called when the command is initially scheduled.

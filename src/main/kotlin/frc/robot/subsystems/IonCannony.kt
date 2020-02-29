@@ -39,6 +39,8 @@ class IonCannony : SubsystemBase() {
   val bottomPIDController: PIDController = PIDController(0.0000125 * 0.45, 0.0000125 * 0.94, 0.000000175)
   val topJSONPlotter: JSONPlotter = JSONPlotter("Ion Top")
   val bottomJSONPlotter: JSONPlotter = JSONPlotter("Ion Bottom")
+  val topAverageJSONPlotter: JSONPlotter = JSONPlotter("Top Average")
+  val bottomAverageJSONPlotter: JSONPlotter = JSONPlotter("Bottom Average")
   val jsonPlotterNT: JSONPlotterNT = JSONPlotterNT()
 
   var bottomSetpoint: Double = 0.0
@@ -68,6 +70,9 @@ class IonCannony : SubsystemBase() {
     // Aggregating data
     topLastData = addDatapoint(topLastData, topEncoderRate)
     bottomLastData = addDatapoint(bottomLastData, bottomEncoderRate)
+
+    // Plot averages
+
   }
 
   //* PID Functions
@@ -77,16 +82,20 @@ class IonCannony : SubsystemBase() {
 
     topJSONPlotter.resetCapture()
     bottomJSONPlotter.resetCapture()
-    
+    topAverageJSONPlotter.resetCapture()
+    bottomAverageJSONPlotter.resetCapture()
+
     topJSONPlotter.recordSetpoint(topSetpoint)
     bottomJSONPlotter.recordSetpoint(bottomSetpoint)
+    topAverageJSONPlotter.recordSetpoint(topSetpoint)
+    bottomAverageJSONPlotter.recordSetpoint(bottomSetpoint)
   }
 
   fun endPID() {
     top.set(0.0)
     bottom.set(0.0)
 
-    jsonPlotterNT.publishJSONsToNT(listOf(topJSONPlotter.getJSON(), bottomJSONPlotter.getJSON()))
+    jsonPlotterNT.publishJSONsToNT(listOf(topJSONPlotter.getJSON(), bottomJSONPlotter.getJSON(), topAverageJSONPlotter.getJSON(), bottomAverageJSONPlotter.getJSON()))
 
     println("TOP JSON")
     topJSONPlotter.outputDataAsJSON()
@@ -109,12 +118,14 @@ class IonCannony : SubsystemBase() {
     top.set(-output)
     // println("TOP: " + output.toString())
     topJSONPlotter.recordPoint(topEncoderRate)
+    topAverageJSONPlotter.recordPoint(topLastData.average())
   }
 
   fun bottomUseOutput(output: Double) {
     bottom.set(-output)
     // println("BOTTOM: " + output.toString())
     bottomJSONPlotter.recordPoint(bottomEncoderRate)
+    topAverageJSONPlotter.recordPoint(bottomLastData.average())
   }
   //* End PID Functions
 
