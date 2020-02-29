@@ -33,7 +33,7 @@ class LaunchIonCannon(val topTargetRate: Number, val bottomTargetRate: Number, v
   override fun execute() {
     ionCannon.runPID()
     if (ionCannon.isReady())
-      turboLift.runSystem(-0.4)
+      turboLift.runSystem(-0.6)
   }
 
   // Called once the command ends or is interrupted.
