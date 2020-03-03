@@ -11,6 +11,7 @@ import frc.robot.commands.*
 import frc.robot.subsystems.*
 
 import edu.wpi.first.wpilibj2.command.Command
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 import edu.wpi.first.wpilibj.GenericHID
@@ -54,6 +55,7 @@ class RobotContainer {
     // Configure the button bindings
     configureButtonBindings()
     m_autoCommandChooser.setDefaultOption("Default Auto", m_autoCommand)
+    m_autoCommandChooser.addOption("Turret, Shoot, Drive", SequentialCommandGroup(TurretSeekAutonomous(turretSubsystem), LaunchIonCannonForTimey(150000, 150000, 10, ionCannonySubsystem, turboLiftSubsystem), DriveForTime(hyperdriveSubsystem, 0.3, 0.5)))
     SmartDashboard.putData("Auto mode", m_autoCommandChooser)
     
     hyperdriveSubsystem.setDefaultCommand(DriveHyperCommand(hyperdriveSubsystem, driverLeftJoystick, driverRightJoystick))
