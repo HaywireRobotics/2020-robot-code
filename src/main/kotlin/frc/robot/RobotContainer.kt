@@ -92,17 +92,17 @@ class RobotContainer {
     JoystickButton(manipulatorLeftJoystick, 10).whileHeld(TurretSeek(turretSubsystem))
 
     // Left Manipulator Button Bindings
-    JoystickButton(manipulatorLeftJoystick, 1).whileHeld(LaunchIonCannon(32000.0, 32000.0, ionCannonySubsystem, turboLiftSubsystem))
-    JoystickButton(manipulatorLeftJoystick, 2).whileHeld(LaunchIonCannon(64000.0, 64000.0, ionCannonySubsystem, turboLiftSubsystem))
-    JoystickButton(manipulatorLeftJoystick, 3).whileHeld(LaunchIonCannon(96000.0, 96000.0, ionCannonySubsystem, turboLiftSubsystem))
-    JoystickButton(manipulatorLeftJoystick, 4).whileHeld(LaunchIonCannon(128000.0, 128000.0, ionCannonySubsystem, turboLiftSubsystem))
-    JoystickButton(manipulatorLeftJoystick, 5).whileHeld(LaunchIonCannon(160000.0, 160000.0, ionCannonySubsystem, turboLiftSubsystem))
-    JoystickButton(manipulatorLeftJoystick, 6).whileHeld(LaunchIonCannon(192000.0, 192000.0, ionCannonySubsystem, turboLiftSubsystem))
-    JoystickButton(manipulatorLeftJoystick, 7).whileHeld(LaunchIonCannon(224000.0, 224000.0, ionCannonySubsystem, turboLiftSubsystem))
-    JoystickButton(manipulatorLeftJoystick, 8).whileHeld(LaunchIonCannon(256000.0, 256000.0, ionCannonySubsystem, turboLiftSubsystem))
-    JoystickButton(manipulatorLeftJoystick, 9).whileHeld(LaunchIonCannon(288000.0, 288000.0, ionCannonySubsystem, turboLiftSubsystem))
-    //JoystickButton(manipulatorLeftJoystick, 10).whileHeld(LaunchIonCannon(320000.0, 320000.0, ionCannonySubsystem, turboLiftSubsystem))
-    JoystickButton(manipulatorLeftJoystick, 11).whileHeld(LaunchIonCannon(80000.0, 100000.0, ionCannonySubsystem, turboLiftSubsystem))
+    JoystickButton(manipulatorLeftJoystick, 1).whileHeld(LaunchIonCannon(32000.0, 32000.0, ionCannonySubsystem, turboLiftSubsystem, manipulatorLeftJoystick))
+    JoystickButton(manipulatorLeftJoystick, 2).whileHeld(LaunchIonCannon(64000.0, 64000.0, ionCannonySubsystem, turboLiftSubsystem, manipulatorLeftJoystick))
+    JoystickButton(manipulatorLeftJoystick, 3).whileHeld(LaunchIonCannon(96000.0, 96000.0, ionCannonySubsystem, turboLiftSubsystem, manipulatorLeftJoystick))
+    JoystickButton(manipulatorLeftJoystick, 4).whileHeld(LaunchIonCannon(128000.0, 128000.0, ionCannonySubsystem, turboLiftSubsystem, manipulatorLeftJoystick))
+    JoystickButton(manipulatorLeftJoystick, 5).whileHeld(LaunchIonCannon(160000.0, 160000.0, ionCannonySubsystem, turboLiftSubsystem, manipulatorLeftJoystick))
+    JoystickButton(manipulatorLeftJoystick, 6).whileHeld(LaunchIonCannon(192000.0, 192000.0, ionCannonySubsystem, turboLiftSubsystem, manipulatorLeftJoystick))
+    JoystickButton(manipulatorLeftJoystick, 7).whileHeld(LaunchIonCannon(224000.0, 224000.0, ionCannonySubsystem, turboLiftSubsystem, manipulatorLeftJoystick))
+    JoystickButton(manipulatorLeftJoystick, 8).whileHeld(LaunchIonCannon(256000.0, 256000.0, ionCannonySubsystem, turboLiftSubsystem, manipulatorLeftJoystick))
+    JoystickButton(manipulatorLeftJoystick, 9).whileHeld(LaunchIonCannon(288000.0, 288000.0, ionCannonySubsystem, turboLiftSubsystem, manipulatorLeftJoystick))
+    //JoystickButton(manipulatorLeftJoystick, 10).whileHeld(LaunchIonCannon(320000.0, 320000.0, ionCannonySubsystem, turboLiftSubsystem, manipulatorLeftJoystick))
+    JoystickButton(manipulatorLeftJoystick, 11).whileHeld(LaunchIonCannon(80000.0, 100000.0, ionCannonySubsystem, turboLiftSubsystem, manipulatorLeftJoystick))
   }
 
   fun getAutonomousCommand(): Command {

@@ -11,13 +11,17 @@ import frc.robot.subsystems.IonCannony
 import frc.robot.subsystems.TurboLiftSubsystem
 
 import edu.wpi.first.wpilibj2.command.CommandBase
+import edu.wpi.first.wpilibj.Joystick
 
-class LaunchIonCannon(val topTargetRate: Number, val bottomTargetRate: Number, val ionCannon: IonCannony, val turboLift: TurboLiftSubsystem) : CommandBase() {
+class LaunchIonCannon(val topTargetRate: Number, val bottomTargetRate: Number, val ionCannon: IonCannony, val turboLift: TurboLiftSubsystem, val joystick: Joystick) : CommandBase() {
   /**
    * Creates a new LaunchIonCannon.
    *
    * @param ionCannon The subsystem used by this command.
    */
+
+  var initialZAxisValue: Double = 0.0
+  val multiplier: Double = 10000.0
 
   init {
     addRequirements(ionCannon)//, turboLift)
@@ -27,6 +31,7 @@ class LaunchIonCannon(val topTargetRate: Number, val bottomTargetRate: Number, v
   override fun initialize() {
     ionCannon.setSetpoints(topTargetRate, bottomTargetRate)
     ionCannon.resetPID()
+    initialZAxisValue = joystick.getZ().toDouble()
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -34,6 +39,8 @@ class LaunchIonCannon(val topTargetRate: Number, val bottomTargetRate: Number, v
     ionCannon.runPID()
     if (ionCannon.isReady())
       turboLift.runSystem(-0.6)
+
+    ionCannon.setSetpoints(topTargetRate.toDouble() + (joystick.getZ().toDouble() - initialZAxisValue) * multiplier, bottomTargetRate.toDouble() + (joystick.getZ().toDouble() - initialZAxisValue) * multiplier)
   }
 
   // Called once the command ends or is interrupted.
