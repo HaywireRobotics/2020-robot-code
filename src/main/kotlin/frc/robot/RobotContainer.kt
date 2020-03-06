@@ -7,20 +7,16 @@
 
 package frc.robot
 
-import frc.robot.commands.*
-import frc.robot.subsystems.*
-
-import edu.wpi.first.wpilibj2.command.Command
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
-import edu.wpi.first.wpilibj.GenericHID
-import edu.wpi.first.wpilibj.XboxController
+import edu.wpi.first.cameraserver.CameraServer
 import edu.wpi.first.wpilibj.Joystick
 import edu.wpi.first.wpilibj.PowerDistributionPanel
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
+import edu.wpi.first.wpilibj2.command.Command
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup
 import edu.wpi.first.wpilibj2.command.button.JoystickButton
-import edu.wpi.first.cameraserver.CameraServer
-import edu.wpi.cscore.UsbCamera
+import frc.robot.commands.*
+import frc.robot.subsystems.*
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -31,16 +27,16 @@ import edu.wpi.cscore.UsbCamera
 class RobotContainer {
   val hyperdriveSubsystem: HyperdriveSubsystem = HyperdriveSubsystem()
   val m_exampleSubsystem: ExampleSubsystem = ExampleSubsystem()
-  val dockingBaySubsystem: DockingBaySubsystem = DockingBaySubsystem()
-  val turboLiftSubsystem: TurboLiftSubsystem = TurboLiftSubsystem()
-  val ionCannonySubsystem: IonCannony = IonCannony()
-  val colorSensorSubsystem: ColorSensorSubsystem = ColorSensorSubsystem()
-  val controlPanelSubsystem: ControlPanelSubsystem = ControlPanelSubsystem()
-  val climbySubsystem: ClimbySubsystem = ClimbySubsystem()
+  private val dockingBaySubsystem: DockingBaySubsystem = DockingBaySubsystem()
+  private val turboLiftSubsystem: TurboLiftSubsystem = TurboLiftSubsystem()
+  private val ionCannonySubsystem: IonCannony = IonCannony()
+  private val colorSensorSubsystem: ColorSensorSubsystem = ColorSensorSubsystem()
+  private val controlPanelSubsystem: ControlPanelSubsystem = ControlPanelSubsystem()
+  private val climbySubsystem: ClimbySubsystem = ClimbySubsystem()
   
-  val turretSubsystem: TurretSubsystem = TurretSubsystem() 
+  private val turretSubsystem: TurretSubsystem = TurretSubsystem()
 
-  var m_autoCommandChooser: SendableChooser<Command> = SendableChooser()
+  private var autoCommandChooser: SendableChooser<Command> = SendableChooser()
 
   // Joysticks
   private val manipulatorRightJoystick: Joystick = Joystick(Constants.Joysticks.manipulatorRightPort)
@@ -56,46 +52,46 @@ class RobotContainer {
     configureButtonBindings()
     
     // Setting up the Autonomous Chooser
-    m_autoCommandChooser.setDefaultOption("30% Speed, 1/2 Second Drive || Shooter Side",
+    autoCommandChooser.setDefaultOption("30% Speed, 1/2 Second Drive || Shooter Side",
                                           DriveForTime(hyperdriveSubsystem, 0.3, 0.5))
-    m_autoCommandChooser.addOption("30% Speed, 1/2 Second Drive || Intake Side",
+    autoCommandChooser.addOption("30% Speed, 1/2 Second Drive || Intake Side",
                                     DriveForTime(hyperdriveSubsystem, -0.3, 0.5))
-    m_autoCommandChooser.addOption("Impulse Drive || Shooter Side",
+    autoCommandChooser.addOption("Impulse Drive || Shooter Side",
                                     DriveForTime(hyperdriveSubsystem, 0.5, 0.1))
-    m_autoCommandChooser.addOption("Impulse Drive || Intake Side",
+    autoCommandChooser.addOption("Impulse Drive || Intake Side",
                                     DriveForTime(hyperdriveSubsystem, -0.5, 0.1))
     
-    m_autoCommandChooser.addOption("Turret, Shoot, 30% Speed, 1/2 Second Drive || Shooter Side",
+    autoCommandChooser.addOption("Turret, Shoot, 30% Speed, 1/2 Second Drive || Shooter Side",
         SequentialCommandGroup(TurretSeekAutonomous(turretSubsystem),
                               LaunchIonCannonForTimey(155000, 155000, 10, ionCannonySubsystem, turboLiftSubsystem),
                               DriveForTime(hyperdriveSubsystem, 0.3, 0.5)))
-    m_autoCommandChooser.addOption("Turret, Shoot, 30% Speed, 1/2 Second Drive || Intake Side",
+    autoCommandChooser.addOption("Turret, Shoot, 30% Speed, 1/2 Second Drive || Intake Side",
         SequentialCommandGroup(TurretSeekAutonomous(turretSubsystem),
                               LaunchIonCannonForTimey(155000, 155000, 10, ionCannonySubsystem, turboLiftSubsystem),
                               DriveForTime(hyperdriveSubsystem, -0.3, 0.5)))
-    m_autoCommandChooser.addOption("Turret, Shoot, Impulse Drive || Shooter Side",
+    autoCommandChooser.addOption("Turret, Shoot, Impulse Drive || Shooter Side",
         SequentialCommandGroup(TurretSeekAutonomous(turretSubsystem),
                               LaunchIonCannonForTimey(155000, 155000, 10, ionCannonySubsystem, turboLiftSubsystem),
                               DriveForTime(hyperdriveSubsystem, 0.5, 0.1)))
-    m_autoCommandChooser.addOption("Turret, Shoot, Impulse Drive || Intake Side",
+    autoCommandChooser.addOption("Turret, Shoot, Impulse Drive || Intake Side",
         SequentialCommandGroup(TurretSeekAutonomous(turretSubsystem),
                               LaunchIonCannonForTimey(155000, 155000, 10, ionCannonySubsystem, turboLiftSubsystem),
                               DriveForTime(hyperdriveSubsystem, -0.5, 0.1)))
     
-    m_autoCommandChooser.addOption("Turret, Shoot, Trench Run Pick Up",
+    autoCommandChooser.addOption("Turret, Shoot, Trench Run Pick Up",
         TrenchRunPickupAuto(ionCannonySubsystem,
                             turretSubsystem,
                             turboLiftSubsystem,
                             dockingBaySubsystem,
                             hyperdriveSubsystem))
     
-    // Put that monstrousity on the dashboard
-    SmartDashboard.putData("Auto mode", m_autoCommandChooser)
+    // Put that monstrosity on the dashboard
+    SmartDashboard.putData("Auto mode", autoCommandChooser)
     
-    hyperdriveSubsystem.setDefaultCommand(DriveHyperCommand(hyperdriveSubsystem, driverLeftJoystick, driverRightJoystick))
+    hyperdriveSubsystem.defaultCommand = DriveHyperCommand(hyperdriveSubsystem, driverLeftJoystick, driverRightJoystick)
     // ionCannonySubsystem.setDefaultCommand(IonCannonyDefaultCommand(ionCannonySubsystem, manipulatorLeftJoystick, manipulatorLeftJoystick))
-    turboLiftSubsystem.setDefaultCommand(TurboLiftyDefault(turboLiftSubsystem, manipulatorRightJoystick))
-    turretSubsystem.setDefaultCommand(TurretManualDrive(turretSubsystem, manipulatorLeftJoystick))
+    turboLiftSubsystem.defaultCommand = TurboLiftyDefault(turboLiftSubsystem, manipulatorRightJoystick)
+    turretSubsystem.defaultCommand = TurretManualDrive(turretSubsystem, manipulatorLeftJoystick)
 
     // Camera
 //    var usbCamera = UsbCamera("cam0", 0)
@@ -145,6 +141,6 @@ class RobotContainer {
 
   fun getAutonomousCommand(): Command {
     // Return the selected command
-    return m_autoCommandChooser.getSelected()
+    return autoCommandChooser.selected
   }
 }

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="2020-robot-code:test" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="GRADLE" external.system.module.group="" external.system.module.type="sourceSet" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="kotlin-language" name="Kotlin">
+      <configuration version="3" platform="JVM 1.6" allPlatforms="JVM [1.6]" useProjectSettings="false">
+        <compilerSettings>
+          <option name="additionalArguments" value="-Xallow-no-source-files" />
+        </compilerSettings>
+        <compilerArguments>
+          <option name="destination" value="$MODULE_DIR$/../../build/classes/kotlin/test" />
+          <option name="classpath" value="$MODULE_DIR$/../../build/classes/kotlin/main;C:/Users/robo/Repos/2020-robot-code/build/tmp/kapt3/classes/main;C:/Users/robo/.gradle/caches/modules-2/files-2.1/com.squareup.moshi/moshi-kotlin/1.9.2/30a9e86cf80d6f5472408d7bedba8a44344158b4/moshi-kotlin-1.9.2.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.3.50/b499f22fd7c3e9c2e5b6c4005221fa47fc7f9a7a/kotlin-reflect-1.3.50.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.3.61/4702105e97f7396ae41b113fdbdc180ec1eb1e36/kotlin-stdlib-1.3.61.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/edu.wpi.first.wpilibj/wpilibj-java/2020.3.2/e33bd477dcab11dbc9e5d4c914f79eebc09911c3/wpilibj-java-2020.3.2.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/edu.wpi.first.ntcore/ntcore-java/2020.3.2/a583d69b41f2bf688a3557cfdff2a656ddf9fa3/ntcore-java-2020.3.2.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/edu.wpi.first.wpiutil/wpiutil-java/2020.3.2/f165d2000ed73699bec8c5515b892e7d92f75f6b/wpiutil-java-2020.3.2.jar;C:/Users/Public/wpilib/2020/maven/edu/wpi/first/thirdparty/frc2020/opencv/opencv-java/3.4.7-2/opencv-java-3.4.7-2.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/edu.wpi.first.cscore/cscore-java/2020.3.2/a477b4e78faf18c1d550e2afd9d54d90b3630123/cscore-java-2020.3.2.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/edu.wpi.first.cameraserver/cameraserver-java/2020.3.2/5dcb974185170ce9cc6b88da2014c35c245382e8/cameraserver-java-2020.3.2.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/edu.wpi.first.hal/hal-java/2020.3.2/332e398731529d7c38f2658ec6125b665251f5cd/hal-java-2020.3.2.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/org.ejml/ejml-simple/0.38/1cfd0fbe2b23aa5af02e9681b011fd8040661039/ejml-simple-0.38.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.10.0/1127c9cf62f2bb3121a3a2a0a1351d251a602117/jackson-databind-2.10.0.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.10.0/e01cfd93b80d6773b3f757c78e756c9755b47b81/jackson-annotations-2.10.0.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.10.0/4e2c5fa04648ec9772c63e2101c53af6504e624e/jackson-core-2.10.0.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/com.revrobotics.frc/ColorSensorV3-java/1.0.1/3a29587ecaedf9d12b39d8114a9d6f42dbd18c9b/ColorSensorV3-java-1.0.1.jar;C:/Users/Public/wpilib/2020/maven/com/ctre/phoenix/api-java/5.17.3/api-java-5.17.3.jar;C:/Users/Public/wpilib/2020/maven/com/ctre/phoenix/wpiapi-java/5.17.3/wpiapi-java-5.17.3.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/com.revrobotics.frc/SparkMax-java/1.5.1/e23174e5aba5326d8bc688de17673943ee49c041/SparkMax-java-1.5.1.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/edu.wpi.first.wpilibNewCommands/wpilibNewCommands-java/2020.3.2/5873f2f6694d271e65edaeaad92a016510fe96fe/wpilibNewCommands-java-2020.3.2.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/2973d150c0dc1fefe998f834810d68f278ea58ec/junit-4.12.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.3.61/65abb71d5afb850b68be03987b08e2c864ca3110/kotlin-stdlib-common-1.3.61.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/com.squareup.moshi/moshi/1.9.2/1b1336538beda8aa41cbfabf541b8a964e7f6045/moshi-1.9.2.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/org.ejml/ejml-fdense/0.38/426ac05f7fb9b87db4e854b8ded9be4fa57b69df/ejml-fdense-0.38.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/org.ejml/ejml-dsparse/0.38/4b2ed3b58a5c4b4292c1df0515e6cfb3e97f0f63/ejml-dsparse-0.38.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/org.ejml/ejml-ddense/0.38/3f64a356900f72951ffa0242e958b2acf18ac3a3/ejml-ddense-0.38.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/org.ejml/ejml-cdense/0.38/195fdce4a23d112b99a7f82f3a906ffff85a44de/ejml-cdense-0.38.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/org.ejml/ejml-zdense/0.38/70e655edf1ce505380e25c4622c9b0e3e07a1823/ejml-zdense-0.38.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/org.ejml/ejml-core/0.38/95493af53f603dfbbcd7d1d3df58b9d5a4c4e2b7/ejml-core-0.38.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.2/25ea2e8b0c338a877313bd4672d3fe056ea78f0d/jsr305-3.0.2.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar;C:/Users/robo/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.16.0/975078d246baf08b0ba948c131a2ef6d5a227c71/okio-1.16.0.jar" />
+          <option name="noStdlib" value="true" />
+          <option name="noReflect" value="true" />
+          <option name="moduleName" value="2020-robot-code" />
+          <option name="friendPaths">
+            <array>
+              <option value="$MODULE_DIR$/../../build/classes/java/main" />
+              <option value="$MODULE_DIR$/../../build/classes/kotlin/main" />
+              <option value="$MODULE_DIR$/../../build/tmp/kapt3/classes/main" />
+            </array>
+          </option>
+          <option name="languageVersion" value="1.3" />
+          <option name="apiVersion" value="1.3" />
+          <option name="pluginOptions">
+            <array />
+          </option>
+          <option name="pluginClasspaths">
+            <array>
+              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.intellij.deps/trove4j/1.0.20181211/216c2e14b070f334479d800987affe4054cd563f/trove4j-1.0.20181211.jar" />
+              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-compiler-embeddable/1.3.61/c35c0833d5a1e3d229359758482c480306724618/kotlin-compiler-embeddable-1.3.61.jar" />
+              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-daemon-embeddable/1.3.61/4de83e41a92c8395d89ab2e81d26b788ba163824/kotlin-daemon-embeddable-1.3.61.jar" />
+              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.3.61/2e07c9a84c9e118efb70eede7e579fd663932122/kotlin-reflect-1.3.61.jar" />
+              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-script-runtime/1.3.61/e5feb39c8de63dcbdc1154b34ca4413874231605/kotlin-script-runtime-1.3.61.jar" />
+              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-common/1.3.61/169747d90a1ccdd30b25c381a06bee3fe579bf2/kotlin-scripting-common-1.3.61.jar" />
+              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-scripting-jvm/1.3.61/b9311f022363534f8776e4392aa9c4f4d5a62a44/kotlin-scripting-jvm-1.3.61.jar" />
+              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.3.61/65abb71d5afb850b68be03987b08e2c864ca3110/kotlin-stdlib-common-1.3.61.jar" />
+              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.3.61/4702105e97f7396ae41b113fdbdc180ec1eb1e36/kotlin-stdlib-1.3.61.jar" />
+              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core/1.2.1/3839faf625f4197acaeceeb6da000f011a2acb49/kotlinx-coroutines-core-1.2.1.jar" />
+              <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar" />
+            </array>
+          </option>
+          <option name="errors">
+            <ArgumentParseErrors />
+          </option>
+        </compilerArguments>
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
+    <output-test url="file://$MODULE_DIR$/../../build/classes/java/test" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../build/generated/source/kapt/test">
+      <sourceFolder url="file://$MODULE_DIR$/../../build/generated/source/kapt/test" isTestSource="true" generated="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../build/generated/source/kaptKotlin/test">
+      <sourceFolder url="file://$MODULE_DIR$/../../build/generated/source/kaptKotlin/test" isTestSource="true" generated="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../src/test" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="2020-robot-code_main" />
+    <orderEntry type="module-library">
+      <library name="Gradle: kaptGeneratedClasses">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../build/tmp/kapt3/classes/test" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="Gradle: com.squareup.moshi:moshi-kotlin:1.9.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-reflect:1.3.50" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.3.61" level="project" />
+    <orderEntry type="library" name="Gradle: edu.wpi.first.wpilibj:wpilibj-java:2020.3.2" level="project" />
+    <orderEntry type="library" name="Gradle: edu.wpi.first.ntcore:ntcore-java:2020.3.2" level="project" />
+    <orderEntry type="library" name="Gradle: edu.wpi.first.wpiutil:wpiutil-java:2020.3.2" level="project" />
+    <orderEntry type="library" name="Gradle: edu.wpi.first.thirdparty.frc2020.opencv:opencv-java:3.4.7-2" level="project" />
+    <orderEntry type="library" name="Gradle: edu.wpi.first.cscore:cscore-java:2020.3.2" level="project" />
+    <orderEntry type="library" name="Gradle: edu.wpi.first.cameraserver:cameraserver-java:2020.3.2" level="project" />
+    <orderEntry type="library" name="Gradle: edu.wpi.first.hal:hal-java:2020.3.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.ejml:ejml-simple:0.38" level="project" />
+    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.10.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.10.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.10.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.revrobotics.frc:ColorSensorV3-java:1.0.1" level="project" />
+    <orderEntry type="library" name="Gradle: com.ctre.phoenix:api-java:5.17.3" level="project" />
+    <orderEntry type="library" name="Gradle: com.ctre.phoenix:wpiapi-java:5.17.3" level="project" />
+    <orderEntry type="library" name="Gradle: com.revrobotics.frc:SparkMax-java:1.5.1" level="project" />
+    <orderEntry type="library" name="Gradle: edu.wpi.first.wpilibNewCommands:wpilibNewCommands-java:2020.3.2" level="project" />
+    <orderEntry type="library" name="Gradle: junit:junit:4.12" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.3.61" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.moshi:moshi:1.9.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.ejml:ejml-fdense:0.38" level="project" />
+    <orderEntry type="library" name="Gradle: org.ejml:ejml-dsparse:0.38" level="project" />
+    <orderEntry type="library" name="Gradle: org.ejml:ejml-ddense:0.38" level="project" />
+    <orderEntry type="library" name="Gradle: org.ejml:ejml-cdense:0.38" level="project" />
+    <orderEntry type="library" name="Gradle: org.ejml:ejml-zdense:0.38" level="project" />
+    <orderEntry type="library" name="Gradle: org.ejml:ejml-core:0.38" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.code.findbugs:jsr305:3.0.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.hamcrest:hamcrest-core:1.3" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.okio:okio:1.16.0" level="project" />
+  </component>
+  <component name="TestModuleProperties" production-module="2020-robot-code_main" />
+</module>
