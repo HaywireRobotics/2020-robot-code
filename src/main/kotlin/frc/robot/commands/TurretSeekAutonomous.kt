@@ -14,6 +14,7 @@ import edu.wpi.first.networktables.NetworkTableEntry
 import edu.wpi.first.networktables.NetworkTableInstance
 import edu.wpi.first.wpilibj.controller.PIDController
 import edu.wpi.first.wpilibj2.command.CommandBase
+import edu.wpi.first.wpilibj.Timer
 
 class TurretSeekAutonomous(val m_subsystem: TurretSubsystem) : CommandBase() {
   /**
@@ -30,6 +31,8 @@ class TurretSeekAutonomous(val m_subsystem: TurretSubsystem) : CommandBase() {
 
   val marginOfError: Double = 1.0
 
+  private val timer: Timer = Timer()
+
   init {
     addRequirements(m_subsystem)
 
@@ -44,6 +47,9 @@ class TurretSeekAutonomous(val m_subsystem: TurretSubsystem) : CommandBase() {
   // Called when the command is initially scheduled.
   override fun initialize() {
     pidController.reset()
+
+    timer.reset()
+    timer.start()
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -60,7 +66,7 @@ class TurretSeekAutonomous(val m_subsystem: TurretSubsystem) : CommandBase() {
   override fun isFinished(): Boolean {
     val angle = angleEntry.getDouble(0.0)
     
-    return (angle < marginOfError && angle > -marginOfError)
+    return (angle < marginOfError && angle > -marginOfError) || timer.hasPeriodPassed(2.0)
   }
     
   fun useOutput(output: Double) = m_subsystem.motor.set(1*output)

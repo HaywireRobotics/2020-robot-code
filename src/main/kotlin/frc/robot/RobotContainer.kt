@@ -19,6 +19,8 @@ import edu.wpi.first.wpilibj.XboxController
 import edu.wpi.first.wpilibj.Joystick
 import edu.wpi.first.wpilibj.PowerDistributionPanel
 import edu.wpi.first.wpilibj2.command.button.JoystickButton
+import edu.wpi.first.cameraserver.CameraServer
+import edu.wpi.cscore.UsbCamera
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -54,8 +56,10 @@ class RobotContainer {
   init {
     // Configure the button bindings
     configureButtonBindings()
-    m_autoCommandChooser.setDefaultOption("Default Auto", m_autoCommand)
+    m_autoCommandChooser.setDefaultOption("Drive Shooter Side", m_autoCommand)
+    m_autoCommandChooser.addOption("Drive Intake Side", DriveForTime(-0.5, 0.5))
     m_autoCommandChooser.addOption("Turret, Shoot, Drive", SequentialCommandGroup(TurretSeekAutonomous(turretSubsystem), LaunchIonCannonForTimey(150000, 150000, 10, ionCannonySubsystem, turboLiftSubsystem), DriveForTime(hyperdriveSubsystem, 0.3, 0.5)))
+    // m_autoCommandChooser.addOption("Trench Run PickUp", )
     SmartDashboard.putData("Auto mode", m_autoCommandChooser)
     
     hyperdriveSubsystem.setDefaultCommand(DriveHyperCommand(hyperdriveSubsystem, driverLeftJoystick, driverRightJoystick))
@@ -65,6 +69,12 @@ class RobotContainer {
 
     //Add a color sensor on the I2C port
     
+    // Camera
+//    var usbCamera = UsbCamera("cam0", 0)
+//    usbCamera.setFPS(15)
+//    usbCamera.setResolution(320, 240)
+//    CameraServer.getInstance().startAutomaticCapture(usbCamera)
+      CameraServer.getInstance().startAutomaticCapture()
   }
 
   /**
