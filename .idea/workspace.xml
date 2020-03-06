@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5d39768-18d5-4d7b-83c3-e77d0b97ef15" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2020-robot-code.iml" beforeDir="false" afterPath="$PROJECT_DIR$/2020-robot-code.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/frc/robot/RobotContainer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/frc/robot/RobotContainer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/frc/robot/Robot.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/frc/robot/Robot.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/frc/robot/commands/LaunchIonCannonForTimey.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/frc/robot/commands/LaunchIonCannonForTimey.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/frc/robot/commands/TrenchRunPickupAuto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/frc/robot/commands/TrenchRunPickupAuto.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +31,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1Yk7cQWbVKkEXp22tjnCxDEenze" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -162,10 +162,30 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1583501186957" />
+    <state x="410" y="143" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583520063941">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="410" y="143" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1583520063941" />
     <state x="321" y="68" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1583474833024">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="321" y="68" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1280.680@0.0.1280.680" timestamp="1583474833024" />
+    <state width="1237" height="161" key="GridCell.Tab.0.bottom" timestamp="1583519828869">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="161" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1583519828869" />
+    <state width="1237" height="161" key="GridCell.Tab.0.center" timestamp="1583519828869">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="161" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1583519828869" />
+    <state width="1237" height="161" key="GridCell.Tab.0.left" timestamp="1583519828869">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="161" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1583519828869" />
+    <state width="1237" height="161" key="GridCell.Tab.0.right" timestamp="1583519828869">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="161" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1583519828869" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1583501146430">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

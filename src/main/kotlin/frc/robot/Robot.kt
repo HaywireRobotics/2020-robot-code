@@ -66,7 +66,7 @@ class Robot : TimedRobot() {
     m_autonomousCommand = m_robotContainer.getAutonomousCommand()
 
     // schedule the autonomous command (example)
-    m_autonomousCommand?.let{ m_autonomousCommand.schedule() }
+    m_autonomousCommand.let{ m_autonomousCommand.schedule() }
   }
 
   /**
@@ -80,7 +80,7 @@ class Robot : TimedRobot() {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    m_autonomousCommand?.let{ m_autonomousCommand.cancel() }
+    m_autonomousCommand.let{ m_autonomousCommand.cancel() }
     m_robotContainer.hyperdriveSubsystem.robotDirectionInverted = false
   }
 

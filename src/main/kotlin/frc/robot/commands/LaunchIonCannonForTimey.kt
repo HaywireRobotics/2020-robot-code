@@ -44,6 +44,7 @@ class LaunchIonCannonForTimey(val topTargetRate: Number, val bottomTargetRate: N
   // Called once the command ends or is interrupted.
   override fun end(interrupted: Boolean) {
     ionCannon.endPID()
+    turboLift.runSystem(0.0)
   }
 
   // Returns true when the command should end.
