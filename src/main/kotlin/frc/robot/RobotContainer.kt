@@ -38,9 +38,7 @@ class RobotContainer {
   val controlPanelSubsystem: ControlPanelSubsystem = ControlPanelSubsystem()
   val climbySubsystem: ClimbySubsystem = ClimbySubsystem()
   
-  val turretSubsystem: TurretSubsystem = TurretSubsystem()
-
-  val m_autoCommand: DriveForTime = DriveForTime(hyperdriveSubsystem, 0.5, 0.5)
+  val turretSubsystem: TurretSubsystem = TurretSubsystem() 
 
   var m_autoCommandChooser: SendableChooser<Command> = SendableChooser()
 
@@ -56,10 +54,42 @@ class RobotContainer {
   init {
     // Configure the button bindings
     configureButtonBindings()
-    m_autoCommandChooser.setDefaultOption("Drive Shooter Side", m_autoCommand)
-    m_autoCommandChooser.addOption("Drive Intake Side", DriveForTime(hyperdriveSubsystem, -0.5, 0.5))
-    m_autoCommandChooser.addOption("Turret, Shoot, Drive", SequentialCommandGroup(TurretSeekAutonomous(turretSubsystem), LaunchIonCannonForTimey(150000, 150000, 10, ionCannonySubsystem, turboLiftSubsystem), DriveForTime(hyperdriveSubsystem, 0.3, 0.5)))
-    m_autoCommandChooser.addOption("Trench Run PickUp", TrenchRunPickupAuto(ionCannonySubsystem, turretSubsystem, turboLiftSubsystem, dockingBaySubsystem, hyperdriveSubsystem))
+    
+    // Setting up the Autonomous Chooser
+    m_autoCommandChooser.setDefaultOption("30% Speed, 1/2 Second Drive || Shooter Side",
+                                          DriveForTime(hyperdriveSubsystem, 0.3, 0.5))
+    m_autoCommandChooser.addOption("30% Speed, 1/2 Second Drive || Intake Side",
+                                    DriveForTime(hyperdriveSubsystem, -0.3, 0.5))
+    m_autoCommandChooser.addOption("Impulse Drive || Shooter Side",
+                                    DriveForTime(hyperdriveSubsystem, 0.5, 0.1))
+    m_autoCommandChooser.addOption("Impulse Drive || Intake Side",
+                                    DriveForTime(hyperdriveSubsystem, -0.5, 0.1))
+    
+    m_autoCommandChooser.addOption("Turret, Shoot, 30% Speed, 1/2 Second Drive || Shooter Side",
+        SequentialCommandGroup(TurretSeekAutonomous(turretSubsystem),
+                              LaunchIonCannonForTimey(155000, 155000, 10, ionCannonySubsystem, turboLiftSubsystem),
+                              DriveForTime(hyperdriveSubsystem, 0.3, 0.5)))
+    m_autoCommandChooser.addOption("Turret, Shoot, 30% Speed, 1/2 Second Drive || Intake Side",
+        SequentialCommandGroup(TurretSeekAutonomous(turretSubsystem),
+                              LaunchIonCannonForTimey(155000, 155000, 10, ionCannonySubsystem, turboLiftSubsystem),
+                              DriveForTime(hyperdriveSubsystem, -0.3, 0.5)))
+    m_autoCommandChooser.addOption("Turret, Shoot, Impulse Drive || Shooter Side",
+        SequentialCommandGroup(TurretSeekAutonomous(turretSubsystem),
+                              LaunchIonCannonForTimey(155000, 155000, 10, ionCannonySubsystem, turboLiftSubsystem),
+                              DriveForTime(hyperdriveSubsystem, 0.5, 0.1)))
+    m_autoCommandChooser.addOption("Turret, Shoot, Impulse Drive || Intake Side",
+        SequentialCommandGroup(TurretSeekAutonomous(turretSubsystem),
+                              LaunchIonCannonForTimey(155000, 155000, 10, ionCannonySubsystem, turboLiftSubsystem),
+                              DriveForTime(hyperdriveSubsystem, -0.5, 0.1)))
+    
+    m_autoCommandChooser.addOption("Turret, Shoot, Trench Run Pick Up",
+        TrenchRunPickupAuto(ionCannonySubsystem,
+                            turretSubsystem,
+                            turboLiftSubsystem,
+                            dockingBaySubsystem,
+                            hyperdriveSubsystem))
+    
+    // Put that monstrousity on the dashboard
     SmartDashboard.putData("Auto mode", m_autoCommandChooser)
     
     hyperdriveSubsystem.setDefaultCommand(DriveHyperCommand(hyperdriveSubsystem, driverLeftJoystick, driverRightJoystick))
@@ -67,8 +97,6 @@ class RobotContainer {
     turboLiftSubsystem.setDefaultCommand(TurboLiftyDefault(turboLiftSubsystem, manipulatorRightJoystick))
     turretSubsystem.setDefaultCommand(TurretManualDrive(turretSubsystem, manipulatorLeftJoystick))
 
-    //Add a color sensor on the I2C port
-    
     // Camera
 //    var usbCamera = UsbCamera("cam0", 0)
 //    usbCamera.setFPS(15)

@@ -32,7 +32,7 @@ class TrenchRunPickupAuto(ionCannon: IonCannony, turret: TurretSubsystem, turboL
     // super(FooCommand(), BarCommand())
     addCommands(
       TurretSeekAutonomous(turret),
-      LaunchIonCannonForTimey(150000, 150000, 7, ionCannon, turboLift),
+      LaunchIonCannonForTimey(155000, 155000, 7, ionCannon, turboLift),
       ParallelCommandGroup(
         RunDockingBayForTime(dockingBay, -0.7, 15),
         DriveForTime(drivetrain, -0.25, 0.75)
