@@ -57,9 +57,9 @@ class RobotContainer {
     // Configure the button bindings
     configureButtonBindings()
     m_autoCommandChooser.setDefaultOption("Drive Shooter Side", m_autoCommand)
-    m_autoCommandChooser.addOption("Drive Intake Side", DriveForTime(-0.5, 0.5))
+    m_autoCommandChooser.addOption("Drive Intake Side", DriveForTime(hyperdriveSubsystem, -0.5, 0.5))
     m_autoCommandChooser.addOption("Turret, Shoot, Drive", SequentialCommandGroup(TurretSeekAutonomous(turretSubsystem), LaunchIonCannonForTimey(150000, 150000, 10, ionCannonySubsystem, turboLiftSubsystem), DriveForTime(hyperdriveSubsystem, 0.3, 0.5)))
-    // m_autoCommandChooser.addOption("Trench Run PickUp", )
+    m_autoCommandChooser.addOption("Trench Run PickUp", TrenchRunPickupAuto(ionCannonySubsystem, turretSubsystem, turboLiftSubsystem, dockingBaySubsystem, hyperdriveSubsystem))
     SmartDashboard.putData("Auto mode", m_autoCommandChooser)
     
     hyperdriveSubsystem.setDefaultCommand(DriveHyperCommand(hyperdriveSubsystem, driverLeftJoystick, driverRightJoystick))
