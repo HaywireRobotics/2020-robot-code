@@ -8,9 +8,9 @@
 package frc.robot.commands
 
 import edu.wpi.first.wpilibj2.command.CommandBase
-import frc.robot.subsystems.IonCannony
+import frc.robot.subsystems.IonCannonySubsystem
 
-class PIDShoot(val bottomTargetRate: Double, val topTargetRate: Double, val m_subsystem: IonCannony) : CommandBase() {
+class PIDShoot(val bottomTargetRate: Double, val topTargetRate: Double, val m_subsystem: IonCannonySubsystem) : CommandBase() {
 	/**
 	 * Creates a new PIDShoot.
 	 *

@@ -11,13 +11,13 @@ import edu.wpi.first.wpilibj2.command.ParallelCommandGroup
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup
 import frc.robot.subsystems.*
 
-class TrenchRunPickupAuto(ionCannon: IonCannony, turret: TurretSubsystem, turboLift: TurboLiftSubsystem, dockingBay: DockingBaySubsystem, driveTrain: HyperdriveSubsystem) : SequentialCommandGroup() {
+class TrenchRunPickupAuto(ionCannonSubsystem: IonCannonySubsystem, turret: TurretSubsystem, turboLift: TurboLiftSubsystem, dockingBay: DockingBaySubsystem, driveTrain: HyperdriveSubsystem) : SequentialCommandGroup() {
 	init {
 		// Add your commands in the super() call, e.g.
 		// super(FooCommand(), BarCommand())
 		addCommands(
 			TurretSeekAutonomous(turret),
-			LaunchIonCannonForTimey(160000, 160000, 7, ionCannon, turboLift),
+			LaunchIonCannonForTimey(160000, 160000, 7, ionCannonSubsystem, turboLift),
 			ParallelCommandGroup(
 				RunDockingBayForTime(dockingBay, -0.7, 15),
 				DriveForTime(driveTrain, -0.25, 2.25)

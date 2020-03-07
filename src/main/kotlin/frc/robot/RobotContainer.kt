@@ -28,7 +28,7 @@ class RobotContainer {
 	val hyperdriveSubsystem: HyperdriveSubsystem = HyperdriveSubsystem()
 	private val dockingBaySubsystem: DockingBaySubsystem = DockingBaySubsystem()
 	private val turboLiftSubsystem: TurboLiftSubsystem = TurboLiftSubsystem()
-	private val ionCannonySubsystem: IonCannony = IonCannony()
+	private val ionCannonySubsystem: IonCannonySubsystem = IonCannonySubsystem()
 	private val colorSensorSubsystem: ColorSensorSubsystem = ColorSensorSubsystem()
 	private val controlPanelSubsystem: ControlPanelSubsystem = ControlPanelSubsystem()
 	private val climbySubsystem: ClimbySubsystem = ClimbySubsystem()

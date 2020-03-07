@@ -17,7 +17,7 @@ import frc.robot.Constants
 import frc.robot.JSONPlotter
 import frc.robot.JSONPlotterNT
 
-class IonCannony : SubsystemBase() {
+class IonCannonySubsystem : SubsystemBase() {
 	/**
 	 * Creates a new IonCannony.
 	 */

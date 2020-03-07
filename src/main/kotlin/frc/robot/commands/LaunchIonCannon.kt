@@ -9,10 +9,10 @@ package frc.robot.commands
 
 import edu.wpi.first.wpilibj.Joystick
 import edu.wpi.first.wpilibj2.command.CommandBase
-import frc.robot.subsystems.IonCannony
+import frc.robot.subsystems.IonCannonySubsystem
 import frc.robot.subsystems.TurboLiftSubsystem
 
-class LaunchIonCannon(val topTargetRate: Number, val bottomTargetRate: Number, val ionCannon: IonCannony, val turboLift: TurboLiftSubsystem, val joystick: Joystick) : CommandBase() {
+class LaunchIonCannon(val topTargetRate: Number, val bottomTargetRate: Number, val ionCannonSubsystem: IonCannonySubsystem, val turboLift: TurboLiftSubsystem, val joystick: Joystick) : CommandBase() {
 	/**
 	 * Creates a new LaunchIonCannon.
 	 *
@@ -23,28 +23,28 @@ class LaunchIonCannon(val topTargetRate: Number, val bottomTargetRate: Number, v
 	val multiplier: Double = 10000.0
 
 	init {
-		addRequirements(ionCannon)//, turboLift)
+		addRequirements(ionCannonSubsystem)//, turboLift)
 	}
 
 	// Called when the command is initially scheduled.
 	override fun initialize() {
-		ionCannon.setSetpoints(topTargetRate, bottomTargetRate)
-		ionCannon.resetPID()
+		ionCannonSubsystem.setSetpoints(topTargetRate, bottomTargetRate)
+		ionCannonSubsystem.resetPID()
 		initialZAxisValue = joystick.z.toDouble()
 	}
 
 	// Called every time the scheduler runs while the command is scheduled.
 	override fun execute() {
-		ionCannon.runPID()
-		if (ionCannon.isReady())
+		ionCannonSubsystem.runPID()
+		if (ionCannonSubsystem.isReady())
 			turboLift.runSystem(-0.6)
 
-		ionCannon.setSetpoints(topTargetRate.toDouble() + (joystick.z.toDouble() - initialZAxisValue) * multiplier, bottomTargetRate.toDouble() + (joystick.z.toDouble() - initialZAxisValue) * multiplier)
+		ionCannonSubsystem.setSetpoints(topTargetRate.toDouble() + (joystick.z.toDouble() - initialZAxisValue) * multiplier, bottomTargetRate.toDouble() + (joystick.z.toDouble() - initialZAxisValue) * multiplier)
 	}
 
 	// Called once the command ends or is interrupted.
 	override fun end(interrupted: Boolean) {
-		ionCannon.endPID()
+		ionCannonSubsystem.endPID()
 	}
 
 	// Returns true when the command should end.

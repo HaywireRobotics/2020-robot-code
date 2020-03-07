@@ -11,10 +11,10 @@ import edu.wpi.first.networktables.NetworkTable
 import edu.wpi.first.networktables.NetworkTableEntry
 import edu.wpi.first.networktables.NetworkTableInstance
 import edu.wpi.first.wpilibj2.command.CommandBase
-import frc.robot.subsystems.IonCannony
+import frc.robot.subsystems.IonCannonySubsystem
 import frc.robot.subsystems.TurboLiftSubsystem
 
-class TestShooterNT(val ionCannon: IonCannony, val turboLift: TurboLiftSubsystem) : CommandBase() {
+class TestShooterNT(val ionCannonSubsystem: IonCannonySubsystem, val turboLift: TurboLiftSubsystem) : CommandBase() {
 	/**
 	 * Creates a new TestShooterNT.
 	 *
@@ -30,7 +30,7 @@ class TestShooterNT(val ionCannon: IonCannony, val turboLift: TurboLiftSubsystem
 	var bottomTargetRate: Double = 0.0
 
 	init {
-		addRequirements(ionCannon)
+		addRequirements(ionCannonSubsystem)
 
 		table = nt.getTable("datatable")
 		topShooterSpeedEntry = table.getEntry("topShooterSpeed")
@@ -47,20 +47,20 @@ class TestShooterNT(val ionCannon: IonCannony, val turboLift: TurboLiftSubsystem
 		println("TOP Setpoint: " + topTargetRate)
 		println("BOTTOM Setpoint: " + bottomTargetRate)
 
-		ionCannon.setSetpoints(bottomTargetRate, topTargetRate)
-		ionCannon.resetPID()
+		ionCannonSubsystem.setSetpoints(bottomTargetRate, topTargetRate)
+		ionCannonSubsystem.resetPID()
 	}
 
 	// Called every time the scheduler runs while the command is scheduled.
 	override fun execute() {
-		ionCannon.runPID()
-		if (ionCannon.isReady())
+		ionCannonSubsystem.runPID()
+		if (ionCannonSubsystem.isReady())
 			turboLift.runSystem(-0.6)
 	}
 
 	// Called once the command ends or is interrupted.
 	override fun end(interrupted: Boolean) {
-		ionCannon.endPID()
+		ionCannonSubsystem.endPID()
 	}
 
 	// Returns true when the command should end.
