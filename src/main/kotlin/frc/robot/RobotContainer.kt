@@ -125,7 +125,7 @@ class RobotContainer {
 		JoystickButton(manipulatorLeftJoystick, 10).whileHeld(TurretSeek(turretSubsystem))
 
 		// Left Manipulator Button Bindings
-		JoystickButton(manipulatorLeftJoystick, 1).whileHeld(ReadyIonCannon(ionCannonySubsystem))
+		JoystickButton(manipulatorLeftJoystick, 1).whenPressed(ReadyIonCannon(ionCannonySubsystem))
 		JoystickButton(manipulatorLeftJoystick, 2).whileHeld(LaunchIonCannon(64000.0, 64000.0, ionCannonySubsystem, turboLiftSubsystem, manipulatorLeftJoystick))
 		JoystickButton(manipulatorLeftJoystick, 3).whileHeld(LaunchIonCannon(96000.0, 96000.0, ionCannonySubsystem, turboLiftSubsystem, manipulatorLeftJoystick))
 		JoystickButton(manipulatorLeftJoystick, 4).whileHeld(LaunchIonCannon(144000.0, 144000.0, ionCannonySubsystem, turboLiftSubsystem, manipulatorLeftJoystick))

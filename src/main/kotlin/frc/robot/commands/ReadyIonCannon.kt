@@ -21,11 +21,11 @@ class ReadyIonCannon(private val ionCannon: IonCannonySubsystem) : CommandBase()
 
 	// Called when the command is initially scheduled.
 	override fun initialize() {
-      ionCannon.setSetpoints(100000, 100000)
+		ionCannon.setSetpoints(100000, 100000)
 	}
 
 	// Returns true when the command should end.
 	override fun isFinished(): Boolean {
-		return false
+		return true
 	}
 }
