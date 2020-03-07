@@ -7,25 +7,23 @@
 
 package frc.robot.subsystems
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase
-
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX
-
+import edu.wpi.first.wpilibj2.command.SubsystemBase
 import frc.robot.Constants
 
 class TurretSubsystem : SubsystemBase() {
-  /**
-   * Creates a new TurretSubsystem.
-   */
+	/**
+	 * Creates a new TurretSubsystem.
+	 */
 
-  val motor: WPI_VictorSPX = WPI_VictorSPX(Constants.Turret.motorPort)
+	val motor: WPI_VictorSPX = WPI_VictorSPX(Constants.Turret.motorPort)
 
-  init {
-  }
+	init {
+	}
 
-  /**
-   * Will be called periodically whenever the CommandScheduler runs.
-   */
-  override fun periodic() {
-  }
+	/**
+	 * Will be called periodically whenever the CommandScheduler runs.
+	 */
+	override fun periodic() {
+	}
 }

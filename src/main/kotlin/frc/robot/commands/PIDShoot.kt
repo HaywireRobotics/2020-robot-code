@@ -7,39 +7,38 @@
 
 package frc.robot.commands
 
+import edu.wpi.first.wpilibj2.command.CommandBase
 import frc.robot.subsystems.IonCannony
 
-import edu.wpi.first.wpilibj2.command.CommandBase
-
 class PIDShoot(val bottomTargetRate: Double, val topTargetRate: Double, val m_subsystem: IonCannony) : CommandBase() {
-  /**
-   * Creates a new PIDShoot.
-   *
-   * @param m_subsystem The subsystem used by this command.
-   */
+	/**
+	 * Creates a new PIDShoot.
+	 *
+	 * @param m_subsystem The subsystem used by this command.
+	 */
 
-  init {
-    addRequirements(m_subsystem)
-  }
+	init {
+		addRequirements(m_subsystem)
+	}
 
-  // Called when the command is initially scheduled.
-  override fun initialize() {
-    m_subsystem.setSetpoints(bottomTargetRate, topTargetRate)
-    m_subsystem.resetPID()
-  }
+	// Called when the command is initially scheduled.
+	override fun initialize() {
+		m_subsystem.setSetpoints(bottomTargetRate, topTargetRate)
+		m_subsystem.resetPID()
+	}
 
-  // Called every time the scheduler runs while the command is scheduled.
-  override fun execute() {
-    m_subsystem.runPID()
-  }
+	// Called every time the scheduler runs while the command is scheduled.
+	override fun execute() {
+		m_subsystem.runPID()
+	}
 
-  // Called once the command ends or is interrupted.
-  override fun end(interrupted: Boolean) {
-    m_subsystem.endPID()
-  }
+	// Called once the command ends or is interrupted.
+	override fun end(interrupted: Boolean) {
+		m_subsystem.endPID()
+	}
 
-  // Returns true when the command should end.
-  override fun isFinished(): Boolean {
-    return false
-  }
+	// Returns true when the command should end.
+	override fun isFinished(): Boolean {
+		return false
+	}
 }

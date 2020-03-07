@@ -7,26 +7,27 @@
 
 package frc.robot.subsystems
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX
+import edu.wpi.first.wpilibj2.command.SubsystemBase
 import frc.robot.Constants
 
 
 class ClimbySubsystem : SubsystemBase() {
-  /**
-   * Creates a new ClimbySubsystem.
-   */
-  val hookMotor: WPI_VictorSPX = WPI_VictorSPX(Constants.Climby.hookPort)
-  val winchMotor: WPI_VictorSPX = WPI_VictorSPX(Constants.Climby.winchPort)
+	/**
+	 * Creates a new ClimbySubsystem.
+	 */
+	val hookMotor: WPI_VictorSPX = WPI_VictorSPX(Constants.Climby.hookPort)
+	val winchMotor: WPI_VictorSPX = WPI_VictorSPX(Constants.Climby.winchPort)
 
-  init {
-  }
+	init {
+	}
 
-  /**
-   * Will be called periodically whenever the CommandScheduler runs.
-   */
-  override fun periodic() {
-  }
-  fun driveHookMotor(power: Double) = hookMotor.set(power)
-  fun driveWinchMotor(power: Double) = winchMotor.set(power)
+	/**
+	 * Will be called periodically whenever the CommandScheduler runs.
+	 */
+	override fun periodic() {
+	}
+
+	fun driveHookMotor(power: Double) = hookMotor.set(power)
+	fun driveWinchMotor(power: Double) = winchMotor.set(power)
 }

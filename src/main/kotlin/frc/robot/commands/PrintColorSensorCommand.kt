@@ -7,38 +7,39 @@
 
 package frc.robot.commands
 
-import frc.robot.subsystems.ColorSensorSubsystem
 import edu.wpi.first.wpilibj2.command.CommandBase
+import frc.robot.subsystems.ColorSensorSubsystem
+
 //import frc.robot
 
 class PrintColorSensorCommand(val m_subsystem: ColorSensorSubsystem) : CommandBase() {
-  /**
-   * Creates a new PrintColorSensorCommand.
-   *
-   */
-  init {
-    addRequirements(m_subsystem)
-  }
+	/**
+	 * Creates a new PrintColorSensorCommand.
+	 *
+	 */
+	init {
+		addRequirements(m_subsystem)
+	}
 
-  // Called when the command is initially scheduled.
-  override fun initialize() {
-  }
+	// Called when the command is initially scheduled.
+	override fun initialize() {
+	}
 
-  // Called every time the scheduler runs while the command is scheduled.
-  override fun execute() {
-    var color = m_subsystem.getColorRGB()
-    println(color.red)
-    println(color.green)
-    println(color.blue)
-    println()
-    }
+	// Called every time the scheduler runs while the command is scheduled.
+	override fun execute() {
+		var color = m_subsystem.getColorRGB()
+		println(color.red)
+		println(color.green)
+		println(color.blue)
+		println()
+	}
 
-  // Called once the command ends or is interrupted.
-  override fun end(interrupted: Boolean) {
-  }
+	// Called once the command ends or is interrupted.
+	override fun end(interrupted: Boolean) {
+	}
 
-  // Returns true when the command should end.
-  override fun isFinished(): Boolean {
-    return false
-  }
+	// Returns true when the command should end.
+	override fun isFinished(): Boolean {
+		return false
+	}
 }

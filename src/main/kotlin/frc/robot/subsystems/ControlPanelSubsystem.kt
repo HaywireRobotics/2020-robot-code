@@ -7,25 +7,25 @@
 
 package frc.robot.subsystems
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX
+import edu.wpi.first.wpilibj2.command.SubsystemBase
 import frc.robot.Constants
 
 class ControlPanelSubsystem : SubsystemBase() {
-  /**
-   * Creates a new ControlPanelSubsystem.
-   */
-   val colorMotor: WPI_VictorSPX = WPI_VictorSPX(Constants.ControlPanel.colorMotor)
+	/**
+	 * Creates a new ControlPanelSubsystem.
+	 */
+	val colorMotor: WPI_VictorSPX = WPI_VictorSPX(Constants.ControlPanel.colorMotor)
 
-  init {
+	init {
 
-  }
+	}
 
-  /**
-   * Will be called periodically whenever the CommandScheduler runs.
-   */
-  override fun periodic() {
-  }
- 
-fun driveColorMotor(power: Double) = colorMotor.set(power)
+	/**
+	 * Will be called periodically whenever the CommandScheduler runs.
+	 */
+	override fun periodic() {
+	}
+
+	fun driveColorMotor(power: Double) = colorMotor.set(power)
 }

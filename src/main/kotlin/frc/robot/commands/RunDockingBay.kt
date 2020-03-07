@@ -7,38 +7,38 @@
 
 package frc.robot.commands
 
-import frc.robot.subsystems.DockingBaySubsystem
 import edu.wpi.first.wpilibj.PowerDistributionPanel
 import edu.wpi.first.wpilibj2.command.CommandBase
+import frc.robot.subsystems.DockingBaySubsystem
 
 class RunDockingBay(val m_subsystem: DockingBaySubsystem, val pdp: PowerDistributionPanel, val speed: Double) : CommandBase() {
-  /**
-   * Creates a new RunDockingBay.
-   *
-   * @param m_subsystem The subsystem used by this command.
-   */
-  init {
-    addRequirements(m_subsystem)
-  }
+	/**
+	 * Creates a new RunDockingBay.
+	 *
+	 * @param m_subsystem The subsystem used by this command.
+	 */
+	init {
+		addRequirements(m_subsystem)
+	}
 
-  // Called when the command is initially scheduled.
-  override fun initialize() {
-    //agiSpeed = -1.0 * agiSpeed
-  }
+	// Called when the command is initially scheduled.
+	override fun initialize() {
+		//agiSpeed = -1.0 * agiSpeed
+	}
 
-  // Called every time the scheduler runs while the command is scheduled.
-  override fun execute() {
-    m_subsystem.motor.set(speed)
-    // println(pdp.getCurrent(5))
-  }
+	// Called every time the scheduler runs while the command is scheduled.
+	override fun execute() {
+		m_subsystem.motor.set(speed)
+		// println(pdp.getCurrent(5))
+	}
 
-  // Called once the command ends or is interrupted.
-  override fun end(interrupted: Boolean) {
-    m_subsystem.motor.set(0.0)
-  }
+	// Called once the command ends or is interrupted.
+	override fun end(interrupted: Boolean) {
+		m_subsystem.motor.set(0.0)
+	}
 
-  // Returns true when the command should end.
-  override fun isFinished(): Boolean {
-    return false
-  }
+	// Returns true when the command should end.
+	override fun isFinished(): Boolean {
+		return false
+	}
 }

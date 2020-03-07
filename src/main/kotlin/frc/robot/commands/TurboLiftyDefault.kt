@@ -7,47 +7,47 @@
 
 package frc.robot.commands
 
-import frc.robot.subsystems.TurboLiftSubsystem
-import edu.wpi.first.wpilibj2.command.CommandBase
 import edu.wpi.first.wpilibj.Joystick
+import edu.wpi.first.wpilibj2.command.CommandBase
+import frc.robot.subsystems.TurboLiftSubsystem
 
 class TurboLiftyDefault(val m_subsystem: TurboLiftSubsystem, val joystick: Joystick) : CommandBase() {
-  /**
-   * Creates a new TurboLiftySubsystemDefault.
-   *
-   * @param m_subsystem The subsystem used by this command.
-   */
+	/**
+	 * Creates a new TurboLiftySubsystemDefault.
+	 *
+	 * @param m_subsystem The subsystem used by this command.
+	 */
 
-  var joystickPower: Double = 0.0
+	var joystickPower: Double = 0.0
 
-  init {
-    addRequirements(m_subsystem)
-  }
+	init {
+		addRequirements(m_subsystem)
+	}
 
-  // Called when the command is initially scheduled.
-  override fun initialize() {
-  }
+	// Called when the command is initially scheduled.
+	override fun initialize() {
+	}
 
-  // Called every time the scheduler runs while the command is scheduled.
-  override fun execute() {
-    // if (Math.abs(joystick.getY()) > 0.1 || Math.abs(frontJoystick.getY()) > 0.1) {
-      // m_subsystem.agiTater.set(agiSpeed)
-      // m_subsystem.frontMotor.set(frontJoystick.getY())
-      // m_subsystem.backMotor.set(joystick.getY())
-    // }
-    joystickPower = joystick.getY()
-    // println(joystickPower)
-    m_subsystem.runSystem(joystickPower)
-  }
+	// Called every time the scheduler runs while the command is scheduled.
+	override fun execute() {
+		// if (Math.abs(joystick.getY()) > 0.1 || Math.abs(frontJoystick.getY()) > 0.1) {
+		// m_subsystem.agiTater.set(agiSpeed)
+		// m_subsystem.frontMotor.set(frontJoystick.getY())
+		// m_subsystem.backMotor.set(joystick.getY())
+		// }
+		joystickPower = joystick.y
+		// println(joystickPower)
+		m_subsystem.runSystem(joystickPower)
+	}
 
-  // Called once the command ends or is interrupted.
-  override fun end(interrupted: Boolean) {
-    m_subsystem.runSystem(0.0)
+	// Called once the command ends or is interrupted.
+	override fun end(interrupted: Boolean) {
+		m_subsystem.runSystem(0.0)
 
-  }
+	}
 
-  // Returns true when the command should end.
-  override fun isFinished(): Boolean {
-    return false
-  }
+	// Returns true when the command should end.
+	override fun isFinished(): Boolean {
+		return false
+	}
 }

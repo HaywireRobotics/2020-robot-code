@@ -7,49 +7,48 @@
 
 package frc.robot.commands
 
+import edu.wpi.first.wpilibj.Joystick
+import edu.wpi.first.wpilibj2.command.CommandBase
 import frc.robot.subsystems.IonCannony
 import frc.robot.subsystems.TurboLiftSubsystem
 
-import edu.wpi.first.wpilibj2.command.CommandBase
-import edu.wpi.first.wpilibj.Joystick
-
 class LaunchIonCannon(val topTargetRate: Number, val bottomTargetRate: Number, val ionCannon: IonCannony, val turboLift: TurboLiftSubsystem, val joystick: Joystick) : CommandBase() {
-  /**
-   * Creates a new LaunchIonCannon.
-   *
-   * @param ionCannon The subsystem used by this command.
-   */
+	/**
+	 * Creates a new LaunchIonCannon.
+	 *
+	 * @param ionCannon The subsystem used by this command.
+	 */
 
-  var initialZAxisValue: Double = 0.0
-  val multiplier: Double = 10000.0
+	var initialZAxisValue: Double = 0.0
+	val multiplier: Double = 10000.0
 
-  init {
-    addRequirements(ionCannon)//, turboLift)
-  }
+	init {
+		addRequirements(ionCannon)//, turboLift)
+	}
 
-  // Called when the command is initially scheduled.
-  override fun initialize() {
-    ionCannon.setSetpoints(topTargetRate, bottomTargetRate)
-    ionCannon.resetPID()
-    initialZAxisValue = joystick.getZ().toDouble()
-  }
+	// Called when the command is initially scheduled.
+	override fun initialize() {
+		ionCannon.setSetpoints(topTargetRate, bottomTargetRate)
+		ionCannon.resetPID()
+		initialZAxisValue = joystick.z.toDouble()
+	}
 
-  // Called every time the scheduler runs while the command is scheduled.
-  override fun execute() {
-    ionCannon.runPID()
-    if (ionCannon.isReady())
-      turboLift.runSystem(-0.6)
+	// Called every time the scheduler runs while the command is scheduled.
+	override fun execute() {
+		ionCannon.runPID()
+		if (ionCannon.isReady())
+			turboLift.runSystem(-0.6)
 
-    ionCannon.setSetpoints(topTargetRate.toDouble() + (joystick.getZ().toDouble() - initialZAxisValue) * multiplier, bottomTargetRate.toDouble() + (joystick.getZ().toDouble() - initialZAxisValue) * multiplier)
-  }
+		ionCannon.setSetpoints(topTargetRate.toDouble() + (joystick.z.toDouble() - initialZAxisValue) * multiplier, bottomTargetRate.toDouble() + (joystick.z.toDouble() - initialZAxisValue) * multiplier)
+	}
 
-  // Called once the command ends or is interrupted.
-  override fun end(interrupted: Boolean) {
-    ionCannon.endPID()
-  }
+	// Called once the command ends or is interrupted.
+	override fun end(interrupted: Boolean) {
+		ionCannon.endPID()
+	}
 
-  // Returns true when the command should end.
-  override fun isFinished(): Boolean {
-    return false
-  }
+	// Returns true when the command should end.
+	override fun isFinished(): Boolean {
+		return false
+	}
 }

@@ -7,23 +7,25 @@
 
 package frc.robot.subsystems
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase
 import edu.wpi.first.wpilibj.DigitalInput
+import edu.wpi.first.wpilibj2.command.SubsystemBase
 
 class LimitSwitchSubsystem : SubsystemBase() {
-  /**
-   * Creates a new LimitSwitchSubsystem.
-   */
-   val switch0: DigitalInput = DigitalInput(0)
-   val switch1: DigitalInput = DigitalInput(1)
-  init {
-  }
+	/**
+	 * Creates a new LimitSwitchSubsystem.
+	 */
+	val switch0: DigitalInput = DigitalInput(0)
+	val switch1: DigitalInput = DigitalInput(1)
 
-  /**
-   * Will be called periodically whenever the CommandScheduler runs.
-   */
-  override fun periodic() {
-  }
-  fun getSwitch0() = switch0.get()
-  fun getSwitch1() = switch1.get()
+	init {
+	}
+
+	/**
+	 * Will be called periodically whenever the CommandScheduler runs.
+	 */
+	override fun periodic() {
+	}
+
+	fun getSwitch0() = switch0.get()
+	fun getSwitch1() = switch1.get()
 }

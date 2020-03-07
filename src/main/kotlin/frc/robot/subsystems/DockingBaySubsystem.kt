@@ -7,19 +7,17 @@
 
 package frc.robot.subsystems
 
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX
+import edu.wpi.first.wpilibj2.command.SubsystemBase
 import frc.robot.Constants
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase
-
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX
-
 class DockingBaySubsystem : SubsystemBase() {
-  
-  val motor: WPI_VictorSPX = WPI_VictorSPX(Constants.DockingBay.intakePort)
 
-  /**
-   * Will be called periodically whenever the CommandScheduler runs.
-   */
-  override fun periodic() {
-  }
+	val motor: WPI_VictorSPX = WPI_VictorSPX(Constants.DockingBay.intakePort)
+
+	/**
+	 * Will be called periodically whenever the CommandScheduler runs.
+	 */
+	override fun periodic() {
+	}
 }

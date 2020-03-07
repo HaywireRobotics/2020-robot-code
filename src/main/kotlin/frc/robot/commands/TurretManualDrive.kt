@@ -7,36 +7,35 @@
 
 package frc.robot.commands
 
+import edu.wpi.first.wpilibj.Joystick
+import edu.wpi.first.wpilibj2.command.CommandBase
 import frc.robot.subsystems.TurretSubsystem
 
-import edu.wpi.first.wpilibj2.command.CommandBase
-import edu.wpi.first.wpilibj.Joystick
-
 class TurretManualDrive(val m_subsystem: TurretSubsystem, val joystick: Joystick) : CommandBase() {
-  /**
-   * Creates a new TurretManualDrive.
-   *
-   * @param m_subsystem The subsystem used by this command.
-   */
-  init {
-    addRequirements(m_subsystem)
-  }
+	/**
+	 * Creates a new TurretManualDrive.
+	 *
+	 * @param m_subsystem The subsystem used by this command.
+	 */
+	init {
+		addRequirements(m_subsystem)
+	}
 
-  // Called when the command is initially scheduled.
-  override fun initialize() {
-  }
+	// Called when the command is initially scheduled.
+	override fun initialize() {
+	}
 
-  // Called every time the scheduler runs while the command is scheduled.
-  override fun execute() {
-    m_subsystem.motor.set(joystick.getX() / 3)
-  }
+	// Called every time the scheduler runs while the command is scheduled.
+	override fun execute() {
+		m_subsystem.motor.set(joystick.x / 3)
+	}
 
-  // Called once the command ends or is interrupted.
-  override fun end(interrupted: Boolean) {
-  }
+	// Called once the command ends or is interrupted.
+	override fun end(interrupted: Boolean) {
+	}
 
-  // Returns true when the command should end.
-  override fun isFinished(): Boolean {
-    return false
-  }
+	// Returns true when the command should end.
+	override fun isFinished(): Boolean {
+		return false
+	}
 }

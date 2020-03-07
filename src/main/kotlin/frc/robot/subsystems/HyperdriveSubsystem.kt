@@ -7,37 +7,34 @@
 
 package frc.robot.subsystems
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase
-import edu.wpi.first.wpilibj.drive.DifferentialDrive
-import edu.wpi.first.wpilibj.SpeedControllerGroup
-
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX
 import com.revrobotics.CANSparkMax
 import com.revrobotics.CANSparkMaxLowLevel.MotorType
-
+import edu.wpi.first.wpilibj.SpeedControllerGroup
+import edu.wpi.first.wpilibj.drive.DifferentialDrive
+import edu.wpi.first.wpilibj2.command.SubsystemBase
 import frc.robot.Constants
 
 class HyperdriveSubsystem : SubsystemBase() {
-  /**
-   * Creates a new HyperdriveSubsystem.
-   */
-  private val leftFront: CANSparkMax = CANSparkMax(Constants.Hyperdrive.leftFrontPort, MotorType.kBrushless)
-  private val leftBack: CANSparkMax = CANSparkMax(Constants.Hyperdrive.leftBackPort, MotorType.kBrushless)
-  private val rightFront: CANSparkMax = CANSparkMax(Constants.Hyperdrive.rightFrontPort, MotorType.kBrushless)
-  private val rightBack: CANSparkMax = CANSparkMax(Constants.Hyperdrive.rightBackPort, MotorType.kBrushless)
-  
-  private val myRobot = DifferentialDrive(SpeedControllerGroup(leftFront, leftBack), SpeedControllerGroup(rightFront, rightBack))
+	/**
+	 * Creates a new HyperdriveSubsystem.
+	 */
+	private val leftFront: CANSparkMax = CANSparkMax(Constants.Hyperdrive.leftFrontPort, MotorType.kBrushless)
+	private val leftBack: CANSparkMax = CANSparkMax(Constants.Hyperdrive.leftBackPort, MotorType.kBrushless)
+	private val rightFront: CANSparkMax = CANSparkMax(Constants.Hyperdrive.rightFrontPort, MotorType.kBrushless)
+	private val rightBack: CANSparkMax = CANSparkMax(Constants.Hyperdrive.rightBackPort, MotorType.kBrushless)
 
-  var robotDirectionInverted: Boolean = false
+	private val myRobot = DifferentialDrive(SpeedControllerGroup(leftFront, leftBack), SpeedControllerGroup(rightFront, rightBack))
 
-  init {
-  }
+	var robotDirectionInverted: Boolean = false
 
-  /**
-   * Will be called periodically whenever the CommandScheduler runs.
-   */
-  override fun periodic() {
-  }
+	init {
+	}
 
-fun tankDrive(leftPower: Double, rightPower: Double) = myRobot.tankDrive(-leftPower, -rightPower, false)
+	/**
+	 * Will be called periodically whenever the CommandScheduler runs.
+	 */
+	override fun periodic() {
+	}
+
+	fun tankDrive(leftPower: Double, rightPower: Double) = myRobot.tankDrive(-leftPower, -rightPower, false)
 }
