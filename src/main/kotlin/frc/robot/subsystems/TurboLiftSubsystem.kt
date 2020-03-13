@@ -21,7 +21,7 @@ class TurboLiftSubsystem : SubsystemBase() {
 	private val maxPulseCount: Int = 100
 	private var pulseCount: Int = 0
 
-	private var agitatorSpeed = -0.085
+	private var agitatorSpeed = -0.15
 
 	/**
 	 * Will be called periodically whenever the CommandScheduler runs.

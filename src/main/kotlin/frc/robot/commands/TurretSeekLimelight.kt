@@ -68,7 +68,7 @@ class TurretSeekLimelight(val m_subsystem: TurretSubsystem) : CommandBase() {
 		return false
 	}
 
-	private fun useOutput(output: Double) = m_subsystem.motor.set(1 * output)
+	private fun useOutput(output: Double) = m_subsystem.motor.set(-output)
 
 	private fun generateMeasurement(): Double {
 		return tx.getDouble(0.0)
