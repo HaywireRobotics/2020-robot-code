@@ -10,6 +10,7 @@ package frc.robot.subsystems
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX
 import edu.wpi.first.wpilibj2.command.SubsystemBase
 import frc.robot.Constants
+import kotlin.math.abs
 
 class TurboLiftSubsystem : SubsystemBase() {
 
@@ -24,9 +25,9 @@ class TurboLiftSubsystem : SubsystemBase() {
 	}
 
 	fun runSystem(elevatorSpeed: Double) {
-		var agitatorSpeed = 0.3
+		var agitatorSpeed = -0.085
 
-		if (Math.abs(elevatorSpeed) > 0.1) {
+		if (abs(elevatorSpeed) > 0.1) {
 			frontMotor.set(-elevatorSpeed)
 			backMotor.set(elevatorSpeed)
 			agitator.set(agitatorSpeed)

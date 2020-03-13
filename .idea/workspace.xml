@@ -4,7 +4,8 @@
     <list default="true" id="b5d39768-18d5-4d7b-83c3-e77d0b97ef15" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/frc/robot/RobotContainer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/frc/robot/RobotContainer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/frc/robot/commands/ReadyIonCannon.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/frc/robot/commands/ReadyIonCannon.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/frc/robot/subsystems/IonCannonySubsystem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/frc/robot/subsystems/IonCannonySubsystem.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/frc/robot/subsystems/TurboLiftSubsystem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/frc/robot/subsystems/TurboLiftSubsystem.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +51,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="settings.editor.selected.configurable" value="instant.run" />
   </component>
-  <component name="RunManager" selected="Gradle.Build Code">
+  <component name="RunManager" selected="Gradle.Deploy To Robot">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
@@ -120,6 +121,25 @@
       <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="Run Riolog (Fake DS)" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="-Pfakeds" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="riolog" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -147,6 +167,7 @@
     </configuration>
     <list>
       <item itemvalue="Gradle.Build Code" />
+      <item itemvalue="Gradle.Run Riolog (Fake DS)" />
       <item itemvalue="Gradle.Deploy To Robot" />
       <item itemvalue="Gradle.Clean Artifacts" />
     </list>
@@ -169,10 +190,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="233" y="0" key="#Kotlin/0.0.1280.680@0.0.1280.680" timestamp="1583556677218" />
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583501186957">
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583588210072">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1583501186957" />
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1583588210072" />
     <state x="410" y="143" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583520063941">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -189,22 +210,22 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1583556766236" />
-    <state width="1237" height="161" key="GridCell.Tab.0.bottom" timestamp="1583587960083">
+    <state width="1237" height="161" key="GridCell.Tab.0.bottom" timestamp="1583981196352">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="161" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1583587960083" />
-    <state width="1237" height="161" key="GridCell.Tab.0.center" timestamp="1583587960083">
+    <state width="1237" height="161" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1583981196352" />
+    <state width="1237" height="161" key="GridCell.Tab.0.center" timestamp="1583981196351">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="161" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1583587960083" />
-    <state width="1237" height="161" key="GridCell.Tab.0.left" timestamp="1583587960083">
+    <state width="1237" height="161" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1583981196351" />
+    <state width="1237" height="161" key="GridCell.Tab.0.left" timestamp="1583981196351">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="161" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1583587960083" />
-    <state width="1237" height="161" key="GridCell.Tab.0.right" timestamp="1583587960083">
+    <state width="1237" height="161" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1583981196351" />
+    <state width="1237" height="161" key="GridCell.Tab.0.right" timestamp="1583981196352">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="161" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1583587960083" />
+    <state width="1237" height="161" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1583981196352" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1583501146430">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

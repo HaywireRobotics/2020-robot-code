@@ -131,7 +131,7 @@ class RobotContainer {
 		JoystickButton(manipulatorLeftJoystick, 4).whileHeld(LaunchIonCannon(144000.0, 144000.0, ionCannonySubsystem, turboLiftSubsystem, manipulatorLeftJoystick))
 		JoystickButton(manipulatorLeftJoystick, 5).whileHeld(LaunchIonCannon(160000.0, 160000.0, ionCannonySubsystem, turboLiftSubsystem, manipulatorLeftJoystick))
 		JoystickButton(manipulatorLeftJoystick, 6).whileHeld(LaunchIonCannon(192000.0, 192000.0, ionCannonySubsystem, turboLiftSubsystem, manipulatorLeftJoystick))
-		JoystickButton(manipulatorLeftJoystick, 7).whileHeld(LaunchIonCannon(224000.0, 224000.0, ionCannonySubsystem, turboLiftSubsystem, manipulatorLeftJoystick))
+		JoystickButton(manipulatorLeftJoystick, 7).whileHeld(LaunchIonCannon(208000.0, 208000.0, ionCannonySubsystem, turboLiftSubsystem, manipulatorLeftJoystick))
 		JoystickButton(manipulatorLeftJoystick, 8).whileHeld(LaunchIonCannon(256000.0, 256000.0, ionCannonySubsystem, turboLiftSubsystem, manipulatorLeftJoystick))
 		JoystickButton(manipulatorLeftJoystick, 9).whileHeld(LaunchIonCannon(288000.0, 288000.0, ionCannonySubsystem, turboLiftSubsystem, manipulatorLeftJoystick))
 		//JoystickButton(manipulatorLeftJoystick, 10).whileHeld(LaunchIonCannon(320000.0, 320000.0, ionCannonySubsystem, turboLiftSubsystem, manipulatorLeftJoystick))

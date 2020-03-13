@@ -28,26 +28,26 @@ class IonCannonySubsystem : SubsystemBase() {
 	private val topEncoder: Encoder = Encoder(Constants.IonCannony.topEncoderAPort, Constants.IonCannony.topEncoderBPort, false, EncodingType.k4X)
 	private val bottomEncoder: Encoder = Encoder(Constants.IonCannony.bottomEncoderAPort, Constants.IonCannony.bottomEncoderBPort, false, EncodingType.k4X)
 
-	var topEncoderRate: Double = 0.0
-	var bottomEncoderRate: Double = 0.0
+	private var topEncoderRate: Double = 0.0
+	private var bottomEncoderRate: Double = 0.0
 
 	// PID Things
-	val topPIDController: PIDController = PIDController(0.0000125 * 0.45, 0.0000125 * 0.94, 0.000000175)
-	val bottomPIDController: PIDController = PIDController(0.0000125 * 0.45, 0.0000125 * 0.94, 0.000000175)
-	val topJSONPlotter: JSONPlotter = JSONPlotter("Ion Top")
-	val bottomJSONPlotter: JSONPlotter = JSONPlotter("Ion Bottom")
-	val topAverageJSONPlotter: JSONPlotter = JSONPlotter("Top Average")
-	val bottomAverageJSONPlotter: JSONPlotter = JSONPlotter("Bottom Average")
-	val jsonPlotterNT: JSONPlotterNT = JSONPlotterNT()
+	private val topPIDController: PIDController = PIDController(0.0000125 * 0.45, 0.0000125 * 0.94, 0.000000175)
+	private val bottomPIDController: PIDController = PIDController(0.0000125 * 0.45, 0.0000125 * 0.94, 0.000000175)
+	private val topJSONPlotter: JSONPlotter = JSONPlotter("Ion Top")
+	private val bottomJSONPlotter: JSONPlotter = JSONPlotter("Ion Bottom")
+	private val topAverageJSONPlotter: JSONPlotter = JSONPlotter("Top Average")
+	private val bottomAverageJSONPlotter: JSONPlotter = JSONPlotter("Bottom Average")
+	private val jsonPlotterNT: JSONPlotterNT = JSONPlotterNT()
 
 	var bottomSetpoint: Double = 0.0
 	var topSetpoint: Double = 0.0
 
 	// Launch when ready
-	val pointsUntilReady: Int = 10
-	val marginOfError: Double = 5000.0
-	var topLastData: MutableList<Double> = mutableListOf()
-	var bottomLastData: MutableList<Double> = mutableListOf()
+	private val pointsUntilReady: Int = 15
+	private val marginOfError: Double = 5000.0
+	private var topLastData: MutableList<Double> = mutableListOf()
+	private var bottomLastData: MutableList<Double> = mutableListOf()
 
 	init {
 		topEncoder.distancePerPulse = 1.0
