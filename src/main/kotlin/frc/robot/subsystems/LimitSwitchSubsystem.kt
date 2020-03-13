@@ -14,8 +14,8 @@ class LimitSwitchSubsystem : SubsystemBase() {
 	/**
 	 * Creates a new LimitSwitchSubsystem.
 	 */
-	val switch0: DigitalInput = DigitalInput(0)
-	val switch1: DigitalInput = DigitalInput(1)
+	private val switch0: DigitalInput = DigitalInput(0)
+	private val switch1: DigitalInput = DigitalInput(1)
 
 	init {
 	}

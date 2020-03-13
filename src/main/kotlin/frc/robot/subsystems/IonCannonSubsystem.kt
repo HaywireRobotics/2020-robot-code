@@ -17,16 +17,16 @@ import frc.robot.Constants
 import frc.robot.JSONPlotter
 import frc.robot.JSONPlotterNT
 
-class IonCannonySubsystem : SubsystemBase() {
+class IonCannonSubsystem : SubsystemBase() {
 	/**
-	 * Creates a new IonCannony.
+	 * Creates a new IonCannon.
 	 */
-	val top: WPI_VictorSPX = WPI_VictorSPX(Constants.IonCannony.topPort)
-	val bottom: WPI_VictorSPX = WPI_VictorSPX(Constants.IonCannony.bottomPort)
+	val top: WPI_VictorSPX = WPI_VictorSPX(Constants.IonCannon.topPort)
+	val bottom: WPI_VictorSPX = WPI_VictorSPX(Constants.IonCannon.bottomPort)
 
 	// Encoders
-	private val topEncoder: Encoder = Encoder(Constants.IonCannony.topEncoderAPort, Constants.IonCannony.topEncoderBPort, false, EncodingType.k4X)
-	private val bottomEncoder: Encoder = Encoder(Constants.IonCannony.bottomEncoderAPort, Constants.IonCannony.bottomEncoderBPort, false, EncodingType.k4X)
+	private val topEncoder: Encoder = Encoder(Constants.IonCannon.topEncoderAPort, Constants.IonCannon.topEncoderBPort, false, EncodingType.k4X)
+	private val bottomEncoder: Encoder = Encoder(Constants.IonCannon.bottomEncoderAPort, Constants.IonCannon.bottomEncoderBPort, false, EncodingType.k4X)
 
 	private var topEncoderRate: Double = 0.0
 	private var bottomEncoderRate: Double = 0.0
@@ -40,8 +40,8 @@ class IonCannonySubsystem : SubsystemBase() {
 	private val bottomAverageJSONPlotter: JSONPlotter = JSONPlotter("Bottom Average")
 	private val jsonPlotterNT: JSONPlotterNT = JSONPlotterNT()
 
-	var bottomSetpoint: Double = 0.0
-	var topSetpoint: Double = 0.0
+	private var bottomSetpoint: Double = 0.0
+	private var topSetpoint: Double = 0.0
 
 	// Launch when ready
 	private val pointsUntilReady: Int = 15
@@ -111,14 +111,14 @@ class IonCannonySubsystem : SubsystemBase() {
 		bottomUseOutput(bottomPIDController.calculate(bottomEncoder.rate, bottomSetpoint))
 	}
 
-	fun topUseOutput(output: Double) {
+	private fun topUseOutput(output: Double) {
 		top.set(-output)
 		// println("TOP: " + output.toString())
 		topJSONPlotter.recordPoint(topEncoderRate)
 		topAverageJSONPlotter.recordPoint(topLastData.average())
 	}
 
-	fun bottomUseOutput(output: Double) {
+	private fun bottomUseOutput(output: Double) {
 		bottom.set(-output)
 		// println("BOTTOM: " + output.toString())
 		bottomJSONPlotter.recordPoint(bottomEncoderRate)
@@ -131,8 +131,8 @@ class IonCannonySubsystem : SubsystemBase() {
 		val topAverageValue = topLastData.average()
 		val bottomAverageValue = bottomLastData.average()
 
-		var topOK: Boolean = ((topAverageValue >= topSetpoint - marginOfError) && (topAverageValue <= topSetpoint + marginOfError))
-		var bottomOK: Boolean = ((bottomAverageValue >= bottomSetpoint - marginOfError) && (bottomAverageValue <= bottomSetpoint + marginOfError))
+		val topOK: Boolean = ((topAverageValue >= topSetpoint - marginOfError) && (topAverageValue <= topSetpoint + marginOfError))
+		val bottomOK: Boolean = ((bottomAverageValue >= bottomSetpoint - marginOfError) && (bottomAverageValue <= bottomSetpoint + marginOfError))
 
 		return (topOK && bottomOK)
 	}

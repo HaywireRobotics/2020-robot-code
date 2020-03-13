@@ -12,12 +12,12 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase
 import frc.robot.Constants
 
 
-class ClimbySubsystem : SubsystemBase() {
+class ClimbSubsystem : SubsystemBase() {
 	/**
-	 * Creates a new ClimbySubsystem.
+	 * Creates a new ClimbSubsystem.
 	 */
-	val hookMotor: WPI_VictorSPX = WPI_VictorSPX(Constants.Climby.hookPort)
-	val winchMotor: WPI_VictorSPX = WPI_VictorSPX(Constants.Climby.winchPort)
+	private val hookMotor: WPI_VictorSPX = WPI_VictorSPX(Constants.Climb.hookPort)
+	private val winchMotor: WPI_VictorSPX = WPI_VictorSPX(Constants.Climb.winchPort)
 
 	init {
 	}

@@ -32,9 +32,9 @@ class IntelliVader(val m_subsystem: TurboLiftSubsystem) : CommandBase() {
 		// if sensor1 sees ball:
 		// move elevator till sensor2 sees ball
 		// if sensor2 sees ball:
-		// move elevevator till sensor3 sees ball
+		// move elevator till sensor3 sees ball
 		// if sensor3 sees ball:
-		// move elevevator till sensor1 sees ball
+		// move elevator till sensor1 sees ball
 		// if sensor4 sees ball:
 		// stop this whole "if" armada
 

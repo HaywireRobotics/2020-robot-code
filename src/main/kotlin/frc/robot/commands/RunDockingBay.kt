@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.PowerDistributionPanel
 import edu.wpi.first.wpilibj2.command.CommandBase
 import frc.robot.subsystems.DockingBaySubsystem
 
-class RunDockingBay(val m_subsystem: DockingBaySubsystem, val pdp: PowerDistributionPanel, val speed: Double) : CommandBase() {
+class RunDockingBay(val m_subsystem: DockingBaySubsystem, val pdp: PowerDistributionPanel, private val speed: Double) : CommandBase() {
 	/**
 	 * Creates a new RunDockingBay.
 	 *

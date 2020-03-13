@@ -17,11 +17,11 @@ class ColorSensorSubsystem : SubsystemBase() {
 	 * Creates a new ColorSensorSubsystem.
 	 */
 	//color sensor stuff
-	var m_colorSensor: ColorSensorV3
+	private var colorSensor: ColorSensorV3
 
 	init {
 		val i2cPort = I2C.Port.kOnboard
-		m_colorSensor = ColorSensorV3(i2cPort)
+		colorSensor = ColorSensorV3(i2cPort)
 	}
 
 	/**
@@ -31,11 +31,11 @@ class ColorSensorSubsystem : SubsystemBase() {
 	}
 
 	fun getColorRGB(): Color {
-		return m_colorSensor.color
+		return colorSensor.color
 	}
 
 	fun getRawIR(): Number {
-		return m_colorSensor.ir
+		return colorSensor.ir
 	}
 
 

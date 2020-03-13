@@ -11,23 +11,23 @@ import edu.wpi.first.networktables.NetworkTable
 import edu.wpi.first.networktables.NetworkTableEntry
 import edu.wpi.first.networktables.NetworkTableInstance
 import edu.wpi.first.wpilibj2.command.CommandBase
-import frc.robot.subsystems.IonCannonySubsystem
+import frc.robot.subsystems.IonCannonSubsystem
 import frc.robot.subsystems.TurboLiftSubsystem
 
-class TestShooterNT(val ionCannonSubsystem: IonCannonySubsystem, val turboLift: TurboLiftSubsystem) : CommandBase() {
+class TestShooterNT(private val ionCannonSubsystem: IonCannonSubsystem, private val turboLift: TurboLiftSubsystem) : CommandBase() {
 	/**
 	 * Creates a new TestShooterNT.
 	 *
 	 * @param ionCannon The subsystem used by this command.
 	 */
 
-	val nt: NetworkTableInstance = NetworkTableInstance.getDefault()
-	val table: NetworkTable
-	val topShooterSpeedEntry: NetworkTableEntry
-	val bottomShooterSpeedEntry: NetworkTableEntry
+	private val nt: NetworkTableInstance = NetworkTableInstance.getDefault()
+	private val table: NetworkTable
+	private val topShooterSpeedEntry: NetworkTableEntry
+	private val bottomShooterSpeedEntry: NetworkTableEntry
 
-	var topTargetRate: Double = 0.0
-	var bottomTargetRate: Double = 0.0
+	private var topTargetRate: Double = 0.0
+	private var bottomTargetRate: Double = 0.0
 
 	init {
 		addRequirements(ionCannonSubsystem)
@@ -44,8 +44,8 @@ class TestShooterNT(val ionCannonSubsystem: IonCannonySubsystem, val turboLift: 
 		topTargetRate = topShooterSpeedEntry.getDouble(topTargetRate)
 		bottomTargetRate = bottomShooterSpeedEntry.getDouble(bottomTargetRate)
 
-		println("TOP Setpoint: " + topTargetRate)
-		println("BOTTOM Setpoint: " + bottomTargetRate)
+		println("TOP Setpoint: $topTargetRate")
+		println("BOTTOM Setpoint: $bottomTargetRate")
 
 		ionCannonSubsystem.setSetpoints(bottomTargetRate, topTargetRate)
 		ionCannonSubsystem.resetPID()

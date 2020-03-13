@@ -9,9 +9,9 @@ package frc.robot.commands
 
 import edu.wpi.first.wpilibj.Joystick
 import edu.wpi.first.wpilibj2.command.CommandBase
-import frc.robot.subsystems.IonCannonySubsystem
+import frc.robot.subsystems.IonCannonSubsystem
 
-class IonCannonyDefaultCommand(val m_subsystem: IonCannonySubsystem, val topJoystick: Joystick, val bottomJoystick: Joystick) : CommandBase() {
+class IonCannonyDefaultCommand(val m_subsystem: IonCannonSubsystem, private val topJoystick: Joystick, private val bottomJoystick: Joystick) : CommandBase() {
 	/**
 	 * Creates a new IonCannonyDefaultCommand.
 	 *

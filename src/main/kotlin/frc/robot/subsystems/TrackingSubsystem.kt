@@ -16,7 +16,7 @@ class TrackingSubsystem : SubsystemBase() {
 	/**
 	 * Creates a new TrackingSubsystem.
 	 */
-	private val ntInst: NetworkTableInstance
+	private val ntInst: NetworkTableInstance = NetworkTableInstance.getDefault()
 
 	private val table: NetworkTable
 	private val exposureEntry: NetworkTableEntry
@@ -25,7 +25,6 @@ class TrackingSubsystem : SubsystemBase() {
 	private val distanceEntry: NetworkTableEntry
 
 	init {
-		ntInst = NetworkTableInstance.getDefault()
 		ntInst.startClientTeam(1569)
 		table = ntInst.getTable("datatable")
 		exposureEntry = table.getEntry("setExposure")
@@ -41,6 +40,7 @@ class TrackingSubsystem : SubsystemBase() {
 	}
 
 	fun setExposure(exposure: Double) = exposureEntry.setDouble(exposure)
+
 	fun startCapture() {
 		setExposure(2.0)
 	}

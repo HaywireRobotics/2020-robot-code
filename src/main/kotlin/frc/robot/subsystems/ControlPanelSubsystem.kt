@@ -15,7 +15,7 @@ class ControlPanelSubsystem : SubsystemBase() {
 	/**
 	 * Creates a new ControlPanelSubsystem.
 	 */
-	val colorMotor: WPI_VictorSPX = WPI_VictorSPX(Constants.ControlPanel.colorMotor)
+	private val colorMotor: WPI_VictorSPX = WPI_VictorSPX(Constants.ControlPanel.colorMotor)
 
 	init {
 

@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.Timer
 import edu.wpi.first.wpilibj2.command.CommandBase
 import frc.robot.subsystems.HyperdriveSubsystem
 
-class DriveForTime(val m_subsystem: HyperdriveSubsystem, val speed: Double, val time: Double) : CommandBase() {
+class DriveForTime(val m_subsystem: HyperdriveSubsystem, private val speed: Double, val time: Double) : CommandBase() {
 	/**
 	 * Creates a new DriveForTime.
 	 *

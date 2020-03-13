@@ -57,8 +57,8 @@ class JSONPlotterNT {
 		jsonStringEntry.setString("{\"label\": \"default\", \"setpoint\": 0.0, \"data\": []}")
 	}
 
-	fun publishJSONsToNT(jsons: List<String>) {
-		jsonStringEntry.setString(jsons.joinToString(separator = "|"))
+	fun publishJSONsToNT(json: List<String>) {
+		jsonStringEntry.setString(json.joinToString(separator = "|"))
 	}
 }
 

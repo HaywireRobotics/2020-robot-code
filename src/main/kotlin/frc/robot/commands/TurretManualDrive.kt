@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.Joystick
 import edu.wpi.first.wpilibj2.command.CommandBase
 import frc.robot.subsystems.TurretSubsystem
 
-class TurretManualDrive(val m_subsystem: TurretSubsystem, val joystick: Joystick) : CommandBase() {
+class TurretManualDrive(val m_subsystem: TurretSubsystem, private val joystick: Joystick) : CommandBase() {
 	/**
 	 * Creates a new TurretManualDrive.
 	 *

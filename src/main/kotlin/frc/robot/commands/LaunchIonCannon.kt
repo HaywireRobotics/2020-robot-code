@@ -9,18 +9,18 @@ package frc.robot.commands
 
 import edu.wpi.first.wpilibj.Joystick
 import edu.wpi.first.wpilibj2.command.CommandBase
-import frc.robot.subsystems.IonCannonySubsystem
+import frc.robot.subsystems.IonCannonSubsystem
 import frc.robot.subsystems.TurboLiftSubsystem
 
-class LaunchIonCannon(val topTargetRate: Number, val bottomTargetRate: Number, val ionCannonSubsystem: IonCannonySubsystem, val turboLift: TurboLiftSubsystem, val joystick: Joystick) : CommandBase() {
+class LaunchIonCannon(private val topTargetRate: Number, private val bottomTargetRate: Number, private val ionCannonSubsystem: IonCannonSubsystem, private val turboLift: TurboLiftSubsystem, private val joystick: Joystick) : CommandBase() {
 	/**
 	 * Creates a new LaunchIonCannon.
 	 *
 	 * @param ionCannon The subsystem used by this command.
 	 */
 
-	var initialZAxisValue: Double = 0.0
-	val multiplier: Double = 10000.0
+	private var initialZAxisValue: Double = 0.0
+	private val multiplier: Double = 10000.0
 
 	init {
 		addRequirements(ionCannonSubsystem)//, turboLift)

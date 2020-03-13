@@ -8,9 +8,9 @@
 package frc.robot.commands
 
 import edu.wpi.first.wpilibj2.command.CommandBase
-import frc.robot.subsystems.IonCannonySubsystem
+import frc.robot.subsystems.IonCannonSubsystem
 
-class ReadyIonCannon(private val ionCannon: IonCannonySubsystem) : CommandBase() {
+class ReadyIonCannon(private val ionCannon: IonCannonSubsystem) : CommandBase() {
 	/**
 	 * Creates a new ReadyIonCannon.
 	 *

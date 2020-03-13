@@ -8,9 +8,9 @@
 package frc.robot.commands
 
 import edu.wpi.first.wpilibj2.command.CommandBase
-import frc.robot.subsystems.ClimbySubsystem
+import frc.robot.subsystems.ClimbSubsystem
 
-class HookUp(val m_subsystem: ClimbySubsystem) : CommandBase() {
+class HookUp(val m_subsystem: ClimbSubsystem) : CommandBase() {
 	/**
 	 * Creates a new HookUp.
 	 *

@@ -10,12 +10,11 @@ package frc.robot.commands
 import edu.wpi.first.networktables.NetworkTable
 import edu.wpi.first.networktables.NetworkTableEntry
 import edu.wpi.first.networktables.NetworkTableInstance
-import edu.wpi.first.wpilibj.Timer
 import edu.wpi.first.wpilibj.controller.PIDController
 import edu.wpi.first.wpilibj2.command.CommandBase
 import frc.robot.subsystems.TurretSubsystem
 
-class TurretSeekAutonomous(val m_subsystem: TurretSubsystem) : CommandBase() {
+class TurretSeekLimelight(val m_subsystem: TurretSubsystem) : CommandBase() {
 	/**
 	 * Creates a new turretSeek.kt.
 	 *
@@ -26,19 +25,19 @@ class TurretSeekAutonomous(val m_subsystem: TurretSubsystem) : CommandBase() {
 
 	private val nt: NetworkTableInstance = NetworkTableInstance.getDefault()
 	private val table: NetworkTable
-	private val angleEntry: NetworkTableEntry
+	private val tx: NetworkTableEntry
+	private val light: NetworkTableEntry
 
-	private val marginOfError: Double = 1.0
-
-	private val timer: Timer = Timer()
+	private var waitCounter: Int = 0
 
 	init {
 		addRequirements(m_subsystem)
 
 		//pidController = PIDController(0.1, 0.0, 0.0)
 		pidController = PIDController(0.025, 0.008, 0.0025)
-		table = nt.getTable("datatable")
-		angleEntry = table.getEntry("Angle")
+		table = nt.getTable("limelight")
+		tx = table.getEntry("tx")
+		light = table.getEntry("ledMode")
 
 		nt.startClientTeam(1569)
 	}
@@ -46,35 +45,36 @@ class TurretSeekAutonomous(val m_subsystem: TurretSubsystem) : CommandBase() {
 	// Called when the command is initially scheduled.
 	override fun initialize() {
 		pidController.reset()
-
-		timer.reset()
-		timer.start()
+		light.setNumber(3)
+		waitCounter = 20
 	}
 
 	// Called every time the scheduler runs while the command is scheduled.
 	override fun execute() {
-		useOutput(pidController.calculate(generateMeasurement(), generateSetpoint()))
+		if (waitCounter > 0)
+			waitCounter -= 1
+		else
+			useOutput(pidController.calculate(generateMeasurement(), generateSetpoint()))
 	}
 
 	// Called once the command ends or is interrupted.
 	override fun end(interrupted: Boolean) {
 		useOutput(0.0)
+		light.setNumber(0)
 	}
 
 	// Returns true when the command should end.
 	override fun isFinished(): Boolean {
-		val angle = angleEntry.getDouble(0.0)
-
-		return (angle < marginOfError && angle > -marginOfError) || timer.hasPeriodPassed(2.0)
+		return false
 	}
 
 	private fun useOutput(output: Double) = m_subsystem.motor.set(1 * output)
 
 	private fun generateMeasurement(): Double {
-		return angleEntry.getDouble(0.0)
+		return tx.getDouble(0.0)
 	}
 
 	private fun generateSetpoint(): Double {
-		return 0.0
+		return (0.0)
 	}
 }

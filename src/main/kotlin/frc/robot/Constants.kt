@@ -22,69 +22,69 @@ class Constants {
 
 	class Joysticks {
 		companion object {
-			val driverRightPort: Int = 0
-			val driverLeftPort: Int = 1
-			val manipulatorRightPort: Int = 2
-			val manipulatorLeftPort: Int = 3
+			const val driverRightPort: Int = 0
+			const val driverLeftPort: Int = 1
+			const val manipulatorRightPort: Int = 2
+			const val manipulatorLeftPort: Int = 3
 		}
 	}
 
 	class DockingBay {
 		companion object {
-			val intakePort: Int = 50
-			val agitatorPort: Int = 1
+			const val intakePort: Int = 50
+			const val agitatorPort: Int = 1
 		}
 	}
 
 	class Hyperdrive {
 		companion object {
-			val rightFrontPort: Int = 3
-			val rightBackPort: Int = 6
+			const val rightFrontPort: Int = 3
+			const val rightBackPort: Int = 6
 
-			val leftFrontPort: Int = 1
-			val leftBackPort: Int = 2
+			const val leftFrontPort: Int = 1
+			const val leftBackPort: Int = 2
 		}
 	}
 
 	class TurboLift {
 		companion object {
-			val backMotorPort: Int = 2
-			val frontMotorPort: Int = 40
+			const val backMotorPort: Int = 2
+			const val frontMotorPort: Int = 40
 		}
 	}
 
 	class ControlPanel {
 		companion object {
-			val colorMotor: Int = 11
+			const val colorMotor: Int = 11
 		}
 	}
 
-	class IonCannony {
+	class IonCannon {
 		companion object {
 			// Motors
-			val topPort: Int = 0
-			val bottomPort: Int = 3
+			const val topPort: Int = 0
+			const val bottomPort: Int = 3
 
 			// Encoders
-			val topEncoderAPort: Int = 7
-			val topEncoderBPort: Int = 6
+			const val topEncoderAPort: Int = 7
+			const val topEncoderBPort: Int = 6
 
-			val bottomEncoderAPort: Int = 9
-			val bottomEncoderBPort: Int = 8
+			const val bottomEncoderAPort: Int = 9
+			const val bottomEncoderBPort: Int = 8
 		}
 	}
 
-	class Climby {
+	class Climb {
 		companion object {
-			val hookPort: Int = 12
-			val winchPort: Int = 5
+			const val hookPort: Int = 12
+			const val winchPort: Int = 5
 		}
 	}
 
 	class Turret {
 		companion object {
 			// Motors
-			val motorPort: Int = 4
+			const val motorPort: Int = 4
 		}
 	}
 }

@@ -14,24 +14,24 @@ import edu.wpi.first.wpilibj.controller.PIDController
 import edu.wpi.first.wpilibj2.command.CommandBase
 import frc.robot.subsystems.HyperdriveSubsystem
 
-class SeekPID(val hyperdriveSubsystem: HyperdriveSubsystem) : CommandBase() {
+class SeekPID(private val hyperdriveSubsystem: HyperdriveSubsystem) : CommandBase() {
 	/**
 	 * Creates a new SeekPID.
 	 *
 	 * @param hyperdriveSubsystem The subsystem used by this command.
 	 */
 
-	val pidController: PIDController
+	private val pidController: PIDController
 
-	val nt: NetworkTableInstance = NetworkTableInstance.getDefault()
-	val table: NetworkTable
-	val cameraTable: NetworkTable
-	val entryx: NetworkTableEntry
-	val entryy: NetworkTableEntry
-	val cameraMode: NetworkTableEntry
+	private val nt: NetworkTableInstance = NetworkTableInstance.getDefault()
+	private val table: NetworkTable
+	private val cameraTable: NetworkTable
+	private val entryX: NetworkTableEntry
+	private val entryY: NetworkTableEntry
+	private val cameraMode: NetworkTableEntry
 
-	var cameraWidth: Int
-	var cameraHeight: Int
+	private var cameraWidth: Int
+	private var cameraHeight: Int
 
 	val deadZoneWidth: Int = 20 // The width of the deadZone
 
@@ -41,8 +41,8 @@ class SeekPID(val hyperdriveSubsystem: HyperdriveSubsystem) : CommandBase() {
 		pidController = PIDController(-0.2, 100.0, 10000.0)
 
 		table = nt.getTable("datatable")
-		entryx = table.getEntry("X")
-		entryy = table.getEntry("Y")
+		entryX = table.getEntry("X")
+		entryY = table.getEntry("Y")
 
 		cameraTable = nt.getTable("CameraPublisher/rPi Camera 0")
 		cameraMode = cameraTable.getEntry("mode")
@@ -82,7 +82,7 @@ class SeekPID(val hyperdriveSubsystem: HyperdriveSubsystem) : CommandBase() {
 	fun useOutput(output: Double) = hyperdriveSubsystem.tankDrive(output, -output)
 
 	fun generateMeasurement(): Double {
-		return entryx.getDouble(cameraWidth.toDouble() / 2)
+		return entryX.getDouble(cameraWidth.toDouble() / 2)
 	}
 
 	fun generateSetpoint(): Double {

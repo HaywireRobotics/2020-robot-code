@@ -7,48 +7,47 @@
 
 package frc.robot.commands
 
-import edu.wpi.first.wpilibj.Timer
+import edu.wpi.first.wpilibj.Joystick
 import edu.wpi.first.wpilibj2.command.CommandBase
-import frc.robot.subsystems.IonCannonySubsystem
 import frc.robot.subsystems.TurboLiftSubsystem
 
-class LaunchIonCannonForTimey(val topTargetRate: Number, val bottomTargetRate: Number, val shootTime: Number, val ionCannonSubsystem: IonCannonySubsystem, val turboLift: TurboLiftSubsystem) : CommandBase() {
+class TurboLiftDefault(val m_subsystem: TurboLiftSubsystem, private val joystick: Joystick) : CommandBase() {
 	/**
-	 * Creates a new LaunchIonCannonForTimey.
+	 * Creates a new TurboLiftSubsystemDefault.
 	 *
 	 * @param m_subsystem The subsystem used by this command.
 	 */
-	private val timer: Timer = Timer()
+
+	private var joystickPower: Double = 0.0
 
 	init {
-		addRequirements(ionCannonSubsystem, turboLift)
+		addRequirements(m_subsystem)
 	}
 
 	// Called when the command is initially scheduled.
 	override fun initialize() {
-		timer.reset()
-		timer.start()
-		ionCannonSubsystem.setSetpoints(topTargetRate, bottomTargetRate)
-		ionCannonSubsystem.resetPID()
 	}
 
 	// Called every time the scheduler runs while the command is scheduled.
 	override fun execute() {
-
-		ionCannonSubsystem.runPID()
-		if (ionCannonSubsystem.isReady())
-			turboLift.runSystem(-0.6)
-
+		// if (Math.abs(joystick.getY()) > 0.1 || Math.abs(frontJoystick.getY()) > 0.1) {
+		// m_subsystem.agiTater.set(agiSpeed)
+		// m_subsystem.frontMotor.set(frontJoystick.getY())
+		// m_subsystem.backMotor.set(joystick.getY())
+		// }
+		joystickPower = joystick.y
+		// println(joystickPower)
+		m_subsystem.runSystem(joystickPower)
 	}
 
 	// Called once the command ends or is interrupted.
 	override fun end(interrupted: Boolean) {
-		ionCannonSubsystem.endPID()
-		turboLift.runSystem(0.0)
+		m_subsystem.runSystem(0.0)
+
 	}
 
 	// Returns true when the command should end.
 	override fun isFinished(): Boolean {
-		return timer.hasPeriodPassed(shootTime.toDouble())
+		return false
 	}
 }

@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.Timer
 import edu.wpi.first.wpilibj2.command.CommandBase
 import frc.robot.subsystems.DockingBaySubsystem
 
-class RunDockingBayForTime(val m_subsystem: DockingBaySubsystem, val speed: Number, val time: Number) : CommandBase() {
+class RunDockingBayForTime(val m_subsystem: DockingBaySubsystem, private val speed: Number, val time: Number) : CommandBase() {
 	/**
 	 * Creates a new RunDockingBayForTime.
 	 *

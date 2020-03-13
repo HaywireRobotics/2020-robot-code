@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.Joystick
 import edu.wpi.first.wpilibj2.command.CommandBase
 import frc.robot.subsystems.HyperdriveSubsystem
 
-class DriveHyperCommand(val hyperdriveSubsystem: HyperdriveSubsystem, val leftJoystick: Joystick, val rightJoystick: Joystick) : CommandBase() {
+class DriveHyperCommand(private val hyperdriveSubsystem: HyperdriveSubsystem, private val leftJoystick: Joystick, private val rightJoystick: Joystick) : CommandBase() {
 	/**
 	 * Creates a new DriveHyperCommand.
 	 *
